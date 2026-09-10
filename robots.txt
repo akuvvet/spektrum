@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /formular.php
+Disallow: /admin/
+
+Sitemap: https://spektrum-nachhilfe.de/sitemap.xml

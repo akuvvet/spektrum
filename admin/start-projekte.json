@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "projekte": [
+    {
+      "id": "fit-ferienkurse",
+      "titel": "FIT-Ferienkurse",
+      "zeitraum": "Oster-, Sommer- und Herbstferien",
+      "text": "Ferienkurse, um Wissenslücken zu schließen und gut in das neue Schuljahr zu starten.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "extra-zeit",
+      "titel": "Extra-Zeit zum Lernen",
+      "zeitraum": "",
+      "text": "Zusätzliche Lernangebote außerhalb des regulären Unterrichts.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "deutsch-kompass",
+      "titel": "Deutsch-Kompass",
+      "zeitraum": "Osterferien",
+      "text": "Sprachkurs in den Osterferien.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "hilfe-ukraine",
+      "titel": "Hilfe für die Ukraine",
+      "zeitraum": "",
+      "text": "Unterstützungsaktion für geflüchtete Familien.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "kinderkunst",
+      "titel": "Kinderkunstausstellung",
+      "zeitraum": "",
+      "text": "Ausstellung mit Arbeiten von Kindern.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "generationsbruecke",
+      "titel": "Generationsbrücke",
+      "zeitraum": "",
+      "text": "Begegnung zwischen jungen und älteren Menschen.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "musikschule",
+      "titel": "Musikschule",
+      "zeitraum": "",
+      "text": "Musikalisches Angebot für Kinder und Jugendliche.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    },
+    {
+      "id": "fussballturnier",
+      "titel": "Fußballturnier",
+      "zeitraum": "",
+      "text": "Sportangebot für Kinder und Jugendliche.",
+      "link": "",
+      "bild": "",
+      "sichtbar": true
+    }
+  ]
+}

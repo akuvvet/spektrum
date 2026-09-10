@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" role="img" aria-label="Spektrum">
+<style>
+  .z { transform-origin: 20px 20px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .z { opacity: 0; animation: auf .5s ease forwards; }
+    .z1 { animation-delay: .05s; }
+    .z2 { animation-delay: .13s; }
+    .z3 { animation-delay: .21s; }
+    .z4 { animation-delay: .29s; }
+    .z5 { animation-delay: .37s; }
+    @keyframes auf {
+      from { opacity: 0; transform: scale(.55) rotate(-25deg); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+</style>
+  <polygon class="z z1" points="20.94,7.53 17.77,13.02 11.43,13.02 8.26,7.53 11.43,2.04 17.77,2.04" fill="#485858"/>
+  <polygon class="z z2" points="20.94,20.00 17.77,25.49 11.43,25.49 8.26,20.00 11.43,14.51 17.77,14.51" fill="#38c0ff"/>
+  <polygon class="z z3" points="20.94,32.47 17.77,37.96 11.43,37.96 8.26,32.47 11.43,26.98 17.77,26.98" fill="#ffb010"/>
+  <polygon class="z z4" points="31.74,13.76 28.57,19.25 22.23,19.25 19.06,13.76 22.23,8.28 28.57,8.28" fill="#f02000"/>
+  <polygon class="z z5" points="31.74,26.24 28.57,31.72 22.23,31.72 19.06,26.24 22.23,20.75 28.57,20.75" fill="#b018ff"/>
+</svg>

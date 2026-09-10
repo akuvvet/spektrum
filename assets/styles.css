@@ -1,0 +1,849 @@
+/* ============================================================
+   Spektrum Bildungszentrum Solingen e.V.
+   Farbpalette direkt aus dem Vereinslogo entnommen.
+   Statische Seite: keine externen Ressourcen, keine Schriftdateien.
+   ============================================================ */
+
+:root {
+  /* --- Logofarben, unveraendert --- */
+  --logo-tinte:   #101018;
+  --logo-grau:    #485858;
+  --logo-rot:     #f02000;
+  --logo-cyan:    #38c0ff;
+  --logo-violett: #b018ff;
+  --logo-amber:   #ffb010;
+
+  /* --- daraus abgeleitet, auf Kontrast geprueft (min. 4,5:1 auf Weiss) --- */
+  --farbe-text:        #14161c;
+  --farbe-gedaempft:   #4d5560;
+  --farbe-flaeche:     #ffffff;
+  --farbe-flaeche-2:   #f4f6f9;
+  --farbe-linie:       #dde2e9;
+  --farbe-akzent:      #0b6d9e;   /* aus dem Cyan des Logos abgedunkelt */
+  --farbe-akzent-tief: #08526f;
+  --farbe-akzent-text: #ffffff;
+  --farbe-rot-text:     #c01a00;
+  --farbe-violett-text: #8a12c8;
+  --farbe-amber-text:   #8a5a00;
+
+  --abstand-s: 0.5rem;
+  --abstand-m: 1rem;
+  --abstand-l: 2rem;
+  --abstand-xl: 4rem;
+
+  --radius: 0.6rem;
+  --breite-text: 68ch;
+  --breite-seite: 72rem;
+  --schrift: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --tempo: 220ms;
+  --kurve: cubic-bezier(.2, .7, .3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--schrift);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--farbe-text);
+  background: var(--farbe-flaeche);
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3 {
+  line-height: 1.25; margin: 0 0 var(--abstand-m);
+  overflow-wrap: break-word; hyphens: auto;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(1.8rem, 4.5vw, 2.7rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+h3 { font-size: 1.15rem; }
+p, ul, ol { max-width: var(--breite-text); }
+p { margin: 0 0 var(--abstand-m); overflow-wrap: break-word; }
+
+a { color: var(--farbe-akzent); transition: color var(--tempo) var(--kurve); }
+a:hover { color: var(--farbe-akzent-tief); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, .knopf:focus-visible {
+  outline: 3px solid var(--farbe-akzent);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+mark { background: #fff3d1; color: var(--farbe-amber-text); padding: 0 0.25em; border-radius: 3px; }
+
+.skip-link {
+  position: absolute; left: -9999px;
+  background: var(--farbe-akzent); color: var(--farbe-akzent-text);
+  padding: var(--abstand-s) var(--abstand-m); z-index: 30; border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus { left: 0; top: 0; }
+
+/* ---------------------------------------------------- Spektrum-Leiste */
+.spektrum {
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--logo-grau) 0%, var(--logo-cyan) 22%, var(--logo-violett) 44%,
+    var(--logo-rot) 66%, var(--logo-amber) 86%, var(--logo-grau) 100%);
+  background-size: 220% 100%;
+}
+
+/* ---------------------------------------------------- Huelle + Infoleiste */
+.huelle {
+  max-width: var(--breite-seite); margin: 0 auto;
+  padding-left: var(--abstand-m); padding-right: var(--abstand-m);
+}
+
+.infoleiste {
+  background: var(--logo-tinte);
+  color: #cfd6df;
+  font-size: 0.86rem;
+}
+.infoleiste__inhalt {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem;
+  align-items: center;
+  padding-top: 0.5rem; padding-bottom: 0.5rem;
+}
+.infoleiste a { color: #ffffff; text-decoration: none; }
+.infoleiste a:hover { color: var(--logo-amber); text-decoration: underline; }
+.infoleiste__punkt { display: inline-flex; align-items: center; gap: 0.45rem; }
+.infoleiste__punkt::before {
+  content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%;
+  background: var(--marker, var(--logo-cyan)); flex: none;
+}
+.infoleiste__punkt:nth-child(2)::before { --marker: var(--logo-amber); }
+.infoleiste__punkt:nth-child(3)::before { --marker: var(--logo-violett); }
+
+/* ---- Instagram und Facebook, oben rechts, auf jeder Seite ----
+   margin-left: auto schiebt den Block an den rechten Rand; wird die Zeile
+   zu eng, rutscht er als Ganzes in die naechste Zeile statt zu zerreissen. */
+.sozial {
+  display: flex; align-items: center; gap: 0.45rem;
+  margin-left: auto;
+}
+.sozial__link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.05em;
+  color: #e8edf4; text-decoration: none; white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, .3); border-radius: 2rem;
+  transition: color var(--tempo) var(--kurve), background var(--tempo) var(--kurve),
+              border-color var(--tempo) var(--kurve), transform var(--tempo) var(--kurve);
+}
+.infoleiste .sozial__link:hover { color: #fff; text-decoration: none; border-color: transparent; }
+.sozial__link:hover { transform: translateY(-1px); }
+/* Farben aus dem Logo, nicht die der Plattformen — die Seite bleibt sich treu */
+.sozial__link--instagram:hover, .sozial__link--instagram:focus-visible {
+  background: linear-gradient(120deg, var(--logo-violett), var(--logo-rot) 65%, var(--logo-amber));
+  border-color: transparent;
+}
+.sozial__link--facebook:hover, .sozial__link--facebook:focus-visible {
+  background: var(--farbe-akzent); border-color: transparent;
+}
+/* Mit Zeichen: runde Schaltflaeche, das Zeichen bringt seine eigene Farbe mit —
+   deshalb hier kein farbiger Hintergrund, der wuerde nur mit ihm streiten. */
+.sozial__link--bild {
+  padding: 0; width: 2rem; height: 2rem;
+  justify-content: center;
+  border-color: rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .06);
+}
+.infoleiste .sozial__link--bild:hover,
+.infoleiste .sozial__link--bild:focus-visible {
+  background: rgba(255, 255, 255, .18);
+  border-color: rgba(255, 255, 255, .55);
+}
+.sozial__link--instagram.sozial__link--bild:hover,
+.sozial__link--facebook.sozial__link--bild:hover { background: rgba(255, 255, 255, .18); }
+.sozial__zeichen { width: 1.15rem; height: 1.15rem; display: block; flex: none; }
+
+/* Nur fuer Vorleseprogramme: sichtbar fuer Technik, unsichtbar fuers Auge.
+   clip-path statt display:none, weil Ausgeblendetes nicht vorgelesen wird. */
+.nur-vorlesen {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+/* Auf schmalen Schirmen zaehlt jeder Millimeter: die E-Mail-Adresse tritt
+   zurueck (sie steht in der Fusszeile und auf der Kontaktseite), damit
+   Telefon und die beiden Netzwerke in eine Zeile passen. */
+@media (max-width: 40rem) {
+  .infoleiste { font-size: 0.8rem; }
+  .infoleiste__inhalt { gap: 0.35rem 0.9rem; }
+  .infoleiste__punkt--mail { display: none; }
+  .sozial__link { padding: 0.18rem 0.6rem; font-size: 0.7rem; }
+  .sozial__link--bild { padding: 0; width: 1.85rem; height: 1.85rem; }
+}
+
+/* ---------------------------------------------------- Kopf + Navigation */
+.kopf {
+  display: flex; flex-wrap: wrap; gap: var(--abstand-m);
+  align-items: center; justify-content: space-between;
+  max-width: var(--breite-seite); margin: 0 auto;
+  padding: var(--abstand-m);
+  border-bottom: 1px solid var(--farbe-linie);
+  background: var(--farbe-flaeche);
+  position: relative; z-index: 40;   /* Klappmenue liegt ueber dem Inhalt */
+}
+.marke {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-weight: 700; font-size: 1.15rem; text-decoration: none; color: inherit;
+  letter-spacing: -0.015em;
+}
+.marke img { transition: transform 320ms var(--kurve); }
+.marke:hover img { transform: rotate(-8deg) scale(1.08); }
+.marke__zusatz {
+  display: block; font-size: 0.7rem; font-weight: 500; line-height: 1.2;
+  color: var(--farbe-gedaempft); letter-spacing: 0.02em;
+}
+
+.nav__schalter {
+  display: block; font: inherit; font-weight: 600;
+  padding: 0.5rem 0.9rem; cursor: pointer;
+  background: var(--farbe-flaeche-2); color: var(--farbe-text);
+  border: 1px solid var(--farbe-linie); border-radius: var(--radius);
+  transition: background var(--tempo) var(--kurve), border-color var(--tempo) var(--kurve);
+}
+.nav__schalter:hover { background: var(--farbe-linie); }
+
+.nav { flex-basis: 100%; }
+.nav[hidden] { display: none; }
+.nav ul { list-style: none; margin: 0; padding: 0; max-width: none; }
+.nav > ul > li { border-top: 1px solid var(--farbe-linie); }
+.nav a {
+  display: block; padding: 0.55rem 0; text-decoration: none;
+  color: var(--farbe-gedaempft); transition: color var(--tempo) var(--kurve);
+}
+.nav a:hover { color: var(--farbe-text); }
+.nav a[aria-current="page"], .nav__aktiv { color: var(--farbe-text); font-weight: 600; }
+.nav__unter a { padding-left: var(--abstand-m); font-size: 0.95rem; }
+
+@media (min-width: 62rem) {
+  .nav__schalter { display: none; }
+  .nav { flex-basis: auto; display: block !important; }
+  .nav > ul { display: flex; gap: 1.7rem; }
+  .nav > ul > li { border-top: 0; position: relative; }
+  .nav > ul > li > a { padding: 0.4rem 0; position: relative; }
+  /* mitwachsender Unterstrich in der Akzentfarbe */
+  .nav > ul > li > a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+    background: var(--farbe-akzent); border-radius: 2px;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--tempo) var(--kurve);
+  }
+  .nav > ul > li > a:hover::after,
+  .nav__gruppe:focus-within > a::after,
+  .nav > ul > li > a[aria-current="page"]::after,
+  .nav > ul > li > a.nav__aktiv::after { transform: scaleX(1); }
+
+  .nav__unter {
+    display: none;
+    position: absolute; left: -0.9rem; top: 100%; z-index: 20;
+    min-width: 15.5rem; padding: var(--abstand-s) 0; margin-top: 0.5rem;
+    background: var(--farbe-flaeche);
+    border: 1px solid var(--farbe-linie); border-radius: var(--radius);
+    box-shadow: 0 10px 28px rgba(16, 16, 24, .12);
+  }
+  .nav__unter::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: linear-gradient(90deg, var(--logo-cyan), var(--logo-violett), var(--logo-amber));
+  }
+  .nav > ul > li:last-child .nav__unter { left: auto; right: -0.9rem; }
+  .nav__gruppe:hover .nav__unter,
+  .nav__gruppe:focus-within .nav__unter { display: block; }
+  .nav__unter a { padding: 0.45rem 0.95rem; }
+  .nav__unter a:hover { background: var(--farbe-flaeche-2); }
+}
+
+/* ---------------------------------------------------- Inhalt */
+main { margin: 0; padding: 0 0 var(--abstand-l); }
+
+/* ---------------------------------------------------- Kopfbereich */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: var(--logo-tinte); color: #ffffff;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--abstand-l);
+}
+.hero::after {          /* Farbschleier ueber dem Wabenfeld */
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(70% 120% at 12% 0%, rgba(56, 192, 255, .20), transparent 62%),
+    radial-gradient(60% 120% at 88% 100%, rgba(176, 24, 255, .18), transparent 60%);
+}
+.hero__inhalt { position: relative; }
+/* Startseite: der Kopfbereich folgt dem Banner, ohne Wabenfeld */
+.hero h1 { color: #ffffff; max-width: 22ch; }
+.hero h1::after {
+  content: ""; display: block; width: 5rem; height: 4px; margin-top: 1.1rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--logo-cyan), var(--logo-violett), var(--logo-amber));
+}
+.hero .lead { color: #c6cfda; max-width: 62ch; }
+
+
+/* hervorgehobenes Wort in der Ueberschrift */
+.glanz { color: var(--logo-amber); }
+
+/* ------------------------------------------------ Kopfbereich mit Bildwechsel
+   Startseite: Fotos im Hintergrund, Text als Overlay darauf.
+   Ohne JavaScript bleibt Bild 1 stehen, die Knoepfe verschwinden.
+   Bild austauschen: Datei in assets/ ersetzen, gleicher Name, 1920x1080. */
+.hero--banner {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: var(--logo-tinte); color: #fff;
+  min-height: clamp(28rem, 76vh, 44rem);
+  display: grid; align-items: center;
+  padding: clamp(3rem, 7vw, 5rem) 0 clamp(4rem, 7vw, 5.5rem);
+  margin-bottom: var(--abstand-l);
+}
+/* farbige Trennlinie nach unten */
+.hero--banner::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; z-index: 3;
+  background: linear-gradient(90deg, var(--logo-grau), var(--logo-cyan), var(--logo-violett), var(--logo-rot), var(--logo-amber));
+}
+
+.banner__buehne { position: absolute; inset: 0; z-index: -1; }
+.banner__dia { position: absolute; inset: 0; opacity: 0; visibility: hidden; overflow: hidden; }
+.banner__dia--aktiv { opacity: 1; visibility: visible; }
+.banner__dia img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Abdunkelung — haelt den Text lesbar, egal welches Foto darunter liegt */
+.banner__dia::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(16, 16, 24, .90) 0%, rgba(16, 16, 24, .74) 42%, rgba(16, 16, 24, .40) 100%),
+    linear-gradient(0deg, rgba(16, 16, 24, .55) 0%, rgba(16, 16, 24, .10) 45%);
+}
+
+/* Im Grid wuerde die Huelle sonst auf Inhaltsbreite schrumpfen (margin:auto)
+   und der Text stuende nicht buendig unter dem Inhalt darunter. */
+.hero--banner .hero__inhalt { position: relative; z-index: 2; width: 100%; }
+.hero--banner .hero__text > * { max-width: 40rem; }
+.hero--banner h1 { color: #fff; }
+.hero--banner .lead { color: #d3dae3; }
+
+/* Die vier Texte liegen uebereinander in derselben Rasterzelle: der Block ist
+   so hoch wie der laengste Text, nichts springt beim Wechsel.
+   Ohne JavaScript bleibt Text 1 sichtbar (die anderen sind nur unsichtbar). */
+.hero__texte { display: grid; }
+.hero__text { grid-area: 1 / 1; }
+.hero--banner .hero__text {
+  opacity: 0; visibility: hidden;
+}
+.hero--banner .hero__text--aktiv { opacity: 1; visibility: visible; }
+
+/* Ueberschrift der Folien 2 bis 4: gleiche Optik wie die <h1>, aber ein
+   Absatz — je Seite darf es nur eine echte Ueberschrift geben. */
+.hero__gross {
+  font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+  line-height: 1.25; letter-spacing: -0.01em;
+  font-weight: 700; color: #fff;
+  margin: 0 0 var(--abstand-m);
+  max-width: 22ch;
+  overflow-wrap: break-word; hyphens: auto;
+}
+p.hero__gross::after {
+  content: ""; display: block; width: 5rem; height: 4px; margin-top: 1.1rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--logo-cyan), var(--logo-violett), var(--logo-amber));
+}
+
+/* kleines Kennzeichen ueber der Ueberschrift */
+.hero__kennzeichen {
+  display: inline-block; margin: 0 0 1rem;
+  padding: 0.42rem 1rem;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--logo-tinte); background: var(--logo-amber);
+  border-radius: 2rem;
+}
+
+/* Bedienung */
+.banner__pfeil {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+  width: 3rem; height: 3rem; padding: 0; cursor: pointer;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, .35); border-radius: 50%;
+  background: rgba(16, 16, 24, .45); color: #fff;
+  transition: background var(--tempo) var(--kurve), border-color var(--tempo) var(--kurve);
+}
+.banner__pfeil:hover { background: var(--farbe-akzent); border-color: var(--farbe-akzent); }
+.banner__pfeil svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.banner__pfeil--zurueck { left: clamp(0.6rem, 2vw, 1.6rem); }
+.banner__pfeil--vor { right: clamp(0.6rem, 2vw, 1.6rem); }
+
+.banner__punkte {
+  position: absolute; z-index: 4; left: 0; right: 0; bottom: 1.6rem;
+  display: flex; justify-content: center; gap: 0.5rem;
+}
+.banner__punkt {
+  width: 0.65rem; height: 0.65rem; padding: 0; cursor: pointer;
+  border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, .45);
+  transition: background var(--tempo) var(--kurve), width var(--tempo) var(--kurve);
+}
+.banner__punkt:hover { background: rgba(255, 255, 255, .8); }
+.banner__punkt[aria-current="true"] { width: 1.8rem; border-radius: 0.33rem; background: var(--logo-amber); }
+
+html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
+
+/* Auf schmalen Schirmen wuerden die Pfeile ueber dem Text liegen — dort nur Punkte */
+@media (max-width: 52rem) {
+  .banner__pfeil { display: none; }
+  .banner__punkte { bottom: 1.2rem; }
+  .banner__dia::after {
+    background:
+      linear-gradient(90deg, rgba(16, 16, 24, .90) 0%, rgba(16, 16, 24, .82) 100%),
+      linear-gradient(0deg, rgba(16, 16, 24, .55) 0%, rgba(16, 16, 24, .15) 55%);
+  }
+}
+
+/* Knoepfe im Kopfbereich */
+.hero .knopf {
+  background: var(--logo-amber); color: var(--logo-tinte); border-color: var(--logo-amber);
+  position: relative; overflow: hidden;
+}
+.hero .knopf:hover {
+  background: #ffc23d; border-color: #ffc23d; color: var(--logo-tinte);
+  box-shadow: 0 10px 24px rgba(255, 176, 16, .32);
+}
+.hero .knopf--leise {
+  background: rgba(255, 255, 255, .08); color: #fff; border-color: rgba(255, 255, 255, .5);
+}
+.hero .knopf--leise:hover {
+  background: rgba(255, 255, 255, .16); color: #fff; border-color: #fff; box-shadow: none;
+}
+.hero .knopf:focus-visible { outline-color: #fff; }
+
+/* Wabenfeld im Hintergrund */
+.waben {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; display: block;
+}
+.wabe { opacity: .13; transform-origin: center; }
+.wabe--cyan    { fill: var(--logo-cyan); }
+.wabe--violett { fill: var(--logo-violett); }
+.wabe--amber   { fill: var(--logo-amber); }
+.wabe--rot     { fill: var(--logo-rot); }
+.wabe--grau    { fill: #8fa0b2; }
+
+.lead { font-size: 1.15rem; color: var(--farbe-gedaempft); }
+
+
+
+.block { padding: var(--abstand-l) 0; border-top: 1px solid var(--farbe-linie); }
+.block--erste { border-top: 0; padding-top: 0; }
+/* der erste Abschnitt schliesst direkt an den Kopfbereich an — dort keine Trennlinie */
+.huelle > .block:first-child { border-top: 0; padding-top: 0; }
+/* kleine Raute in der Akzentfarbe vor jeder Abschnittsueberschrift.
+   Bewusst inline-block statt flex, damit lange Woerter normal umbrechen. */
+.block > h2::before {
+  content: ""; display: inline-block; vertical-align: middle;
+  width: 0.55rem; height: 0.55rem; margin-right: 0.6rem; border-radius: 2px;
+  background: var(--farbe-akzent); transform: rotate(45deg);
+}
+
+.aktion { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.knopf {
+  display: inline-block; padding: 0.75rem 1.35rem; font: inherit; font-weight: 600;
+  background: var(--farbe-akzent); color: var(--farbe-akzent-text);
+  border: 1px solid var(--farbe-akzent); border-radius: var(--radius);
+  text-decoration: none; cursor: pointer;
+  transition: background var(--tempo) var(--kurve), transform var(--tempo) var(--kurve),
+              box-shadow var(--tempo) var(--kurve);
+}
+.knopf:hover {
+  background: var(--farbe-akzent-tief); color: var(--farbe-akzent-text);
+  transform: translateY(-2px); box-shadow: 0 8px 18px rgba(11, 109, 158, .28);
+}
+.knopf:active { transform: translateY(0); }
+.knopf--leise {
+  background: var(--farbe-flaeche-2); color: var(--farbe-text); border-color: var(--farbe-linie);
+}
+.knopf--leise:hover {
+  background: var(--farbe-flaeche); color: var(--farbe-akzent-tief);
+  border-color: var(--farbe-akzent); box-shadow: 0 8px 18px rgba(16, 16, 24, .10);
+}
+
+/* ---------------------------------------------------- Karten */
+.raster { display: grid; gap: var(--abstand-m); grid-template-columns: 1fr; }
+@media (min-width: 40rem) { .raster { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 62rem) { .raster { grid-template-columns: repeat(3, 1fr); } }
+
+.karte {
+  position: relative; overflow: hidden;
+  padding: 1.15rem var(--abstand-m) var(--abstand-m);
+  background: var(--farbe-flaeche-2); border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform var(--tempo) var(--kurve), box-shadow var(--tempo) var(--kurve),
+              background var(--tempo) var(--kurve), border-color var(--tempo) var(--kurve);
+}
+.karte::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: var(--karte-farbe, var(--farbe-akzent));
+  transform: scaleX(.32); transform-origin: left;
+  transition: transform 320ms var(--kurve);
+}
+.karte:hover, .karte:focus-within {
+  transform: translateY(-4px); background: var(--farbe-flaeche);
+  border-color: var(--farbe-linie);
+  box-shadow: 0 12px 26px rgba(16, 16, 24, .11);
+}
+.karte:hover::before, .karte:focus-within::before { transform: scaleX(1); }
+.karte h3 { margin-bottom: var(--abstand-s); }
+
+/* ============================================================
+   Projektkacheln, Fenster und Lupe
+   Alle Kacheln sind gleich hoch und gleich aufgebaut. Was nicht
+   hineinpasst, wird abgeschnitten — die Einzelheiten stehen im Fenster.
+   ============================================================ */
+.raster--projekte { align-items: stretch; }
+.karte--projekt {
+  padding: 0 0 var(--abstand-m);
+  display: flex; flex-direction: column;
+  height: 24rem;                        /* die feste Kachelhoehe */
+}
+.karte__bild {
+  height: 10rem; flex: none; overflow: hidden;
+  background: var(--farbe-flaeche-2);
+}
+.karte__bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Kachel ohne Foto: getoenter Streifengrund in der Farbe der Kachel,
+   damit die Reihe trotzdem ruhig aussieht */
+.karte__bild--leer { position: relative; }
+.karte__bild--leer::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--karte-farbe, var(--farbe-akzent)); opacity: .13;
+}
+.karte__bild--leer::after {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg,
+    rgba(255, 255, 255, .55) 0 10px, rgba(255, 255, 255, 0) 10px 22px);
+}
+
+.karte__koerper {
+  display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0;
+  padding: var(--abstand-m) var(--abstand-m) 0;
+}
+.karte__zeit {
+  margin: 0 0 0.3rem; font-size: 0.74rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--farbe-gedaempft);
+}
+.karte--projekt h3 {
+  margin: 0 0 var(--abstand-s); font-size: 1.1rem;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.karte__text {
+  margin: 0; color: var(--farbe-gedaempft); font-size: 0.95rem;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.karte__mehr {
+  margin: auto 0 0; padding-top: var(--abstand-s);
+  font-size: 0.85rem; font-weight: 600; color: var(--farbe-akzent);
+}
+.karte__mehr::after { content: " →"; }
+
+/* Die ganze Kachel ist anklickbar, ohne dass der Link den Text verschluckt */
+.karte--projekt { position: relative; }
+/* Alle Kacheltitel gleich dunkel — die farbige Zeile „Details ansehen“
+   sagt schon, dass es etwas zu klicken gibt. */
+.raster--projekte > .karte:nth-child(n) h3 a.karte__flaeche { color: var(--farbe-text); }
+.karte__flaeche { text-decoration: none; color: var(--farbe-text); }
+.karte__flaeche::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.karte__flaeche:hover { text-decoration: underline; }
+.karte--projekt:focus-within { outline: 3px solid var(--farbe-akzent); outline-offset: 3px; }
+.karte__flaeche:focus-visible { outline: none; }
+
+/* ---------------------------------------------------- Fenster
+   Ohne JavaScript oeffnet :target das Fenster, der Schliesser fuehrt
+   zurueck auf #projekte. Mit JavaScript kommen Escape, Klick auf den
+   Grund und die Rueckkehr zur vorherigen Stelle dazu. */
+.fenster {
+  display: none;
+  position: fixed; inset: 0; z-index: 60;
+  padding: clamp(0.75rem, 4vw, 2.5rem);
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.fenster:target, .fenster--offen { display: grid; align-items: start; justify-items: center; }
+.fenster__grund {
+  position: fixed; inset: 0; z-index: -1;
+  background: rgba(16, 16, 24, .72);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+.fenster__blatt {
+  position: relative; width: 100%; max-width: 46rem;
+  background: var(--farbe-flaeche); color: var(--farbe-text);
+  border-radius: var(--radius);
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  box-shadow: 0 24px 60px rgba(16, 16, 24, .35);
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--logo-cyan), var(--logo-violett), var(--logo-amber)) 1;
+}
+.fenster__zu {
+  position: absolute; top: 0.7rem; right: 0.7rem;
+  width: 2.4rem; height: 2.4rem; display: grid; place-items: center;
+  border-radius: 50%; color: var(--farbe-gedaempft);
+  background: var(--farbe-flaeche-2); border: 1px solid var(--farbe-linie);
+  transition: background var(--tempo) var(--kurve), color var(--tempo) var(--kurve);
+}
+.fenster__zu:hover { background: var(--farbe-linie); color: var(--farbe-text); }
+.fenster__zu svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.fenster__zeit {
+  margin: 0 0 0.35rem; font-size: 0.76rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--farbe-gedaempft);
+}
+.fenster h2 { margin: 0 0 var(--abstand-m); padding-right: 2.5rem; }
+.fenster__text p:last-child { margin-bottom: 0; }
+.fenster__aktion { margin: var(--abstand-l) 0 0; }
+
+/* ---- Bilder im Fenster ---- */
+.galerie {
+  display: grid; gap: var(--abstand-m); margin-top: var(--abstand-l);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 34rem) { .galerie { grid-template-columns: repeat(2, 1fr); } }
+.galerie__stueck { margin: 0; }
+.galerie__gross { display: block; border-radius: var(--radius); overflow: hidden; }
+.galerie__gross img {
+  display: block; width: 100%; height: 11rem; object-fit: cover;
+  background: var(--farbe-flaeche-2);
+  transition: transform var(--tempo) var(--kurve);
+}
+.galerie__gross:hover img { transform: scale(1.04); }
+.galerie figcaption {
+  margin-top: 0.4rem; font-size: 0.85rem; color: var(--farbe-gedaempft);
+}
+
+/* ---- Lupe: ein Bild gross ueber allem ---- */
+.lupe {
+  position: fixed; inset: 0; z-index: 70;
+  display: grid; place-items: center; padding: clamp(0.75rem, 4vw, 3rem);
+  background: rgba(16, 16, 24, .9);
+}
+.lupe[hidden] { display: none; }
+.lupe img { max-width: 100%; max-height: 88vh; border-radius: var(--radius); display: block; }
+.lupe__zu {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 2.8rem; height: 2.8rem; padding: 0; cursor: pointer;
+  display: grid; place-items: center; border-radius: 50%;
+  background: rgba(255, 255, 255, .12); color: #fff;
+  border: 1px solid rgba(255, 255, 255, .4);
+}
+.lupe__zu:hover { background: rgba(255, 255, 255, .25); }
+.lupe__zu svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.lupe__text {
+  position: absolute; left: 0; right: 0; bottom: 1rem;
+  text-align: center; color: #e7ecf3; font-size: 0.9rem; padding: 0 1rem;
+}
+
+/* Solange ein Fenster offen ist, soll die Seite dahinter nicht mitscrollen */
+.starr { overflow: hidden; }
+.karte h3 a { text-decoration: none; }
+.karte h3 a:hover { text-decoration: underline; }
+.karte p { margin: 0; }
+
+/* Farben des Logos reihum — die Seite heisst schliesslich Spektrum */
+.raster > .karte:nth-child(6n+1) { --karte-farbe: var(--logo-cyan); }
+.raster > .karte:nth-child(6n+2) { --karte-farbe: var(--logo-violett); }
+.raster > .karte:nth-child(6n+3) { --karte-farbe: var(--logo-amber); }
+.raster > .karte:nth-child(6n+4) { --karte-farbe: var(--logo-rot); }
+.raster > .karte:nth-child(6n+5) { --karte-farbe: var(--logo-grau); }
+.raster > .karte:nth-child(6n+6) { --karte-farbe: var(--farbe-akzent); }
+
+.raster > .karte:nth-child(6n+1) h3 a { color: var(--farbe-akzent); }
+.raster > .karte:nth-child(6n+2) h3 a { color: var(--farbe-violett-text); }
+.raster > .karte:nth-child(6n+3) h3 a { color: var(--farbe-amber-text); }
+.raster > .karte:nth-child(6n+4) h3 a { color: var(--farbe-rot-text); }
+.raster > .karte:nth-child(6n+5) h3 a { color: var(--farbe-akzent-tief); }
+
+/* ---------------------------------------------------- Tabelle */
+.tabelle { border-collapse: collapse; width: 100%; max-width: 40rem; }
+.tabelle th, .tabelle td {
+  text-align: left; vertical-align: top;
+  padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--farbe-linie);
+}
+.tabelle th { width: 12rem; }
+.tabelle tr:hover td, .tabelle tr:hover th { background: var(--farbe-flaeche-2); }
+@media (max-width: 39.999rem) {
+  .tabelle, .tabelle tbody, .tabelle tr, .tabelle th, .tabelle td { display: block; width: auto; }
+  .tabelle th { border-bottom: 0; padding-bottom: 0; }
+  .tabelle td { padding-top: 0.15rem; }
+}
+
+.hinweis { font-size: 0.95rem; color: var(--farbe-gedaempft); }
+
+/* ---------------------------------------------------- Formular */
+.formular { max-width: 40rem; }
+.formular h2, .formular h3 { margin-top: var(--abstand-l); }
+.formular h3 { color: var(--farbe-akzent); }
+.feld { display: block; margin-bottom: var(--abstand-m); }
+.feld label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+.feld input, .feld select, .feld textarea {
+  width: 100%; padding: 0.65rem 0.7rem; font: inherit; color: var(--farbe-text);
+  border: 1px solid #98a1ad; border-radius: var(--radius); background: #fff;
+  transition: border-color var(--tempo) var(--kurve), box-shadow var(--tempo) var(--kurve);
+}
+.feld input:hover, .feld select:hover, .feld textarea:hover { border-color: var(--farbe-akzent); }
+.feld input:focus, .feld select:focus, .feld textarea:focus {
+  border-color: var(--farbe-akzent);
+  box-shadow: 0 0 0 3px rgba(56, 192, 255, .28);
+}
+.feldgruppe {
+  margin: 0 0 var(--abstand-m); padding: var(--abstand-m);
+  border: 1px solid var(--farbe-linie); border-radius: var(--radius);
+  background: var(--farbe-flaeche-2);
+}
+.feldgruppe legend {
+  font-weight: 600; padding: 0.15rem 0.5rem; background: var(--farbe-flaeche);
+  border: 1px solid var(--farbe-linie); border-radius: 0.35rem;
+}
+.wahl { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.4rem; }
+.wahl input { margin-top: 0.35rem; flex: none; width: 1.05rem; height: 1.05rem; accent-color: var(--farbe-akzent); }
+.wahl label { font-weight: 400; }
+.wahl--pflicht { margin: var(--abstand-m) 0; }
+.pflicht { color: var(--farbe-rot-text); }
+.honigtopf { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.fehlerbox {
+  max-width: 40rem; margin: 0 0 var(--abstand-m);
+  padding: var(--abstand-m);
+  border: 1px solid var(--farbe-rot-text);
+  border-left: 5px solid var(--farbe-rot-text);
+  border-radius: var(--radius);
+  background: #fdf3f1;
+}
+.fehlerbox p { margin: 0; font-weight: 600; color: var(--farbe-rot-text); }
+
+/* ---------------------------------------------------- Fuss */
+.fuss {
+  display: grid; gap: var(--abstand-l);
+  max-width: var(--breite-seite); margin: var(--abstand-xl) auto 0;
+  padding: var(--abstand-l) var(--abstand-m);
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--logo-grau), var(--logo-cyan), var(--logo-violett), var(--logo-rot), var(--logo-amber)) 1;
+  color: var(--farbe-gedaempft); font-size: 0.95rem;
+}
+@media (min-width: 48rem) { .fuss { grid-template-columns: 2fr 1fr; } }
+.fuss ul { list-style: none; margin: 0; padding: 0; }
+.fuss li { margin-bottom: 0.25rem; }
+.fuss a { color: var(--farbe-akzent); }
+.fuss__zeile { grid-column: 1 / -1; margin: 0; }
+
+/* ============================================================
+   Bewegung — nur wenn der Nutzer sie nicht abgewaehlt hat
+   ============================================================ */
+@media print {
+  .js .an { opacity: 1 !important; transform: none !important; }
+  .js .an .karte { animation: none !important; opacity: 1 !important; }
+  .spektrum, .nav, .nav__schalter, .waben, .banner__pfeil, .banner__punkte { display: none !important; }
+  .banner__dia::after { display: none !important; }
+  .hero { background: #fff !important; color: #000 !important; }
+  .hero h1, .hero .lead { color: #000 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .an { opacity: 1 !important; transform: none !important; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spektrum { animation: wandern 24s linear infinite; }
+  @keyframes wandern {
+    from { background-position: 0% 0; }
+    to   { background-position: 220% 0; }
+  }
+
+  .kopf, .hero__text > * { animation: einblenden .6s var(--kurve) both; }
+  .kopf { animation-delay: .02s; }
+  .hero__kennzeichen { animation-delay: .10s; }
+  .hero h1 { animation-delay: .18s; }
+  .hero .lead { animation-delay: .28s; }
+  .hero .aktion { animation-delay: .38s; }
+
+  /* Waben treiben langsam — sechs Gruppen, damit nichts im Gleichschritt laeuft */
+  .wabe { animation: treiben 1s ease-in-out infinite alternate; }
+  .wabe--t1 { animation-duration: 11s; animation-delay: -0.5s; }
+  .wabe--t2 { animation-duration: 14s; animation-delay: -3.0s; }
+  .wabe--t3 { animation-duration: 17s; animation-delay: -6.0s; }
+  .wabe--t4 { animation-duration: 13s; animation-delay: -1.5s; }
+  .wabe--t5 { animation-duration: 19s; animation-delay: -8.0s; }
+  .wabe--t6 { animation-duration: 16s; animation-delay: -4.5s; }
+  @keyframes treiben {
+    from { transform: translate3d(0, 0, 0) rotate(0deg); opacity: .09; }
+    to   { transform: translate3d(0, -26px, 0) rotate(14deg); opacity: .20; }
+  }
+
+  /* Bildwechsel: langes Ueberblenden, dabei zoomt das aktive Foto sichtbar
+     heraus. Der Zoom laeuft ueber die ganze Standzeit plus Ueberblendung,
+     damit er nie mitten in der Bewegung abbricht. */
+  .banner__dia { transition: opacity 3s var(--kurve), visibility 3s; }
+  .banner__dia--aktiv img { animation: herauszoomen 12s ease-out both; }
+  @keyframes herauszoomen {
+    from { transform: scale(1.32); }
+    to   { transform: scale(1.02); }
+  }
+
+  /* Der Text blendet zusammen mit dem Bild und kommt dabei leicht herauf */
+  .hero--banner .hero__text {
+    transform: translate3d(0, 1.4rem, 0);
+    transition: opacity 2.2s var(--kurve), visibility 2.2s, transform 2.2s var(--kurve);
+  }
+  .hero--banner .hero__text--aktiv {
+    transform: translate3d(0, 0, 0);
+    transition-delay: .55s;
+  }
+
+  /* Glanz laeuft einmal ueber den Hauptknopf, dann in Ruhe alle paar Sekunden */
+  .hero .knopf::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 45%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .65), transparent);
+    transform: translateX(-160%) skewX(-18deg);
+    animation: glanzlauf 4.5s ease-in-out 1.2s infinite;
+  }
+  .hero .knopf--leise::after { content: none; }
+  @keyframes glanzlauf {
+    0%   { transform: translateX(-160%) skewX(-18deg); }
+    26%  { transform: translateX(320%) skewX(-18deg); }
+    100% { transform: translateX(320%) skewX(-18deg); }
+  }
+
+  /* das hervorgehobene Wort bekommt einen weichen Aufblick */
+  .glanz { animation: wortauf .7s var(--kurve) .34s both; display: inline-block; }
+  @keyframes wortauf {
+    from { opacity: 0; transform: translateY(8px) scale(.96); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes einblenden {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Abschnitte erscheinen beim Scrollen — nur mit aktivem JavaScript,
+     ohne JS bleibt alles von Anfang an sichtbar. */
+  .js .an { opacity: 0; transform: translateY(16px); }
+  .js .an.sichtbar {
+    opacity: 1; transform: none;
+    transition: opacity .5s var(--kurve), transform .5s var(--kurve);
+  }
+  .js .an.sichtbar .karte { animation: karteAuf .45s var(--kurve) both; }
+  .js .an.sichtbar .karte:nth-child(2) { animation-delay: .06s; }
+  .js .an.sichtbar .karte:nth-child(3) { animation-delay: .12s; }
+  .js .an.sichtbar .karte:nth-child(4) { animation-delay: .18s; }
+  .js .an.sichtbar .karte:nth-child(5) { animation-delay: .24s; }
+  .js .an.sichtbar .karte:nth-child(6) { animation-delay: .30s; }
+  .js .an.sichtbar .karte:nth-child(7) { animation-delay: .36s; }
+  .js .an.sichtbar .karte:nth-child(8) { animation-delay: .42s; }
+  @keyframes karteAuf {
+    from { opacity: 0; transform: translateY(14px) scale(.985); }
+    to   { opacity: 1; transform: none; }
+  }
+}
