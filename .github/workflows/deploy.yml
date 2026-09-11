@@ -19,6 +19,10 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
+      probelauf:
+        description: "Probelauf — zeigt nur, was übertragen und was gelöscht würde, ändert nichts"
+        type: boolean
+        default: true
       projekte_html:
         description: "projekte.html mit überschreiben (danach im Adminbereich »Seite neu schreiben« klicken)"
         type: boolean
@@ -85,8 +89,17 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}
           ZIEL: ${{ secrets.ZIEL_PFAD }}
           PROJEKTE_HTML: ${{ inputs.projekte_html }}
+          PROBELAUF: ${{ inputs.probelauf }}
         run: |
           set -euo pipefail
+
+          # Beim Probelauf listet rsync nur auf, was es täte. Bei einem Push
+          # ist PROBELAUF leer — dann wird wirklich übertragen.
+          TROCKEN=()
+          if [ "${PROBELAUF:-false}" = "true" ]; then
+            TROCKEN=( --dry-run )
+            echo "::notice::PROBELAUF — es wird nichts verändert."
+          fi
 
           AUSNAHMEN=(
             --exclude '.git/'
@@ -110,12 +123,13 @@ jobs:
           # --chmod setzt die Rechte gleich richtig: 755 für Ordner, 644 für
           # Dateien. Genau daran hing das 403 Forbidden auf projekte.html.
           rsync -rlz --delete --chmod=D755,F644 --omit-dir-times \
-            --itemize-changes \
+            --itemize-changes "${TROCKEN[@]}" \
             -e "ssh -i ~/.ssh/id_deploy -p ${SSH_PORT:-22} -o BatchMode=yes -o StrictHostKeyChecking=yes" \
             "${AUSNAHMEN[@]}" \
             ./ "$SSH_USER@$SSH_HOST:$ZIEL/"
 
       - name: Ergebnis prüfen
+        if: ${{ inputs.probelauf != true }}
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
