@@ -680,6 +680,65 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
 
 .hinweis { font-size: 0.95rem; color: var(--farbe-gedaempft); }
 
+/* ============================================================
+   Schrittfolge — nummerierte Karten, auf breiten Schirmen mit
+   einem kleinen Winkel dazwischen. Die Zahl kommt aus einem
+   CSS-Zaehler, damit sie beim Umsortieren stimmt und Vorlese-
+   programme sie nicht doppelt ansagen.
+   ============================================================ */
+.schritte {
+  list-style: none; margin: 0; padding: 0;
+  max-width: none;                      /* nicht auf die Lesebreite einengen */
+  counter-reset: schritt;
+  display: grid; gap: var(--abstand-m); grid-template-columns: minmax(0, 1fr);
+}
+/* minmax(0, 1fr) statt 1fr: sonst sprengt ein langes Wort die Spalte. */
+@media (min-width: 44rem) { .schritte { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 66rem) { .schritte { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.schritt {
+  position: relative;
+  padding: 3.6rem var(--abstand-m) 1.15rem;
+  background: var(--farbe-flaeche-2); border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform var(--tempo) var(--kurve), box-shadow var(--tempo) var(--kurve),
+              background var(--tempo) var(--kurve), border-color var(--tempo) var(--kurve);
+}
+.schritt:hover {
+  transform: translateY(-4px); background: var(--farbe-flaeche);
+  border-color: var(--farbe-linie);
+  box-shadow: 0 12px 26px rgba(16, 16, 24, .11);
+}
+.schritt::before {
+  counter-increment: schritt; content: counter(schritt);
+  position: absolute; top: 1.15rem; left: var(--abstand-m);
+  width: 2.3rem; height: 2.3rem; border-radius: 50%;
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 1.05rem; line-height: 1;
+  color: var(--farbe-akzent-text);
+  background: var(--schritt-farbe, var(--farbe-akzent));
+}
+.schritt h3 { font-size: 1.05rem; margin-bottom: var(--abstand-s); }
+.schritt p { margin: 0 0 var(--abstand-s); }
+.schritt p:last-child { margin-bottom: 0; }
+
+.schritte > .schritt:nth-child(4n+1) { --schritt-farbe: var(--farbe-akzent); }
+.schritte > .schritt:nth-child(4n+2) { --schritt-farbe: var(--logo-violett); }
+.schritte > .schritt:nth-child(4n+3) { --schritt-farbe: var(--logo-amber); }
+.schritte > .schritt:nth-child(4n+4) { --schritt-farbe: var(--logo-rot); }
+
+/* Der Winkel in der Luecke ist reine Zierde — nur auf breiten Schirmen. */
+@media (min-width: 66rem) {
+  .schritt:not(:last-child)::after {
+    content: ""; position: absolute; top: 1.85rem;
+    right: calc(var(--abstand-m) / -2 - 0.2rem);
+    width: 0.5rem; height: 0.5rem;
+    border-top: 2px solid var(--farbe-linie);
+    border-right: 2px solid var(--farbe-linie);
+    transform: rotate(45deg);
+  }
+}
+
 /* ---------------------------------------------------- Formular */
 .formular { max-width: 40rem; }
 .formular h2, .formular h3 { margin-top: var(--abstand-l); }
