@@ -41,7 +41,45 @@ jobs:
 
     steps:
       - name: Stand auschecken
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      - name: Tresor prüfen
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          ZIEL: ${{ secrets.ZIEL_PFAD }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          set -uo pipefail
+          # Nur "gesetzt" oder "FEHLT" ausgeben — niemals den Inhalt.
+          fehlt=0
+          pruefe () {
+            if [ -z "$2" ]; then
+              echo "  FEHLT    $1"
+              fehlt=1
+            else
+              echo "  gesetzt  $1"
+            fi
+          }
+          echo "Was im Tresor liegt:"
+          pruefe SSH_HOST        "${SSH_HOST:-}"
+          pruefe SSH_USER        "${SSH_USER:-}"
+          pruefe ZIEL_PFAD       "${ZIEL:-}"
+          pruefe SSH_KEY         "${SSH_KEY:-}"
+          pruefe SSH_KNOWN_HOSTS "${SSH_KNOWN_HOSTS:-}"
+
+          if [ -n "${SSH_KEY:-}" ]; then
+            case "$SSH_KEY" in
+              *"BEGIN "*"PRIVATE KEY"*) : ;;
+              *) echo "::warning::SSH_KEY beginnt nicht mit -----BEGIN … PRIVATE KEY-----. Wurde versehentlich die .pub-Datei eingefügt?" ;;
+            esac
+          fi
+
+          if [ "$fehlt" = "1" ]; then
+            echo "::error::Es fehlen Secrets — siehe Liste oben. Anzulegen unter Settings → Secrets and variables → Actions → Repository secrets."
+            exit 1
+          fi
 
       - name: SSH vorbereiten
         env:
@@ -51,10 +89,6 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}
         run: |
           set -euo pipefail
-          if [ -z "${SSH_KEY:-}" ] || [ -z "${SSH_HOST:-}" ]; then
-            echo "::error::Die Secrets SSH_KEY und SSH_HOST fehlen. Siehe DEPLOY.md."
-            exit 1
-          fi
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
