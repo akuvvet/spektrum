@@ -1,0 +1,23 @@
+# Archive und Pakete gehören nicht ins Repo
+*.tar.gz
+*.zip
+*.7z
+
+# Daten des Adminbereichs — enthalten den Passwort-Hash.
+# Liegen auf dem Server außerhalb von httpdocs und dürfen nie hierher.
+daten/
+*.json.neu
+projekte-sicherung.html
+formular-sperre.json
+
+# Einrichtungsseite: wird nach dem Setzen des Passworts gelöscht
+admin/einrichten.php
+
+# Betriebssystem und Editoren
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~

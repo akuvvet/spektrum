@@ -1,0 +1,146 @@
+name: Auf den Server übertragen
+
+# Bei jedem Push auf main wird httpdocs auf spektrum-nachhilfe.de abgeglichen.
+# Von Hand auslösbar unter „Actions" → diesen Workflow → „Run workflow".
+#
+# Vier Dinge werden bewusst NICHT übertragen — sie gehören dem Server:
+#   daten/            Projektdaten und Passwort-Hash (liegt ohnehin außerhalb)
+#   assets/projekte/  Bilder, die im Adminbereich hochgeladen wurden
+#   projekte.html     wird vom Adminbereich selbst geschrieben
+#   .well-known/      Let's Encrypt legt dort seine Prüfdateien ab
+#
+# projekte.html doch übertragen (z. B. wenn sich der Aufbau geändert hat):
+# Workflow von Hand starten und den Haken setzen. Danach im Adminbereich
+# einmal auf „Seite neu schreiben" klicken, sonst stehen dort wieder die
+# acht Startprojekte.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      projekte_html:
+        description: "projekte.html mit überschreiben (danach im Adminbereich »Seite neu schreiben« klicken)"
+        type: boolean
+        default: false
+
+# Zwei Deploys gleichzeitig würden sich in die Quere kommen
+concurrency:
+  group: deploy-produktion
+  cancel-in-progress: false
+
+jobs:
+  uebertragen:
+    name: rsync nach httpdocs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Stand auschecken
+        uses: actions/checkout@v4
+
+      - name: SSH vorbereiten
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SSH_KEY:-}" ] || [ -z "${SSH_HOST:-}" ]; then
+            echo "::error::Die Secrets SSH_KEY und SSH_HOST fehlen. Siehe DEPLOY.md."
+            exit 1
+          fi
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+
+          if [ -n "${SSH_KNOWN_HOSTS:-}" ]; then
+            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            echo "::warning::SSH_KNOWN_HOSTS ist nicht gesetzt — der Serverschlüssel wird ungeprüft übernommen. Siehe DEPLOY.md, Schritt 4."
+            ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" > ~/.ssh/known_hosts 2>/dev/null
+          fi
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Verbindung prüfen
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          ZIEL: ${{ secrets.ZIEL_PFAD }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/id_deploy -p "${SSH_PORT:-22}" -o BatchMode=yes \
+              "$SSH_USER@$SSH_HOST" \
+              "test -d '$ZIEL' || { echo 'Zielordner fehlt: $ZIEL'; exit 1; }; \
+               command -v rsync >/dev/null || { echo 'Auf dem Server fehlt rsync.'; exit 1; }; \
+               test -w '$ZIEL' || { echo 'Kein Schreibrecht auf $ZIEL'; exit 1; }; \
+               echo \"Zielordner in Ordnung: \$(stat -c '%U:%G %a' '$ZIEL') \$ZIEL\""
+
+      - name: Dateien übertragen
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          ZIEL: ${{ secrets.ZIEL_PFAD }}
+          PROJEKTE_HTML: ${{ inputs.projekte_html }}
+        run: |
+          set -euo pipefail
+
+          AUSNAHMEN=(
+            --exclude '.git/'
+            --exclude '.github/'
+            --exclude '.gitignore'
+            --exclude '.gitattributes'
+            --exclude '*.md'
+            --exclude '*.tar.gz'
+            --exclude '*.zip'
+            --exclude 'daten/'
+            --exclude 'assets/projekte/'
+            --exclude '.well-known/'
+          )
+
+          if [ "${PROJEKTE_HTML:-false}" = "true" ]; then
+            echo "projekte.html wird mit übertragen."
+          else
+            AUSNAHMEN+=( --exclude 'projekte.html' )
+          fi
+
+          # --chmod setzt die Rechte gleich richtig: 755 für Ordner, 644 für
+          # Dateien. Genau daran hing das 403 Forbidden auf projekte.html.
+          rsync -rlz --delete --chmod=D755,F644 --omit-dir-times \
+            --itemize-changes \
+            -e "ssh -i ~/.ssh/id_deploy -p ${SSH_PORT:-22} -o BatchMode=yes -o StrictHostKeyChecking=yes" \
+            "${AUSNAHMEN[@]}" \
+            ./ "$SSH_USER@$SSH_HOST:$ZIEL/"
+
+      - name: Ergebnis prüfen
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          ZIEL: ${{ secrets.ZIEL_PFAD }}
+          PROJEKTE_HTML: ${{ inputs.projekte_html }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/id_deploy -p "${SSH_PORT:-22}" -o BatchMode=yes \
+              "$SSH_USER@$SSH_HOST" \
+              "stat -c '%n  %U:%G  %a' '$ZIEL/index.html' '$ZIEL/admin/kern.php' '$ZIEL/assets/styles.css'" \
+            | tee /tmp/rechte.txt
+
+          {
+            echo "### Übertragen nach \`$ZIEL\`"
+            echo ""
+            echo '```'
+            cat /tmp/rechte.txt
+            echo '```'
+            if [ "${PROJEKTE_HTML:-false}" = "true" ]; then
+              echo ""
+              echo "⚠️ **projekte.html wurde überschrieben.** Jetzt im Adminbereich einmal auf **Seite neu schreiben** klicken, sonst stehen dort die acht Startprojekte."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Aufräumen
+        if: always()
+        run: rm -f ~/.ssh/id_deploy
