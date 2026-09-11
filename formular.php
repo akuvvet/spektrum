@@ -24,6 +24,10 @@ declare(strict_types=1);
 const EMPFAENGER      = 'info@spektrum-ev.de';
 const ABSENDER        = 'noreply@spektrum-nachhilfe.de';
 const SPERRDATEI      = '/var/www/vhosts/spektrum-nachhilfe.de/formular-sperre.json';
+// Protokoll des Versands. Bewusst OHNE Inhalte und ohne Absenderadressen —
+// es haelt nur fest, ob der Server die Mail angenommen hat. Liegt ausserhalb
+// von httpdocs und ist damit ueber den Browser nicht abrufbar.
+const PROTOKOLL       = '/var/www/vhosts/spektrum-nachhilfe.de/formular-protokoll.log';
 const MIN_SEKUNDEN    = 3;
 const MAX_PRO_STUNDE  = 5;
 
@@ -245,12 +249,28 @@ $kopfzeilen = [
     'MIME-Version: 1.0',
 ];
 
-$ok = mail(
+$vorher = error_get_last();
+$ok = @mail(
     EMPFAENGER,
     '=?UTF-8?B?' . base64_encode($betreffzeile) . '?=',
     $koerper,
     implode("\r\n", $kopfzeilen),
     '-f' . ABSENDER
 );
+$nachher = error_get_last();
+
+// Eine Zeile je Sendung. Ohne Namen, ohne Adressen, ohne Inhalte — nur die
+// Frage, ob der Server die Mail angenommen hat. Sonst raet man im Dunkeln,
+// wenn eine Anfrage nicht ankommt.
+$notiz = date('d.m.Y H:i') . ' ' . $art . ' ' . ($ok ? 'ok' : 'FEHLER');
+if (!$ok && $nachher !== null && $nachher !== $vorher) {
+    $notiz .= ' (' . mb_substr(str_replace(["\r", "\n"], ' ', $nachher['message']), 0, 200) . ')';
+}
+@file_put_contents(PROTOKOLL, $notiz . "\n", FILE_APPEND | LOCK_EX);
+// Das Protokoll darf nicht endlos wachsen: ueber 200 Zeilen wird vorne gekuerzt.
+$zeilen = @file(PROTOKOLL, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+if (is_array($zeilen) && count($zeilen) > 200) {
+    @file_put_contents(PROTOKOLL, implode("\n", array_slice($zeilen, -200)) . "\n", LOCK_EX);
+}
 
 zurueck(200, $ok ? 'danke.html' : $quelle . '?fehler=3');

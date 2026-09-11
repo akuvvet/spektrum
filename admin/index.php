@@ -188,6 +188,10 @@ function verarbeiten(string $tat): array
             return $fehler === ''
                 ? ['projekte.html wurde neu geschrieben.', 'gut']
                 : [$fehler, 'schlecht'];
+
+        case 'testmail':
+            [$ok, $text] = testmail_senden();
+            return [$text, $ok ? 'gut' : 'schlecht'];
     }
     return ['Unbekannter Vorgang.', 'schlecht'];
 }
@@ -297,6 +301,30 @@ if (in_array($ansicht, ['bearbeiten', 'loeschen'], true)) {
       </form>
       <a class="knopf knopf--leise" href="index.php">Zur Liste</a>
     </div>
+
+    <h2>Mailversand der Formulare</h2>
+    <p>Kontaktformular, Elternfragebogen, Lehrersuche und Mitgliedsantrag gehen alle
+       an dieselbe Adresse. Hier steht, was davon der Server wirklich kann.</p>
+    <table class="pruef">
+      <tbody>
+      <?php foreach (mail_pruefung() as [$was, $zustand, $text]): ?>
+        <tr class="pruef--<?= h($zustand) ?>">
+          <th scope="row"><?= h($was) ?></th>
+          <td><span class="ampel" aria-hidden="true"></span><?= h($text) ?></td>
+        </tr>
+      <?php endforeach; ?>
+      </tbody>
+    </table>
+    <div class="aktion">
+      <form method="post" class="inline">
+        <input type="hidden" name="token" value="<?= h(token()) ?>">
+        <button type="submit" name="tat" value="testmail" class="knopf">Testmail senden</button>
+      </form>
+    </div>
+    <p class="tipp">Die Testmail geht an dieselbe Adresse wie die Formulare.
+       Kommt sie an, kommen auch die Anfragen an. Kommt sie nicht an, obwohl der
+       Server sie angenommen hat, liegt es am Mailversand des Servers — nicht an
+       der Website.</p>
 
   <?php elseif ($ansicht === 'neu' || $ansicht === 'bearbeiten'): ?>
 

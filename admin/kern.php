@@ -26,7 +26,7 @@ define('SEITE', WEB . '/projekte.html');
 
 // Fassung des Adminbereichs — steht unter „Prüfen“, damit man ohne Raten sieht,
 // welche Dateien wirklich auf dem Server liegen.
-const FASSUNG = '2026-09-11 a';
+const FASSUNG = '2026-09-11 b (Mailprüfung)';
 
 const MARKE_ANFANG = '<!-- PROJEKTE:ANFANG - nicht entfernen, der Adminbereich schreibt hier hinein -->';
 const MARKE_ENDE   = '<!-- PROJEKTE:ENDE -->';
@@ -697,4 +697,130 @@ function seite_bauen(array $projekte): string
     return 'projekte.html ließ sich nicht schreiben. Datei gehört ' . besitzer(SEITE)
         . ', Ordner gehört ' . besitzer(dirname(SEITE)) . ', PHP läuft als ' . php_benutzer()
         . '. Abhilfe: chmod 644 projekte.html und Eigentümer wie beim Ordner setzen.';
+}
+
+/* ================================================================
+   Mailversand
+   Die Einstellungen stehen in formular.php. Diese Datei wird hier
+   NICHT eingebunden — sie wuerde sonst mitlaufen. Stattdessen werden
+   die drei Konstanten aus dem Quelltext gelesen. So steht im Admin-
+   bereich, was wirklich auf dem Server liegt, nicht was liegen soll.
+   ================================================================ */
+
+function mail_einstellung(): array
+{
+    $pfad = WEB . '/formular.php';
+    $aus = ['pfad' => $pfad, 'empfaenger' => '', 'absender' => '',
+            'sperrdatei' => '', 'protokoll' => ''];
+    if (!is_readable($pfad)) { return $aus; }
+    $quelle = (string)file_get_contents($pfad);
+    $felder = ['EMPFAENGER' => 'empfaenger', 'ABSENDER' => 'absender',
+               'SPERRDATEI' => 'sperrdatei', 'PROTOKOLL' => 'protokoll'];
+    foreach ($felder as $konstante => $schluessel) {
+        if (preg_match("/const\\s+{$konstante}\\s*=\\s*'([^']*)'/", $quelle, $t)) {
+            $aus[$schluessel] = $t[1];
+        }
+    }
+    return $aus;
+}
+
+/** Ampelzeilen zum Mailversand — gleiche Form wie pruefung(). */
+function mail_pruefung(): array
+{
+    $e = mail_einstellung();
+    $z = [];
+
+    $z[] = ['formular.php', is_readable($e['pfad']) ? 'gut' : 'schlecht',
+        is_readable($e['pfad'])
+            ? 'vorhanden, zuletzt geändert ' . date('d.m.Y H:i', (int)filemtime($e['pfad']))
+            : 'nicht gefunden unter ' . $e['pfad'] . ' — das Formular kann nichts versenden'];
+
+    $z[] = ['Empfänger', $e['empfaenger'] !== '' ? 'gut' : 'schlecht',
+        $e['empfaenger'] !== ''
+            ? $e['empfaenger'] . ' — dorthin gehen alle vier Formulare'
+            : 'keine Adresse in formular.php gefunden'];
+
+    $z[] = ['Absender', $e['absender'] !== '' ? 'gut' : 'schlecht',
+        $e['absender'] !== ''
+            ? $e['absender'] . ' — muss eine Adresse auf einer eigenen Domain sein, '
+              . 'sonst weist der Empfängerserver die Mail ab'
+            : 'keine Adresse in formular.php gefunden'];
+
+    $mailDa = function_exists('mail');
+    $pfadSendmail = (string)ini_get('sendmail_path');
+    $z[] = ['PHP-Funktion mail()', $mailDa ? 'gut' : 'schlecht',
+        $mailDa
+            ? 'verfügbar' . ($pfadSendmail !== '' ? ' — über ' . $pfadSendmail : '')
+            : 'auf diesem Server abgeschaltet (disable_functions) — dann geht nur SMTP'];
+
+    if ($e['sperrdatei'] !== '') {
+        $ordner = dirname($e['sperrdatei']);
+        $frei = is_writable(is_file($e['sperrdatei']) ? $e['sperrdatei'] : $ordner);
+        $z[] = ['Bremse gegen Bots', $frei ? 'gut' : 'hinweis',
+            $e['sperrdatei'] . ($frei ? ' — beschreibbar'
+                : ' — nicht beschreibbar. Formulare gehen trotzdem raus, '
+                  . 'aber die Bremse gegen Massenversand greift nicht.')];
+    }
+
+    if ($e['protokoll'] !== '') {
+        $zeilen = [];
+        if (is_readable($e['protokoll'])) {
+            $alle = @file($e['protokoll'], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+            $zeilen = array_slice($alle, -5);
+        }
+        $fehler = false;
+        foreach ($zeilen as $zeile) {
+            if (strpos($zeile, 'FEHLER') !== false) { $fehler = true; }
+        }
+        $z[] = ['Letzte Sendungen', $zeilen === [] ? 'hinweis' : ($fehler ? 'schlecht' : 'gut'),
+            $zeilen === []
+                ? 'noch nichts protokolliert — ' . $e['protokoll']
+                : implode(' · ', $zeilen)];
+    }
+
+    return $z;
+}
+
+/**
+ * Schickt eine Testmail an den in formular.php eingetragenen Empfaenger.
+ * Rueckgabe: [true|false, Meldung].
+ */
+function testmail_senden(): array
+{
+    $e = mail_einstellung();
+    if ($e['empfaenger'] === '' || $e['absender'] === '') {
+        return [false, 'In formular.php stehen keine Adressen — Testmail nicht möglich.'];
+    }
+    if (!function_exists('mail')) {
+        return [false, 'Die PHP-Funktion mail() ist auf diesem Server abgeschaltet.'];
+    }
+
+    $betreff = 'Testmail vom Adminbereich spektrum-nachhilfe.de';
+    $text = "Diese Mail wurde im Adminbereich von Hand ausgelöst.\n\n"
+        . 'Gesendet: ' . date('d.m.Y H:i:s') . "\n"
+        . 'Absender: ' . $e['absender'] . "\n"
+        . 'Empfänger: ' . $e['empfaenger'] . "\n"
+        . 'Server: ' . (string)($_SERVER['SERVER_NAME'] ?? '') . "\n\n"
+        . "Kommt sie an, funktioniert auch das Kontaktformular.\n";
+
+    $kopf = [
+        'From: Website Spektrum <' . $e['absender'] . '>',
+        'Content-Type: text/plain; charset=UTF-8',
+        'MIME-Version: 1.0',
+    ];
+
+    $vorher = error_get_last();
+    $ok = @mail($e['empfaenger'], '=?UTF-8?B?' . base64_encode($betreff) . '?=',
+                $text, implode("\r\n", $kopf), '-f' . $e['absender']);
+    $nachher = error_get_last();
+
+    if ($ok) {
+        return [true, 'Testmail an ' . $e['empfaenger'] . ' wurde übergeben. '
+            . 'Jetzt im Postfach nachsehen — auch im Spam-Ordner. '
+            . 'Kommt sie dort nicht an, liegt es nicht an der Website, '
+            . 'sondern am Mailversand des Servers (SPF, DKIM, Mailservice).'];
+    }
+
+    $grund = ($nachher !== null && $nachher !== $vorher) ? ' Meldung: ' . $nachher['message'] : '';
+    return [false, 'Der Server hat die Mail nicht angenommen.' . $grund];
 }
