@@ -22,7 +22,7 @@
 declare(strict_types=1);
 
 const EMPFAENGER      = 'info@spektrum-ev.de';
-const ABSENDER        = 'noreply@spektrum-nachhilfe.de';
+const ABSENDER        = 'info@spektrum-ev.de';
 const SPERRDATEI      = '/var/www/vhosts/spektrum-nachhilfe.de/formular-sperre.json';
 // Protokoll des Versands. Bewusst OHNE Inhalte und ohne Absenderadressen —
 // es haelt nur fest, ob der Server die Mail angenommen hat. Liegt ausserhalb
