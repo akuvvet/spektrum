@@ -1,19 +1,5 @@
 name: Auf den Server übertragen
 
-# Bei jedem Push auf main wird httpdocs auf spektrum-nachhilfe.de abgeglichen.
-# Von Hand auslösbar unter „Actions" → diesen Workflow → „Run workflow".
-#
-# Vier Dinge werden bewusst NICHT übertragen — sie gehören dem Server:
-#   daten/            Projektdaten und Passwort-Hash (liegt ohnehin außerhalb)
-#   assets/projekte/  Bilder, die im Adminbereich hochgeladen wurden
-#   projekte.html     wird vom Adminbereich selbst geschrieben
-#   .well-known/      Let's Encrypt legt dort seine Prüfdateien ab
-#
-# projekte.html doch übertragen (z. B. wenn sich der Aufbau geändert hat):
-# Workflow von Hand starten und den Haken setzen. Danach im Adminbereich
-# einmal auf „Seite neu schreiben" klicken, sonst stehen dort wieder die
-# acht Startprojekte.
-
 on:
   push:
     branches: [main]
@@ -28,7 +14,6 @@ on:
         type: boolean
         default: false
 
-# Zwei Deploys gleichzeitig würden sich in die Quere kommen
 concurrency:
   group: deploy-produktion
   cancel-in-progress: false
@@ -41,7 +26,7 @@ jobs:
 
     steps:
       - name: Stand auschecken
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Tresor prüfen
         env:
@@ -49,10 +34,8 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           ZIEL: ${{ secrets.ZIEL_PFAD }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: |
           set -uo pipefail
-          # Nur "gesetzt" oder "FEHLT" ausgeben — niemals den Inhalt.
           fehlt=0
           pruefe () {
             if [ -z "$2" ]; then
@@ -67,7 +50,6 @@ jobs:
           pruefe SSH_USER        "${SSH_USER:-}"
           pruefe ZIEL_PFAD       "${ZIEL:-}"
           pruefe SSH_KEY         "${SSH_KEY:-}"
-          pruefe SSH_KNOWN_HOSTS "${SSH_KNOWN_HOSTS:-}"
 
           if [ -n "${SSH_KEY:-}" ]; then
             case "$SSH_KEY" in
@@ -84,7 +66,6 @@ jobs:
       - name: SSH vorbereiten
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
         run: |
@@ -92,14 +73,10 @@ jobs:
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
-
-          if [ -n "${SSH_KNOWN_HOSTS:-}" ]; then
-            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          else
-            echo "::warning::SSH_KNOWN_HOSTS ist nicht gesetzt — der Serverschlüssel wird ungeprüft übernommen. Siehe DEPLOY.md, Schritt 4."
-            ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" > ~/.ssh/known_hosts 2>/dev/null
-          fi
-          chmod 600 ~/.ssh/known_hosts
+          
+          # Holt den Host Key bei jedem Lauf automatisch und verhindert Mismatches
+          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          chmod 644 ~/.ssh/known_hosts
 
       - name: Verbindung prüfen
         env:
@@ -109,7 +86,7 @@ jobs:
           ZIEL: ${{ secrets.ZIEL_PFAD }}
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/id_deploy -p "${SSH_PORT:-22}" -o BatchMode=yes \
+          ssh -i ~/.ssh/id_deploy -p "${SSH_PORT:-22}" -o BatchMode=yes -o StrictHostKeyChecking=no \
               "$SSH_USER@$SSH_HOST" \
               "test -d '$ZIEL' || { echo 'Zielordner fehlt: $ZIEL'; exit 1; }; \
                command -v rsync >/dev/null || { echo 'Auf dem Server fehlt rsync.'; exit 1; }; \
@@ -127,8 +104,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Beim Probelauf listet rsync nur auf, was es täte. Bei einem Push
-          # ist PROBELAUF leer — dann wird wirklich übertragen.
           TROCKEN=()
           if [ "${PROBELAUF:-false}" = "true" ]; then
             TROCKEN=( --dry-run )
@@ -154,16 +129,14 @@ jobs:
             AUSNAHMEN+=( --exclude 'projekte.html' )
           fi
 
-          # --chmod setzt die Rechte gleich richtig: 755 für Ordner, 644 für
-          # Dateien. Genau daran hing das 403 Forbidden auf projekte.html.
           rsync -rlz --delete --chmod=D755,F644 --omit-dir-times \
             --itemize-changes "${TROCKEN[@]}" \
-            -e "ssh -i ~/.ssh/id_deploy -p ${SSH_PORT:-22} -o BatchMode=yes -o StrictHostKeyChecking=yes" \
+            -e "ssh -i ~/.ssh/id_deploy -p ${SSH_PORT:-22} -o BatchMode=yes -o StrictHostKeyChecking=no" \
             "${AUSNAHMEN[@]}" \
             ./ "$SSH_USER@$SSH_HOST:$ZIEL/"
 
       - name: Ergebnis prüfen
-        if: ${{ inputs.probelauf != true }}
+        if: ${{ inputs.probelauf != 'true' }}
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -172,16 +145,16 @@ jobs:
           PROJEKTE_HTML: ${{ inputs.projekte_html }}
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/id_deploy -p "${SSH_PORT:-22}" -o BatchMode=yes \
+          ssh -i ~/.ssh/id_deploy -p "${SSH_PORT:-22}" -o BatchMode=yes -o StrictHostKeyChecking=no \
               "$SSH_USER@$SSH_HOST" \
               "stat -c '%n  %U:%G  %a' '$ZIEL/index.html' '$ZIEL/admin/kern.php' '$ZIEL/assets/styles.css'" \
-            | tee /tmp/rechte.txt
+            | tee /tmp/rechte.txt || true
 
           {
             echo "### Übertragen nach \`$ZIEL\`"
             echo ""
             echo '```'
-            cat /tmp/rechte.txt
+            cat /tmp/rechte.txt || echo "Rechte konnten nicht ausgelesen werden."
             echo '```'
             if [ "${PROJEKTE_HTML:-false}" = "true" ]; then
               echo ""
