@@ -789,12 +789,68 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
   border-top: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--logo-grau), var(--logo-cyan), var(--logo-violett), var(--logo-rot), var(--logo-amber)) 1;
   color: var(--farbe-gedaempft); font-size: 0.95rem;
+  grid-template-columns: minmax(0, 1fr);   /* sonst dehnt die Laufleiste den Fuss */
 }
-@media (min-width: 48rem) { .fuss { grid-template-columns: 2fr 1fr; } }
+@media (min-width: 48rem) { .fuss { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
 .fuss ul { list-style: none; margin: 0; padding: 0; }
 .fuss li { margin-bottom: 0.25rem; }
 .fuss a { color: var(--farbe-akzent); }
 .fuss__zeile { grid-column: 1 / -1; margin: 0; }
+
+/* ============================================================
+   Kooperationspartner — Laufleiste im Fuss
+   Zwei gleiche Reihen nebeneinander, die zusammen um genau die
+   halbe Strecke wandern. Dadurch schliesst die Leiste nahtlos an
+   sich selbst an, ohne Sprung und ohne JavaScript.
+   ============================================================ */
+.partner { grid-column: 1 / -1; min-width: 0; }
+.partner__titel {
+  margin: 0 0 var(--abstand-m);
+  font-weight: 600; color: var(--farbe-text);
+  letter-spacing: .01em;
+}
+.partner__band {
+  overflow: hidden; min-width: 0; width: 100%;
+  /* Die Raender laufen weich aus, damit nichts abgeschnitten wirkt. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+}
+.partner__lauf {
+  display: flex; width: max-content;
+  animation: partner-lauf 42s linear infinite;
+}
+.partner__band:hover .partner__lauf,
+.partner__band:focus-within .partner__lauf { animation-play-state: paused; }
+
+.partner__spur {
+  display: flex; align-items: center;
+  list-style: none; margin: 0; padding: 0; max-width: none;
+}
+.partner__eintrag {
+  --logo-hoehe: 3.75rem;
+  flex: 0 0 auto; margin: 0;
+  width: 10.5rem; height: var(--logo-hoehe);
+  padding: 0 var(--abstand-m);
+}
+/* Feste Box, das Bild passt sich hinein: so wirken hohe und breite
+   Zeichen gleich gewichtet, ohne dass eines verzerrt wird. */
+.partner__eintrag img {
+  display: block; width: 100%; height: var(--logo-hoehe);
+  object-fit: contain;
+}
+
+@keyframes partner-lauf {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Wer Bewegung abgewaehlt hat, bekommt die Logos ruhig umbrochen. */
+@media (prefers-reduced-motion: reduce) {
+  .partner__band { -webkit-mask-image: none; mask-image: none; }
+  .partner__lauf { animation: none; width: auto; }
+  .partner__spur { flex-wrap: wrap; justify-content: flex-start; }
+  .partner__spur[aria-hidden="true"] { display: none; }
+}
 
 /* ============================================================
    Bewegung — nur wenn der Nutzer sie nicht abgewaehlt hat
