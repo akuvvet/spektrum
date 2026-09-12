@@ -817,7 +817,7 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
 }
 .partner__lauf {
   display: flex; width: max-content;
-  animation: partner-lauf 42s linear infinite;
+  animation: partner-lauf 63s linear infinite;
 }
 .partner__band:hover .partner__lauf,
 .partner__band:focus-within .partner__lauf { animation-play-state: paused; }
