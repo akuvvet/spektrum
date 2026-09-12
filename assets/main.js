@@ -253,3 +253,125 @@
     }
   }
 })();
+
+/* ----------------------------------------------------------------------
+   Laufleiste der Kooperationspartner
+
+   Das Band ist ein gewoehnlicher Scrollbereich — Finger, Trackpad und
+   Pfeiltasten funktionieren deshalb auch ohne diese Datei. Hier kommen
+   zwei Dinge dazu: der langsame Selbstlauf und das Ziehen mit der Maus.
+
+   Die zweite, fuer Vorleseprogramme verdeckte Spur macht den Uebergang
+   nahtlos: ist die erste Spur durchgelaufen, springt die Anzeige um genau
+   deren Breite zurueck. Zu sehen ist davon nichts.
+   ---------------------------------------------------------------------- */
+(function () {
+  "use strict";
+
+  var band = document.querySelector(".partner__band");
+  var lauf = band && band.querySelector(".partner__lauf");
+  if (!band || !lauf) { return; }
+
+  var TEMPO = 24;                 /* Bildpunkte je Sekunde — ruhiges Tempo */
+  var haelfte = 0;                /* Breite einer Spur */
+  var ruhig = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var pause = false;              /* Mauszeiger darueber oder Tastaturfokus */
+  var zieht = false;
+  var startX = 0, startLinks = 0, zeiger = null;
+  var zuletzt = 0;
+  var stand = 0;                  /* eigene Rechnung mit Nachkommastellen */
+  var geschrieben = -1;           /* was wir zuletzt selbst gesetzt haben */
+  var ruheBis = 0;                /* nach eigenem Verschieben kurz stillhalten */
+
+  function messen() { haelfte = lauf.scrollWidth / 2; }
+  messen();
+  window.addEventListener("resize", messen);
+  window.addEventListener("load", messen);   /* Bilder sind erst dann vermessen */
+  if (window.ResizeObserver) { new ResizeObserver(messen).observe(lauf); }
+
+  function schritt(zeit) {
+    if (!zuletzt) { zuletzt = zeit; }
+    var d = (zeit - zuletzt) / 1000;
+    zuletzt = zeit;
+    if (d > 0.25) { d = 0.25; }   /* nach einem Tabwechsel nicht springen */
+
+    if (!pause && !zieht && zeit > ruheBis && !ruhig.matches && !document.hidden) {
+      /* scrollLeft gibt beim Auslesen ganze Zahlen zurueck. Wuerde man
+         direkt darauf rechnen, gingen die 0,4 Bildpunkte je Bild jedes
+         Mal verloren und die Leiste stuende still. Deshalb die eigene
+         Rechnung in "stand". */
+      stand += TEMPO * d;
+      if (haelfte > 0 && stand >= haelfte) { stand -= haelfte; }
+      band.scrollLeft = stand;
+      geschrieben = band.scrollLeft;
+    } else {
+      stand = band.scrollLeft;    /* jemand hat selbst verschoben */
+      geschrieben = stand;
+    }
+    window.requestAnimationFrame(schritt);
+  }
+  window.requestAnimationFrame(schritt);
+
+  /* Wischen auf dem Telefon und Rollen am Trackpad loesen kein mouseenter
+     aus. Verschiebt sich das Band also ohne unser Zutun, uebernehmen wir
+     den neuen Stand und halten zweieinhalb Sekunden still — sonst zoege
+     der Selbstlauf die Leiste unter dem Finger wieder weg. */
+  band.addEventListener("scroll", function () {
+    if (zieht) { return; }
+    if (Math.abs(band.scrollLeft - geschrieben) > 2) {
+      stand = band.scrollLeft;
+      geschrieben = stand;
+      ruheBis = (window.performance ? performance.now() : Date.now()) + 2500;
+    }
+  }, { passive: true });
+
+  /* Anhalten, solange jemand hinsieht oder mit der Tastatur darin ist. */
+  band.addEventListener("mouseenter", function () { pause = true; });
+  band.addEventListener("mouseleave", function () { pause = false; });
+  band.addEventListener("focusin", function () { pause = true; });
+  band.addEventListener("focusout", function () { pause = false; });
+
+  /* Ziehen mit der Maus. Finger und Trackpad brauchen das nicht — die
+     scrollen den Bereich von sich aus und kaemen sich hier nur ins Gehege.
+     Beim Ueberlaufen wird der Startpunkt mitverschoben, damit es sich in
+     beide Richtungen endlos anfuehlt. */
+  function verschieben(dx) {
+    var neu = startLinks - dx;
+    if (haelfte > 0) {
+      while (neu < 0) { neu += haelfte; startLinks += haelfte; }
+      while (neu >= haelfte) { neu -= haelfte; startLinks -= haelfte; }
+    } else if (neu < 0) {
+      neu = 0;
+    }
+    band.scrollLeft = neu;
+  }
+
+  band.addEventListener("pointerdown", function (e) {
+    if (e.pointerType !== "mouse" || e.button !== 0) { return; }
+    zieht = true;
+    startX = e.clientX;
+    startLinks = band.scrollLeft;
+    zeiger = e.pointerId;
+    try { band.setPointerCapture(zeiger); } catch (x) {}
+    band.classList.add("partner__band--zieht");
+  });
+
+  band.addEventListener("pointermove", function (e) {
+    if (!zieht || e.pointerId !== zeiger) { return; }
+    e.preventDefault();
+    verschieben(e.clientX - startX);
+  });
+
+  function loslassen() {
+    if (!zieht) { return; }
+    zieht = false;
+    band.classList.remove("partner__band--zieht");
+    try { band.releasePointerCapture(zeiger); } catch (x) {}
+  }
+  band.addEventListener("pointerup", loslassen);
+  band.addEventListener("pointercancel", loslassen);
+  band.addEventListener("lostpointercapture", loslassen);
+
+  /* Sonst startet das Ziehen ueber einem Zeichen das Bild-Verschieben des Browsers. */
+  band.addEventListener("dragstart", function (e) { e.preventDefault(); });
+})();
