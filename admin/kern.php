@@ -24,9 +24,13 @@ define('WEB', dirname(__DIR__));                 // .../httpdocs
 define('BILDER', WEB . '/assets/projekte');      // oeffentlich erreichbar
 define('SEITE', WEB . '/projekte.html');
 
+// Gemeinsamer Mailversand. Die Sperre verhindert den direkten Aufruf im Browser.
+define('SPEKTRUM_VERSAND', true);
+require WEB . '/versand.php';
+
 // Fassung des Adminbereichs — steht unter „Prüfen“, damit man ohne Raten sieht,
 // welche Dateien wirklich auf dem Server liegen.
-const FASSUNG = '2026-09-11 b (Mailprüfung)';
+const FASSUNG = '2026-09-12 a (SMTP-Versand)';
 
 const MARKE_ANFANG = '<!-- PROJEKTE:ANFANG - nicht entfernen, der Adminbereich schreibt hier hinein -->';
 const MARKE_ENDE   = '<!-- PROJEKTE:ENDE -->';
@@ -740,18 +744,35 @@ function mail_pruefung(): array
             ? $e['empfaenger'] . ' — dorthin gehen alle vier Formulare'
             : 'keine Adresse in formular.php gefunden'];
 
-    $z[] = ['Absender', $e['absender'] !== '' ? 'gut' : 'schlecht',
-        $e['absender'] !== ''
-            ? $e['absender'] . ' — muss eine Adresse auf einer eigenen Domain sein, '
-              . 'sonst weist der Empfängerserver die Mail ab'
-            : 'keine Adresse in formular.php gefunden'];
+    // --- Weg nach draußen -------------------------------------------------
+    $zugang = zugang_lesen();
+    $pfadZugang = zugang_pfad();
 
-    $mailDa = function_exists('mail');
-    $pfadSendmail = (string)ini_get('sendmail_path');
-    $z[] = ['PHP-Funktion mail()', $mailDa ? 'gut' : 'schlecht',
-        $mailDa
-            ? 'verfügbar' . ($pfadSendmail !== '' ? ' — über ' . $pfadSendmail : '')
-            : 'auf diesem Server abgeschaltet (disable_functions) — dann geht nur SMTP'];
+    if ($zugang !== []) {
+        $z[] = ['Versandweg', 'gut',
+            'Postausgangsserver ' . $zugang['host'] . ':' . (int)$zugang['port']
+            . ' (' . strtoupper((string)$zugang['sicher']) . '), Anmeldung als '
+            . $zugang['benutzer'] . ', Absender ' . $zugang['absender']];
+        $z[] = ['Zugangsdatei', 'gut',
+            $pfadZugang . ' — außerhalb von httpdocs, Rechte '
+            . substr(sprintf('%o', (int)@fileperms($pfadZugang)), -3)];
+    } elseif (is_readable($pfadZugang)) {
+        $z[] = ['Versandweg', 'schlecht',
+            'Die Zugangsdatei ist da, aber unvollständig — meist steht das Passwort '
+            . 'noch als Platzhalter drin. Solange greift der alte Weg über mail(), '
+            . 'und der kommt bei STRATO nicht an.'];
+    } else {
+        $z[] = ['Versandweg', 'schlecht',
+            'mail() — der Webserver verschickt selbst. STRATO nimmt solche Post an '
+            . 'und wirft sie weg, weil der Absender dort nicht wohnt. Abhilfe: '
+            . 'Zugangsdatei anlegen unter ' . $pfadZugang];
+    }
+
+    if (!function_exists('stream_socket_client')) {
+        $z[] = ['Netzwerk', 'schlecht',
+            'stream_socket_client ist abgeschaltet — ohne diese Funktion ist kein '
+            . 'Postausgangsserver erreichbar.'];
+    }
 
     if ($e['sperrdatei'] !== '') {
         $ordner = dirname($e['sperrdatei']);
@@ -782,7 +803,8 @@ function mail_pruefung(): array
 }
 
 /**
- * Schickt eine Testmail an den in formular.php eingetragenen Empfaenger.
+ * Schickt eine Testmail an den in formular.php eingetragenen Empfaenger —
+ * ueber genau denselben Weg wie die Formulare.
  * Rueckgabe: [true|false, Meldung].
  */
 function testmail_senden(): array
@@ -791,36 +813,23 @@ function testmail_senden(): array
     if ($e['empfaenger'] === '' || $e['absender'] === '') {
         return [false, 'In formular.php stehen keine Adressen — Testmail nicht möglich.'];
     }
-    if (!function_exists('mail')) {
-        return [false, 'Die PHP-Funktion mail() ist auf diesem Server abgeschaltet.'];
-    }
 
     $betreff = 'Testmail vom Adminbereich spektrum-nachhilfe.de';
     $text = "Diese Mail wurde im Adminbereich von Hand ausgelöst.\n\n"
         . 'Gesendet: ' . date('d.m.Y H:i:s') . "\n"
-        . 'Absender: ' . $e['absender'] . "\n"
         . 'Empfänger: ' . $e['empfaenger'] . "\n"
         . 'Server: ' . (string)($_SERVER['SERVER_NAME'] ?? '') . "\n\n"
         . "Kommt sie an, funktioniert auch das Kontaktformular.\n";
 
-    $kopf = [
-        'From: Website Spektrum <' . $e['absender'] . '>',
-        'Content-Type: text/plain; charset=UTF-8',
-        'MIME-Version: 1.0',
-    ];
+    [$ok, $weg, $meldung] = versenden($e['empfaenger'], $e['absender'], $betreff, $text);
 
-    $vorher = error_get_last();
-    $ok = @mail($e['empfaenger'], '=?UTF-8?B?' . base64_encode($betreff) . '?=',
-                $text, implode("\r\n", $kopf), '-f' . $e['absender']);
-    $nachher = error_get_last();
-
-    if ($ok) {
-        return [true, 'Testmail an ' . $e['empfaenger'] . ' wurde übergeben. '
-            . 'Jetzt im Postfach nachsehen — auch im Spam-Ordner. '
-            . 'Kommt sie dort nicht an, liegt es nicht an der Website, '
-            . 'sondern am Mailversand des Servers (SPF, DKIM, Mailservice).'];
+    if ($ok && $weg === 'SMTP') {
+        return [true, 'Testmail an ' . $e['empfaenger'] . ' verschickt. ' . $meldung
+            . ' Jetzt im Postfach nachsehen — sie sollte binnen einer Minute da sein.'];
     }
-
-    $grund = ($nachher !== null && $nachher !== $vorher) ? ' Meldung: ' . $nachher['message'] : '';
-    return [false, 'Der Server hat die Mail nicht angenommen.' . $grund];
+    if ($ok) {
+        return [true, 'Testmail wurde übergeben, aber über den alten Weg (mail()). '
+            . $meldung . ' Zugangsdatei anlegen, dann ist es verlässlich.'];
+    }
+    return [false, 'Versand über ' . $weg . ' gescheitert: ' . $meldung];
 }

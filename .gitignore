@@ -9,6 +9,11 @@ daten/
 *.json.neu
 projekte-sicherung.html
 formular-sperre.json
+formular-protokoll.log
+
+# Zugangsdaten des Postausgangsservers. Gehören auf den Server, eine Ebene
+# über httpdocs — und niemals ins Git.
+mail-zugang.php
 
 # Einrichtungsseite: wird nach dem Setzen des Passworts gelöscht
 admin/einrichten.php
