@@ -42,12 +42,7 @@ jede Zeile entspricht einem sichtbaren Platzhalter auf der Website.
 
 ## index.html
 
-- [ ] Erste Rückmeldung einer Familie, wörtlich, mit Erlaubnis zur Veröffentlichung
-- [ ] Vorname, Rolle, z. B. „Mutter, 7. Klasse“
-- [ ] Zweite Rückmeldung
-- [ ] Vorname, Rolle
-- [ ] Dritte Rückmeldung
-- [ ] Vorname, Rolle
+- [ ] Freigabe der drei Zitate einholen: A. Sahin, E. Demir und Frau Hamdan sollten den Wortlaut und die Namensnennung schriftlich bestätigen. Danach diesen Hinweis löschen.
 
 ## nachhilfe.html
 
@@ -107,4 +102,4 @@ jede Zeile entspricht einem sichtbaren Platzhalter auf der Website.
 - [ ] Kündigungsfrist festlegen. Achtung: Bei Verträgen mit Verbrauchern sind Laufzeiten über ein Jahr und automatische Verlängerungen um mehr als einen Monat unwirksam (§ 309 Nr. 9 BGB).
 - [ ] Regelung für abgesagte Stunden festlegen: Bis wann muss abgesagt werden, wird nachgeholt, und was gilt bei Krankheit der Lehrkraft?
 
-Insgesamt 62 Platzhalter in 14 Dateien.
+Insgesamt 57 Platzhalter in 14 Dateien.

@@ -708,8 +708,8 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
 /* Erfahrungsberichte */
 .stimme blockquote { margin: 0 0 var(--abstand-s); }
 .stimme blockquote p { font-size: 1.05rem; line-height: 1.5; }
-.stimme blockquote p::before { content: "E"; }
-.stimme blockquote p::after  { content: "C"; }
+.stimme blockquote p::before { content: "„"; }
+.stimme blockquote p::after  { content: "“"; }
 .stimme__wer { color: var(--farbe-gedaempft); font-size: 0.92rem; margin: 0; }
 
 /* Fragen und Antworten — aufklappbar, ohne JavaScript */
