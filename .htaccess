@@ -8,6 +8,21 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
+# --- www abschalten: eine Adresse, nicht zwei ----------------
+# Ohne diese Regel sind dieselben Inhalte unter zwei Adressen erreichbar.
+# Suchmaschinen behandeln das als doppelten Inhalt.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# --- Altbestand: Adressen ohne .html -------------------------
+# Auf den alten Seiten endeten die Adressen nicht auf .html. Wer eine
+# solche Adresse aufruft, landet hier auf der richtigen Seite statt im
+# Nichts. Gilt nur, wenn die Datei mit .html wirklich existiert.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([^.]+)/?$ /$1.html [R=301,L]
+
 # --- Sicherheits-Header --------------------------------------
 <IfModule mod_headers.c>
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
@@ -40,8 +55,10 @@ Options -Indexes
 </Files>
 
 # --- Fehlerseiten --------------------------------------------
-ErrorDocument 403 /index.html
-ErrorDocument 404 /index.html
+# Eine 404 darf nicht heimlich die Startseite zeigen — Suchmaschinen
+# werten das als "Soft 404". Deshalb eine eigene Seite mit echtem Status.
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
 
 # --- Zeichensatz ---------------------------------------------
 AddDefaultCharset UTF-8

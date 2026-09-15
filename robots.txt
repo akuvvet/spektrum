@@ -3,5 +3,7 @@ Allow: /
 Disallow: /formular.php
 Disallow: /versand.php
 Disallow: /admin/
+Disallow: /danke.html
+Disallow: /404.html
 
 Sitemap: https://spektrum-nachhilfe.de/sitemap.xml

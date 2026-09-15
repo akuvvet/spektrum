@@ -43,11 +43,11 @@ const FORMULARE = [
         'elternname'       => 'Name des Elternteils',
         'telefon'          => 'Telefon',
         'email'            => 'E-Mail',
+        'sorgeberechtigt'  => 'Sorgeberechtigt bestaetigt',
         'kindname'         => 'Name des Kindes',
-        'geburtsjahr'      => 'Geburtsjahr des Kindes',
-        'schulart'         => 'Schulart',
         'klassenstufe'     => 'Klassenstufe',
-        'sprachen'         => 'Sprachen zu Hause',
+        'schulart'         => 'Schulart',
+        'dazfoerderung'    => 'Foerderung Deutsch als Zweitsprache sinnvoll',
         'leistung'         => 'Schulische Leistungen',
         'staerken'         => 'Staerken in Faechern',
         'regelmaessigkeit' => 'Regelmaessigkeit des Lernens',
@@ -63,7 +63,6 @@ const FORMULARE = [
         'name'             => 'Name',
         'email'            => 'E-Mail',
         'telefon'          => 'Telefon',
-        'geburtsjahr'      => 'Geburtsjahr',
         'abschluss'        => 'Hoechster Abschluss',
         'studiengang'      => 'Studiengang',
         'universitaet'     => 'Universitaet oder Schule',
@@ -73,7 +72,8 @@ const FORMULARE = [
         'erfahrungdetails' => 'Erfahrung im Detail',
         'tage'             => 'Verfuegbare Tage',
         'unterrichtsart'   => 'Unterrichtsart',
-        'deutschniveau'    => 'Deutschniveau',
+        'deutschniveau'    => 'Deutschkenntnisse',
+        'fuehrungszeugnis' => 'Bereit zum erweiterten Fuehrungszeugnis',
     ]],
     'mitglied' => ['Aufnahmeantrag Mitgliedschaft', [
         'vorname'     => 'Vorname',
@@ -97,8 +97,8 @@ const FORMULARE = [
 /** Pflichtfelder je Formular */
 const PFLICHT = [
     'kontakt'  => ['name', 'email', 'nachricht'],
-    'eltern'   => ['elternname', 'telefon', 'email'],
-    'lehrer'   => ['name', 'email', 'telefon', 'abschluss'],
+    'eltern'   => ['elternname', 'telefon', 'email', 'sorgeberechtigt', 'klassenstufe'],
+    'lehrer'   => ['name', 'email', 'telefon', 'abschluss', 'fuehrungszeugnis'],
     'mitglied' => ['vorname', 'nachname', 'telefon', 'email', 'strasse', 'plz', 'ort'],
 ];
 

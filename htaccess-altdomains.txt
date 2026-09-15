@@ -1,0 +1,48 @@
+# Weiterleitung der alten Domains auf spektrum-nachhilfe.de
+# Diese Datei in das Webverzeichnis von spektrum-ev.de bzw.
+# spektrum-sg.de legen — nicht auf die neue Domain.
+
+RewriteEngine On
+
+# --- HTTPS zuerst --------------------------------------------
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# --- Let's Encrypt weiter durchlassen ------------------------
+# Sonst laeuft das Zertifikat der alten Domain aus und jede
+# Weiterleitung endet in einer Sicherheitswarnung.
+RewriteRule ^\.well-known/ - [L]
+
+# --- Einzelne Seiten auf ihre neue Adresse -------------------
+# ACHTUNG: Diese Liste ist nach den Menuepunkten der alten Seiten
+# gebildet. Pruefen Sie die tatsaechlichen alten Adressen in der
+# Google Search Console unter "Seiten" und ergaenzen Sie fehlende.
+RedirectMatch 301 ^/(nachhilfe|nachhilfeunterricht)/?$        https://spektrum-nachhilfe.de/nachhilfe.html
+RedirectMatch 301 ^/(deutsch|deutsch-nachhilfe)/?$            https://spektrum-nachhilfe.de/deutsch.html
+RedirectMatch 301 ^/(mathe|mathematik|mathe-nachhilfe)/?$     https://spektrum-nachhilfe.de/mathematik.html
+RedirectMatch 301 ^/(englisch|englisch-nachhilfe)/?$          https://spektrum-nachhilfe.de/englisch.html
+RedirectMatch 301 ^/hausaufgabenbetreuung/?$                  https://spektrum-nachhilfe.de/hausaufgabenbetreuung.html
+RedirectMatch 301 ^/abiturvorbereitung/?$                     https://spektrum-nachhilfe.de/abiturvorbereitung.html
+RedirectMatch 301 ^/(pruefungsvorbereitung|prufungsvorbereitung)/?$ https://spektrum-nachhilfe.de/pruefungsvorbereitung.html
+RedirectMatch 301 ^/(grundschulfoerderung|grundschulforderung)/?$   https://spektrum-nachhilfe.de/grundschulfoerderung.html
+RedirectMatch 301 ^/(bildungs-und-teilhabepaket|bildung-und-teilhabe|but)/?$ https://spektrum-nachhilfe.de/bildung-und-teilhabe.html
+RedirectMatch 301 ^/(ueber-uns|uber-uns|wir-ueber-uns)/?$     https://spektrum-nachhilfe.de/ueber-uns.html
+RedirectMatch 301 ^/(kontakt|kontaktformular)/?$              https://spektrum-nachhilfe.de/kontakt.html
+RedirectMatch 301 ^/(impressum)/?$                            https://spektrum-nachhilfe.de/impressum.html
+RedirectMatch 301 ^/(datenschutz|datenschutzerklaerung)/?$    https://spektrum-nachhilfe.de/datenschutz.html
+RedirectMatch 301 ^/(spenden|unterstuetzen|unterstuetzen-sie-uns)/?$ https://spektrum-nachhilfe.de/unterstuetzen.html
+RedirectMatch 301 ^/(mitglied-werden|mitgliedschaft)/?$       https://spektrum-nachhilfe.de/mitglied-werden.html
+RedirectMatch 301 ^/(elternfragebogen|anmeldung)/?$           https://spektrum-nachhilfe.de/elternfragebogen.html
+RedirectMatch 301 ^/(lehrersuche|jobs|mitarbeit)/?$           https://spektrum-nachhilfe.de/lehrersuche.html
+RedirectMatch 301 ^/(jugend|vega)/?$                          https://spektrum-nachhilfe.de/jugend.html
+RedirectMatch 301 ^/(dialog)/?$                               https://spektrum-nachhilfe.de/dialog.html
+RedirectMatch 301 ^/(projekte|projekt)/?$                     https://spektrum-nachhilfe.de/projekte.html
+RedirectMatch 301 ^/(beratung)/?$                             https://spektrum-nachhilfe.de/beratung.html
+RedirectMatch 301 ^/(online|online-nachhilfe)/?$              https://spektrum-nachhilfe.de/online-nachhilfe.html
+RedirectMatch 301 ^/(faq|haeufige-fragen)/?$                  https://spektrum-nachhilfe.de/faq.html
+RedirectMatch 301 ^/(anfahrt|so-finden-sie-uns)/?$            https://spektrum-nachhilfe.de/anfahrt.html
+
+# --- Alles Uebrige auf die Startseite ------------------------
+# Muss ganz am Ende stehen, sonst greift diese Regel zuerst.
+RewriteRule ^(.*)$ https://spektrum-nachhilfe.de/ [R=301,L]

@@ -681,6 +681,81 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
 .hinweis { font-size: 0.95rem; color: var(--farbe-gedaempft); }
 
 /* ============================================================
+   Bausteine des Relaunch
+   ============================================================ */
+
+/* Sichtbarer Platzhalter fuer eine Angabe, die noch fehlt. Absichtlich
+   auffaellig: Was hier steht, darf nicht unbemerkt online bleiben. */
+.todo {
+  display: inline-block;
+  background: #fff3cd; color: #6b4e00;
+  border: 1px dashed #b38600; border-radius: 0.3rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.92em; font-style: normal;
+}
+
+/* „freiwillig“ als kleine Marke neben einer Formularueberschrift */
+.freiwillig {
+  display: inline-block; vertical-align: middle;
+  margin-left: 0.5rem; padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--farbe-flaeche-2); border: 1px solid var(--farbe-linie);
+  color: var(--farbe-gedaempft);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+/* Erfahrungsberichte */
+.stimme blockquote { margin: 0 0 var(--abstand-s); }
+.stimme blockquote p { font-size: 1.05rem; line-height: 1.5; }
+.stimme blockquote p::before { content: "E"; }
+.stimme blockquote p::after  { content: "C"; }
+.stimme__wer { color: var(--farbe-gedaempft); font-size: 0.92rem; margin: 0; }
+
+/* Fragen und Antworten — aufklappbar, ohne JavaScript */
+.fragen { max-width: var(--breite-text); }
+.frage {
+  border-bottom: 1px solid var(--farbe-linie);
+  padding: 0.15rem 0;
+}
+.frage > summary {
+  cursor: pointer; list-style: none;
+  padding: 0.85rem 2rem 0.85rem 0;
+  font-weight: 600; position: relative;
+}
+.frage > summary::-webkit-details-marker { display: none; }
+.frage > summary::after {
+  content: ""; position: absolute; right: 0.35rem; top: 1.25rem;
+  width: 0.55rem; height: 0.55rem;
+  border-right: 2px solid var(--farbe-akzent);
+  border-bottom: 2px solid var(--farbe-akzent);
+  transform: rotate(45deg);
+  transition: transform var(--tempo) var(--kurve);
+}
+.frage[open] > summary::after { transform: rotate(-135deg); top: 1.5rem; }
+.frage > summary:hover { color: var(--farbe-akzent); }
+.frage > summary:focus-visible {
+  outline: 3px solid var(--farbe-akzent); outline-offset: 2px; border-radius: 0.2rem;
+}
+.frage__text { padding: 0 0 var(--abstand-m); }
+.frage__text p { margin: 0 0 var(--abstand-s); }
+.frage__text p:last-child { margin-bottom: 0; }
+
+/* Abschlussblock, steht unten auf jeder Inhaltsseite */
+.cta {
+  background: var(--farbe-flaeche-2);
+  border-radius: var(--radius);
+  padding: var(--abstand-l) var(--abstand-m);
+  margin-top: var(--abstand-l);
+  border-top: 0;
+}
+.cta > h2::before { display: none; }
+.cta h2 { margin-top: 0; }
+@media (min-width: 48rem) {
+  .cta { padding: var(--abstand-l); }
+}
+
+/* ============================================================
    Schrittfolge — nummerierte Karten, auf breiten Schirmen mit
    einem kleinen Winkel dazwischen. Die Zahl kommt aus einem
    CSS-Zaehler, damit sie beim Umsortieren stimmt und Vorlese-
