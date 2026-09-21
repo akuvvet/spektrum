@@ -41,7 +41,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
 
 body {
   margin: 0;
@@ -78,7 +78,7 @@ mark { background: #fff3d1; color: var(--farbe-amber-text); padding: 0 0.25em; b
 .skip-link {
   position: absolute; left: -9999px;
   background: var(--farbe-akzent); color: var(--farbe-akzent-text);
-  padding: var(--abstand-s) var(--abstand-m); z-index: 30; border-radius: 0 0 var(--radius) 0;
+  padding: var(--abstand-s) var(--abstand-m); z-index: 50; border-radius: 0 0 var(--radius) 0;
 }
 .skip-link:focus { left: 0; top: 0; }
 
@@ -184,9 +184,22 @@ mark { background: #fff3d1; color: var(--farbe-amber-text); padding: 0 0.25em; b
   align-items: center; justify-content: space-between;
   max-width: var(--breite-seite); margin: 0 auto;
   padding: var(--abstand-m);
-  border-bottom: 1px solid var(--farbe-linie);
   background: var(--farbe-flaeche);
-  position: relative; z-index: 40;   /* Klappmenue liegt ueber dem Inhalt */
+  position: relative;
+}
+/* Mitscrollen: Der Rahmen um den Kopf klebt am oberen Rand, damit das Menue
+   immer erreichbar bleibt. Der Rahmen ist fensterbreit, der Kopf darin bleibt
+   auf Seitenbreite — so scheint links und rechts nichts durch. */
+.kopf-rahmen {
+  position: sticky; top: 0; z-index: 40;   /* Klappmenue liegt ueber dem Inhalt */
+  background: var(--farbe-flaeche);
+  border-bottom: 1px solid var(--farbe-linie);
+  box-shadow: 0 2px 12px rgba(16, 16, 24, .06);
+}
+/* Auf dem Telefon kann das aufgeklappte Menue hoeher sein als der
+   Bildschirm. Dann scrollt das Menue in sich, nicht die Seite dahinter. */
+@media (max-width: 61.999rem) {
+  .kopf .nav { max-height: calc(100vh - 5rem); max-height: calc(100dvh - 5rem); overflow-y: auto; overscroll-behavior: contain; }
 }
 .marke {
   display: flex; align-items: center; gap: 0.6rem;
@@ -932,6 +945,7 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
    Bewegung — nur wenn der Nutzer sie nicht abgewaehlt hat
    ============================================================ */
 @media print {
+  .kopf-rahmen { position: static; box-shadow: none; }
   .js .an { opacity: 1 !important; transform: none !important; }
   .js .an .karte { animation: none !important; opacity: 1 !important; }
   .spektrum, .nav, .nav__schalter, .waben, .banner__pfeil, .banner__punkte { display: none !important; }
