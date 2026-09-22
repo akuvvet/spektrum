@@ -575,6 +575,55 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
 .karte--projekt:focus-within { outline: 3px solid var(--farbe-akzent); outline-offset: 3px; }
 .karte__flaeche:focus-visible { outline: none; }
 
+/* ---------------------------------------------------- Aktuelles
+   Startseite, direkt unter dem Bildbanner. Ein seitlich blaetterbares
+   Band aus Projektkacheln: auf dem Handy eine gute Karte breit mit
+   angeschnittener naechster, ab Tablet zwei, ab Desktop drei. */
+.aktuelles__kopf {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--abstand-s); margin-bottom: var(--abstand-m);
+}
+.aktuelles__kopf h2 { margin: 0; }
+.aktuelles__kopf h2::before {
+  content: ""; display: inline-block; vertical-align: middle;
+  width: 0.55rem; height: 0.55rem; margin-right: 0.6rem; border-radius: 2px;
+  background: var(--farbe-akzent); transform: rotate(45deg);
+}
+.aktuelles__pfeile { display: flex; gap: 0.5rem; flex: none; }
+.aktuelles__pfeile[hidden] { display: none; }
+.aktuelles__pfeil {
+  width: 2.6rem; height: 2.6rem; display: grid; place-items: center;
+  border-radius: 50%; cursor: pointer; color: var(--farbe-text);
+  background: var(--farbe-flaeche-2); border: 1px solid var(--farbe-linie);
+  transition: background var(--tempo) var(--kurve), color var(--tempo) var(--kurve),
+              border-color var(--tempo) var(--kurve);
+}
+.aktuelles__pfeil svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor;
+  stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.aktuelles__pfeil:hover:not(:disabled) { color: var(--farbe-akzent-tief); border-color: var(--farbe-akzent); background: var(--farbe-flaeche); }
+.aktuelles__pfeil:disabled { opacity: .4; cursor: default; }
+.aktuelles__band {
+  display: grid; grid-auto-flow: column; gap: var(--abstand-m);
+  grid-auto-columns: 85%;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  /* Luft oben und unten, damit Anheben und Schatten der Karte nicht abgeschnitten werden */
+  padding: 8px 2px 1.1rem; margin: -8px -2px 0;
+  scrollbar-width: thin; scrollbar-color: var(--farbe-linie) transparent;
+}
+.aktuelles__band:focus-visible { outline: 3px solid var(--farbe-akzent); outline-offset: 2px; }
+@media (min-width: 40rem) { .aktuelles__band { grid-auto-columns: calc((100% - var(--abstand-m)) / 2); } }
+@media (min-width: 62rem) { .aktuelles__band { grid-auto-columns: calc((100% - 2 * var(--abstand-m)) / 3); } }
+.aktuelles__band > .karte { scroll-snap-align: start; height: auto; min-height: 22rem; }
+.aktuelles__band > .karte:nth-child(3n+1) { --karte-farbe: var(--logo-cyan); }
+.aktuelles__band > .karte:nth-child(3n+2) { --karte-farbe: var(--logo-violett); }
+.aktuelles__band > .karte:nth-child(3n+3) { --karte-farbe: var(--logo-amber); }
+.aktuelles__band > .karte h3 a.karte__flaeche { color: var(--farbe-text); }
+.aktuelles__alle { margin: var(--abstand-s) 0 0; }
+.aktuelles__alle a { font-weight: 600; }
+.aktuelles__alle a::after { content: " →"; }
+@media (prefers-reduced-motion: reduce) { .aktuelles__band { scroll-behavior: auto; } }
+
 /* ---------------------------------------------------- Fenster
    Ohne JavaScript oeffnet :target das Fenster, der Schliesser fuehrt
    zurueck auf #projekte. Mit JavaScript kommen Escape, Klick auf den

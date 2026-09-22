@@ -226,6 +226,123 @@
     starten();
   }
 
+  /* ------------------------------------------------ Aktuelles
+     Band seitlich blaettern. Ausserdem den Stand vom Server holen: Der
+     Adminbereich legt ihn unter assets/projekte/aktuelles.json ab. So
+     stimmt die Startseite auch dann, wenn index.html gerade frisch aus dem
+     Repo kommt. Fehlt die Datei, bleibt einfach stehen, was im HTML steht. */
+  var aktuell = document.getElementById("aktuelles");
+  if (aktuell) {
+    var pfeile = aktuell.querySelector(".aktuelles__pfeile");
+    var knoepfe = pfeile ? pfeile.querySelectorAll("button") : [];
+    var sanft = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var aktBand = function () { return aktuell.querySelector(".aktuelles__band"); };
+
+    var pfeileStellen = function () {
+      var b = aktBand();
+      if (!pfeile || knoepfe.length < 2) { return; }
+      if (!b) { pfeile.hidden = true; return; }
+      pfeile.hidden = b.scrollWidth <= b.clientWidth + 4;
+      knoepfe[0].disabled = b.scrollLeft <= 2;
+      knoepfe[1].disabled = b.scrollLeft + b.clientWidth >= b.scrollWidth - 2;
+    };
+
+    var bandVerbinden = function () {
+      var b = aktBand();
+      if (b) { b.addEventListener("scroll", pfeileStellen, { passive: true }); }
+      pfeileStellen();
+    };
+
+    Array.prototype.forEach.call(knoepfe, function (k) {
+      k.addEventListener("click", function () {
+        var b = aktBand();
+        if (!b) { return; }
+        var karte = b.querySelector(".karte");
+        var luecke = parseFloat(window.getComputedStyle(b).columnGap) || 0;
+        var schritt = karte ? karte.getBoundingClientRect().width + luecke : b.clientWidth;
+        b.scrollBy({ left: schritt * parseInt(k.dataset.richtung, 10), behavior: sanft ? "smooth" : "auto" });
+      });
+    });
+    window.addEventListener("resize", pfeileStellen);
+    bandVerbinden();
+
+    var adresse = function (wert, art) {
+      wert = String(wert || "");
+      if (art === "bild") {
+        return /^assets\/projekte\/[a-z0-9\-]+\.jpe?g$/i.test(wert) ? "/" + wert : "";
+      }
+      if (/^[a-z0-9\-]+\.html(#[a-z0-9\-]+)?$/i.test(wert)) { return "/" + wert; }
+      if (/^(https:\/\/[^\s"<>]+|mailto:[^\s"<>]+|tel:\+?[0-9 ]{5,20})$/i.test(wert)) { return wert; }
+      return "";
+    };
+
+    var neu = function (tag, klasse, text) {
+      var e = document.createElement(tag);
+      if (klasse) { e.className = klasse; }
+      if (text) { e.textContent = text; }
+      return e;
+    };
+
+    var karteBauen = function (m) {
+      var art = neu("article", "karte karte--projekt karte--neu");
+      var bild = adresse(m.bild, "bild");
+      var rahmen = neu("div", "karte__bild" + (bild ? "" : " karte__bild--leer"));
+      if (bild) {
+        var img = neu("img");
+        img.src = bild; img.alt = ""; img.width = 800; img.height = 500;
+        img.loading = "lazy"; img.decoding = "async";
+        rahmen.appendChild(img);
+      } else {
+        rahmen.setAttribute("aria-hidden", "true");
+      }
+      art.appendChild(rahmen);
+      var koerper = neu("div", "karte__koerper");
+      if (m.datum) { koerper.appendChild(neu("p", "karte__zeit", m.datum)); }
+      var h3 = neu("h3");
+      var ziel = adresse(m.link, "link");
+      if (ziel) {
+        var a = neu("a", "karte__flaeche", m.titel);
+        a.href = ziel;
+        h3.appendChild(a);
+      } else {
+        h3.textContent = m.titel;
+      }
+      koerper.appendChild(h3);
+      koerper.appendChild(neu("p", "karte__text", m.text || ""));
+      if (ziel) {
+        var mehr = neu("p", "karte__mehr", "Weiterlesen");
+        mehr.setAttribute("aria-hidden", "true");
+        koerper.appendChild(mehr);
+      }
+      art.appendChild(koerper);
+      return art;
+    };
+
+    if (window.fetch) {
+      window.fetch("/assets/projekte/aktuelles.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d || !Array.isArray(d.meldungen)) { return; }
+          var alt = aktBand() || aktuell.querySelector(".aktuelles > .hinweis");
+          if (!alt) { return; }
+          var ersatz;
+          var liste = d.meldungen.filter(function (m) { return m && m.titel; });
+          if (!liste.length) {
+            ersatz = neu("p", "hinweis", "Zurzeit gibt es keine neuen Meldungen.");
+          } else {
+            ersatz = neu("div", "aktuelles__band");
+            ersatz.tabIndex = 0;
+            ersatz.setAttribute("aria-label", "Meldungen, seitlich blätterbar");
+            liste.forEach(function (m) { ersatz.appendChild(karteBauen(m)); });
+          }
+          alt.parentNode.replaceChild(ersatz, alt);
+          bandVerbinden();
+        })
+        .catch(function () { /* ohne Serverstand bleibt das HTML stehen */ });
+    }
+  }
+
   /* Einblenden beim Scrollen */
   var teile = document.querySelectorAll(".an");
   var ruhig = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -102,3 +102,15 @@ Zwei Seiten sollten **nicht** online gehen, bevor ihre Platzhalter gefüllt sind
 
 - `unterstuetzen.html` — wer mit steuerlicher Absetzbarkeit wirbt, muss den Freistellungsbescheid belegen können
 - `impressum.html` — der unvollständige Vorstandsname ist der am leichtesten angreifbare Punkt der ganzen Seite
+
+---
+
+## 22.09.2026 — Trello „In Arbeit“
+
+| Änderung | Seite | Quelle |
+|---|---|---|
+| Videoprogramm benannt: Zoom, auf Wunsch der Eltern WhatsApp-Videoanruf. Platzhalter entfernt | online-nachhilfe.html | `build/seiten.py` |
+| Neuer Abschnitt 11 „Online-Unterricht über Zoom oder WhatsApp“: Anbieter, verarbeitete Daten, Rechtsgrundlage, USA-Übermittlung (Data Privacy Framework), keine Aufzeichnung. Folgende Abschnitte ab 12 neu nummeriert, Abschnitt 12 verweist auf 11 | datenschutz.html | `build/recht.py` |
+| Neuer Bereich „Aktuelles aus dem Spektrum“ direkt unter dem Bildbanner: seitlich blätterbare Karten mit Bild, Datum, Kurztext, „Weiterlesen“ | index.html | `build/aktuelles_daten.py`, `build/gestaltung.py` |
+| Adminbereich: neue Seite `admin/aktuelles.php` zum Anlegen, Ändern, Löschen, Sortieren und Verstecken von Meldungen samt Bild-Upload | admin/ | `build/admin/aktuelles.php` |
+| Startbestand: drei Meldungen aus den vorhandenen Projekten (DSEE, Förderung NRW, Aschure). Weltflüchtlingstag, Quilling-Workshop und Jugendprojekte liegen als Entwurf bereit, bis Text und Bild da sind | index.html | `build/aktuelles_daten.py` |

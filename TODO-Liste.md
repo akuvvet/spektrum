@@ -3,10 +3,6 @@
 Stand: September 2026. Automatisch aus dem gebauten Paket erzeugt —
 jede Zeile entspricht einem sichtbaren Platzhalter auf der Website.
 
-## online-nachhilfe.html
-
-- [ ] Verwendetes Konferenzprogramm benennen (z. B. Jitsi Meet, BigBlueButton, Zoom). Das muss auch in die Datenschutzerklärung, weil dabei Daten an den Anbieter gehen.
-
 ## projekte.html
 
 - [ ] Laufzeit eintragen
@@ -34,4 +30,4 @@ jede Zeile entspricht einem sichtbaren Platzhalter auf der Website.
 - [ ] Liegt ein schriftliches Schutzkonzept vor? Wenn ja: Beschlussdatum nennen und als PDF unter Transparenz verlinken. Wenn nein: Das ist der wichtigste offene Punkt — ein Schutzkonzept ist für die Förderfähigkeit in der Jugendarbeit inzwischen Standard.
 - [ ] Name und Erreichbarkeit der Ansprechperson für Kinderschutz benennen. Idealerweise jemand, der nicht selbst unterrichtet.
 
-Insgesamt 19 Platzhalter in 4 Dateien.
+Insgesamt 18 Platzhalter in 3 Dateien.

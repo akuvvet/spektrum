@@ -162,3 +162,14 @@ from="140.82.112.0/20,143.55.64.0/20,192.30.252.0/22,185.199.108.0/22" ssh-ed255
 Damit funktioniert der Schlüssel nur von GitHub-Adressen aus. Die Liste ändert sich gelegentlich; die aktuellen Bereiche stehen unter `https://api.github.com/meta` im Feld `actions`. Wenn ein Deploy plötzlich mit *Permission denied* scheitert, ist meist diese Liste veraltet.
 
 Falls der Schlüssel doch einmal abhandenkommt: Zeile aus `~/.ssh/authorized_keys` löschen, neues Paar erzeugen, `SSH_KEY` in GitHub überschreiben. Mehr ist nicht nötig.
+
+## Sonderfall „Aktuelles“ auf der Startseite (seit 22.09.2026)
+
+Die Meldungen unter dem Bildbanner pflegt der Verein unter `/admin/aktuelles.php` (Link „Aktuelles“ oben im Adminbereich, gleiches Passwort). Beim Speichern passiert zweierlei:
+
+1. Der Block zwischen `<!-- AKTUELLES:ANFANG … -->` und `<!-- AKTUELLES:ENDE -->` in `index.html` wird neu geschrieben.
+2. Eine Kopie der sichtbaren Meldungen landet in `assets/projekte/aktuelles.json`. Dieser Ordner ist vom Deploy ausgenommen.
+
+`index.html` kommt bei jedem Deploy aus dem Repo und zeigt dann zunächst wieder den Startbestand. Besucher merken davon nichts, weil `main.js` die Meldungen aus der JSON-Datei nachlädt. Für Suchmaschinen nach einem Deploy einmal im Adminbereich unter „Aktuelles“ auf **„Startseite neu schreiben“** klicken. Die Seite weist selbst darauf hin, wenn das nötig ist.
+
+Gespeichert wird in `daten/aktuelles.json` außerhalb von httpdocs. Bilder liegen wie die Projektbilder in `assets/projekte/`. Ein Bild, das ein Projekt noch zeigt, wird beim Löschen einer Meldung nicht angerührt.

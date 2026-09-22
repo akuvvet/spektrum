@@ -30,7 +30,7 @@ require WEB . '/versand.php';
 
 // Fassung des Adminbereichs — steht unter „Prüfen“, damit man ohne Raten sieht,
 // welche Dateien wirklich auf dem Server liegen.
-const FASSUNG = '2026-09-12 a (SMTP-Versand)';
+const FASSUNG = '2026-09-22 a (Aktuelles auf der Startseite)';
 
 const MARKE_ANFANG = '<!-- PROJEKTE:ANFANG - nicht entfernen, der Adminbereich schreibt hier hinein -->';
 const MARKE_ENDE   = '<!-- PROJEKTE:ENDE -->';
@@ -396,7 +396,21 @@ function max_upload_mb(): float
 function bild_loeschen(string $pfad): void
 {
     if (!preg_match('~^assets/projekte/[pg]-[0-9a-z\-]+\.jpg$~', $pfad)) { return; }
+    if (in_array($pfad, aktuelles_bilder(), true)) { return; }   // zeigt noch eine Meldung
     @unlink(WEB . '/' . $pfad);
+}
+
+/** Bilder, die unter „Aktuelles“ auf der Startseite verwendet werden. */
+function aktuelles_bilder(): array
+{
+    $datei = daten_ordner() . '/aktuelles.json';
+    if (!is_file($datei)) { $datei = __DIR__ . '/start-aktuelles.json'; }
+    $roh = @json_decode((string)@file_get_contents($datei), true);
+    $pfade = [];
+    foreach ((is_array($roh['meldungen'] ?? null) ? $roh['meldungen'] : []) as $m) {
+        if (is_array($m) && !empty($m['bild'])) { $pfade[] = (string)$m['bild']; }
+    }
+    return $pfade;
 }
 
 // ---------------------------------------------------------------- Ausgabe

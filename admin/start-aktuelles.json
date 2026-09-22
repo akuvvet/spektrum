@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "meldungen": [
+    {
+      "id": "dsee-digitale-zukunft",
+      "titel": "Unser Weg in die digitale Zukunft",
+      "datum": "2026",
+      "text": "Mit Unterstützung der Deutschen Stiftung für Engagement und Ehrenamt modernisieren wir unsere Technik: Beamer, Laptops, Kamera sowie Audio- und Mikrofontechnik. Unsere Ehrenamtlichen werden im Umgang damit geschult.",
+      "link": "projekte.html#p-260910-13572c",
+      "bild": "assets/projekte/p-260915-0a4a8f8d.jpg",
+      "sichtbar": true
+    },
+    {
+      "id": "foerderung-nrw",
+      "titel": "Förderung NRW: 2.000 x 1.000 Euro für das Engagement",
+      "datum": "Osterferien",
+      "text": "Mit dieser Förderung stärken wir unsere ehrenamtliche Arbeit und setzen neue Bildungs-, Begegnungs- und Beteiligungsangebote für die Menschen in Solingen um.",
+      "link": "projekte.html#p-deutsch-kompass",
+      "bild": "assets/projekte/p-260915-a2609a86.jpg",
+      "sichtbar": true
+    },
+    {
+      "id": "aschure-alle-in-einem-boot",
+      "titel": "Alle in einem Boot – Begegnung rund um die Aschure",
+      "datum": "Osterferien 2026",
+      "text": "Menschen unterschiedlicher Religionen, Kulturen und Generationen kommen zusammen. Die Aschure steht dabei für Vielfalt, Teilen und Zusammenhalt.",
+      "link": "projekte.html#p-generationsbruecke",
+      "bild": "assets/projekte/p-260915-a131eeed.jpg",
+      "sichtbar": true
+    },
+    {
+      "id": "weltfluechtlingstag",
+      "titel": "Weltflüchtlingstag",
+      "datum": "",
+      "text": "",
+      "link": "",
+      "bild": "",
+      "sichtbar": false
+    },
+    {
+      "id": "quilling-workshop",
+      "titel": "Quilling-Workshop",
+      "datum": "",
+      "text": "",
+      "link": "",
+      "bild": "",
+      "sichtbar": false
+    },
+    {
+      "id": "jugendprojekte",
+      "titel": "Jugendprojekte",
+      "datum": "",
+      "text": "",
+      "link": "jugend.html",
+      "bild": "",
+      "sichtbar": false
+    }
+  ]
+}

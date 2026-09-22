@@ -256,6 +256,7 @@ if (in_array($ansicht, ['bearbeiten', 'loeschen'], true)) {
     <div class="kopf__innen">
       <strong>Projekte verwalten</strong>
       <nav>
+        <a href="aktuelles.php">Aktuelles</a>
         <a href="../projekte.html" target="_blank" rel="noopener">Seite ansehen</a>
         <a href="index.php?ansicht=pruefen">Prüfen</a>
         <form method="post" class="inline">
