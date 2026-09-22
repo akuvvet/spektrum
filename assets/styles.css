@@ -366,6 +366,15 @@ p.hero__gross::after {
   background: linear-gradient(90deg, var(--logo-cyan), var(--logo-violett), var(--logo-amber));
 }
 
+/* Verweis je Folie: fuehrt zum Bereich, um den es auf der Folie geht */
+.hero__weiter { margin: 0 0 var(--abstand-m); }
+.hero__weiter a {
+  color: #fff; font-weight: 700; text-decoration: none;
+  border-bottom: 2px solid var(--logo-amber); padding-bottom: 2px;
+}
+.hero__weiter a::after { content: " \2192"; }
+.hero__weiter a:hover { color: var(--logo-amber); }
+
 /* kleines Kennzeichen ueber der Ueberschrift */
 .hero__kennzeichen {
   display: inline-block; margin: 0 0 1rem;

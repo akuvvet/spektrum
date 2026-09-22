@@ -114,3 +114,11 @@ Zwei Seiten sollten **nicht** online gehen, bevor ihre Platzhalter gefüllt sind
 | Neuer Bereich „Aktuelles aus dem Spektrum“ direkt unter dem Bildbanner: seitlich blätterbare Karten mit Bild, Datum, Kurztext, „Weiterlesen“ | index.html | `build/aktuelles_daten.py`, `build/gestaltung.py` |
 | Adminbereich: neue Seite `admin/aktuelles.php` zum Anlegen, Ändern, Löschen, Sortieren und Verstecken von Meldungen samt Bild-Upload | admin/ | `build/admin/aktuelles.php` |
 | Startbestand: drei Meldungen aus den vorhandenen Projekten (DSEE, Förderung NRW, Aschure). Weltflüchtlingstag, Quilling-Workshop und Jugendprojekte liegen als Entwurf bereit, bis Text und Bild da sind | index.html | `build/aktuelles_daten.py` |
+
+## 22.09.2026 — Bildbanner der Startseite zeigt alle Bereiche
+
+| Änderung | Seite | Quelle |
+|---|---|---|
+| Banner neu aufgeteilt: Nachhilfe (mit Hausaufgabenbetreuung und Prüfungsvorbereitung), Beratung (Lernbegleitung, Orientierung im Schulsystem, Integrationsberatung), Plattform (Jugendgruppe VEGA, Dialog), Projekte. Jede Folie hat einen eigenen Verweis auf ihren Bereich | index.html | `build/gestaltung.py` (`HERO_FOLIEN`) |
+| Abschnitt „Unser Angebot“ von der Startseite entfernt | index.html | `build/seiten.py` |
+| Fotos: bis eigene Bilder da sind, laufen die vier vorhandenen Bannerfotos weiter. Austausch: Datei in `assets/` gleichen Namens ersetzen (1920 × 1080, unter 260 KB) | assets/banner-*.jpg | — |
