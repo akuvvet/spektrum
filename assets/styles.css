@@ -1131,3 +1131,7 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
   .nav__titel summary:hover { background: var(--farbe-flaeche-2); }
   .nav__faecher a { padding: 0.35rem 0.95rem 0.35rem 1.9rem; }
 }
+
+/* Zwei Spalten statt drei, z. B. fuer vier Schwerpunkt-Karten */
+@media (min-width: 62rem) { .raster.raster--zwei { grid-template-columns: repeat(2, 1fr); } }
+.raster--zwei .karte p + p { margin-top: var(--abstand-s); }
