@@ -1111,14 +1111,23 @@ html:not(.js) .banner__pfeil, html:not(.js) .banner__punkte { display: none; }
   }
 }
 
-/* Untermenue Hauptfaecher: Ueberschrift mit eingerueckter Faecherliste */
-.nav__titel > span {
-  display: block; padding: 0.55rem 0 0.2rem var(--abstand-m);
-  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--farbe-gedaempft);
+/* Untermenue Hauptfaecher: aufklappbar per Klick */
+.nav__titel summary {
+  display: block; list-style: none; cursor: pointer;
+  padding: 0.55rem 0 0.55rem var(--abstand-m); font-size: 0.95rem;
+  color: var(--farbe-gedaempft); transition: color var(--tempo) var(--kurve);
 }
+.nav__titel summary::-webkit-details-marker { display: none; }
+.nav__titel summary::after {
+  content: ""; display: inline-block; width: 0.4rem; height: 0.4rem; margin-left: 0.55rem;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: translateY(-0.15rem) rotate(45deg); transition: transform var(--tempo) var(--kurve);
+}
+.nav__titel details[open] > summary::after { transform: translateY(0.05rem) rotate(-135deg); }
+.nav__titel summary:hover { color: var(--farbe-text); }
 .nav__faecher a { padding-left: calc(var(--abstand-m) * 2); }
 @media (min-width: 62rem) {
-  .nav__titel > span { padding: 0.45rem 0.95rem 0.1rem; }
+  .nav__titel summary { padding: 0.45rem 0.95rem; }
+  .nav__titel summary:hover { background: var(--farbe-flaeche-2); }
   .nav__faecher a { padding: 0.35rem 0.95rem 0.35rem 1.9rem; }
 }
