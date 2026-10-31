@@ -2,8 +2,19 @@
 # .htaccess — statische Seite spektrum-nachhilfe.de, Apache
 # ============================================================
 
-# --- HTTPS erzwingen -----------------------------------------
 RewriteEngine On
+
+# --- Umzug: alles geht an spektrum-ev.de ---------------------
+# Dauerhafte Weiterleitung (301). Zertifikatspruefung bleibt erreichbar.
+RewriteRule ^\.well-known/ - [L]
+RewriteRule ^index\.html$ https://spektrum-ev.de/ [R=301,L,QSD]
+RewriteRule ^(danke|404)\.html$ https://spektrum-ev.de/ [R=301,L,QSD]
+RewriteRule ^([a-z0-9-]+)\.html$ https://spektrum-ev.de/$1/ [R=301,L,QSD]
+RewriteRule ^assets/(Satzung2026\.pdf|but_solingen\.pdf)$ https://spektrum-ev.de/wp-content/themes/spektrum-ev/assets/$1 [R=301,L,QSD]
+RewriteRule ^formular\.php$ https://spektrum-ev.de/kontakt/ [R=301,L,QSD]
+RewriteRule ^ https://spektrum-ev.de/ [R=301,L,QSD]
+
+# --- HTTPS erzwingen (greift nur noch fuer .well-known) ------
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]

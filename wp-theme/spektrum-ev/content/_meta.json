@@ -1,0 +1,233 @@
+{
+ "abiturvorbereitung": {
+  "titel": "Abiturvorbereitung in Solingen – Zentralabitur NRW",
+  "ueberschrift": "Abiturvorbereitung",
+  "beschreibung": "Abiturvorbereitung in Solingen für das Zentralabitur NRW: Einzelunterricht, Klausurtraining und mündliche Prüfung – vor Ort oder online.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "anfahrt": {
+  "titel": "Anfahrt und Öffnungszeiten – Nachhilfe in Solingen",
+  "ueberschrift": "Anfahrt und Öffnungszeiten",
+  "beschreibung": "So finden Sie Spektrum Bildungszentrum Solingen e.V. in der Goerdelerstraße 49: Anfahrt mit Bus und Bahn, Parken und Öffnungszeiten der Geschäftsstelle.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "beratung": {
+  "titel": "Beratung in Solingen – Lernbegleitung und Integration",
+  "ueberschrift": "Beratung",
+  "beschreibung": "Beratung in Solingen: Lernbegleitung für Familien, Orientierung im NRW-Schulsystem und Integrationsberatung – kostenlos und vertraulich.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "bildung-und-teilhabe": {
+  "titel": "Bildung und Teilhabe (BuT) – Lernförderung in Solingen",
+  "ueberschrift": "Bildung und Teilhabe (BuT)",
+  "beschreibung": "Lernförderung über das Bildungspaket in Solingen: wer Anspruch hat, wie der BuT-Antrag läuft und wie wir direkt mit der Stadt abrechnen.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "danke": {
+  "titel": "Vielen Dank – Ihre Nachricht ist angekommen",
+  "ueberschrift": "Vielen Dank",
+  "beschreibung": "Ihre Nachricht an Spektrum Bildungszentrum Solingen e.V. wurde übermittelt. Wir melden uns zurück. Telefonisch erreichen Sie uns unter 0212 3820752.",
+  "noindex": true,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "datenschutz": {
+  "titel": "Datenschutz – Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Datenschutzerklärung",
+  "beschreibung": "Datenschutzerklärung von Spektrum Bildungszentrum Solingen e.V.: Hosting, Formulare, Löschfristen, soziale Netzwerke und Ihre Rechte.",
+  "noindex": true,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "deutsch": {
+  "titel": "Deutsch-Nachhilfe in Solingen – Klasse 2 bis Abitur",
+  "ueberschrift": "Deutsch-Nachhilfe",
+  "beschreibung": "Deutsch-Nachhilfe in Solingen für Klasse 2 bis 13: Rechtschreibung, Grammatik, Lesen, Inhaltsangabe und Analyse – einzeln oder in Kleingruppen.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "dialog": {
+  "titel": "Dialogarbeit in Solingen – Begegnung und Austausch",
+  "ueberschrift": "Dialog",
+  "beschreibung": "Dialogarbeit in Solingen: Spektrum Bildungszentrum setzt auf offene Auseinandersetzung statt Polarisierung – Begegnung und Austausch vor Ort.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "elternfragebogen": {
+  "titel": "Elternfragebogen – Anmeldung zur Nachhilfe",
+  "ueberschrift": "Elternfragebogen",
+  "beschreibung": "Elternfragebogen für die Nachhilfe in Solingen: bereitet das kostenlose Erstgespräch vor. Pflicht sind nur Kontaktdaten und Klassenstufe.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "englisch": {
+  "titel": "Englisch-Nachhilfe in Solingen – ab Klasse 4",
+  "ueberschrift": "Englisch-Nachhilfe",
+  "beschreibung": "Englisch-Nachhilfe in Solingen ab Klasse 4: Zeiten, Satzbau, Vokabeltechnik und mündliche Prüfungen – im Einzelunterricht oder in Kleingruppen.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "faq": {
+  "titel": "Häufige Fragen zur Nachhilfe in Solingen",
+  "ueberschrift": "Häufige Fragen",
+  "beschreibung": "Häufige Fragen zur Nachhilfe in Solingen: Anmeldung, Kosten, Bildungspaket, Online-Unterricht, Ferien und Kündigung – kurz beantwortet.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "grundschulfoerderung": {
+  "titel": "Grundschulförderung in Solingen – Klasse 2 bis 4",
+  "ueberschrift": "Grundschulförderung",
+  "beschreibung": "Förderung für Grundschulkinder der Klassen 2 bis 4 in Solingen: Lesen, Rechtschreibung und die Grundrechenarten, in Kleingruppen und im Einzelunterricht.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "hausaufgabenbetreuung": {
+  "titel": "Hausaufgabenbetreuung in Solingen – Montag bis Freitag",
+  "ueberschrift": "Hausaufgabenbetreuung",
+  "beschreibung": "Hausaufgabenbetreuung in Solingen, Montag bis Freitag 15:30–17:00 Uhr. Für Nachhilfeschülerinnen und -schüler von Spektrum kostenlos.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "impressum": {
+  "titel": "Impressum – Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Impressum",
+  "beschreibung": "Impressum von Spektrum Bildungszentrum Solingen e.V. nach § 5 DDG: Anschrift, Kontakt, Vertretung und Eintrag im Vereinsregister.",
+  "noindex": true,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "start": {
+  "titel": "Nachhilfe Solingen – Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Nachhilfe in Solingen – Einzelunterricht und Kleingruppen",
+  "beschreibung": "Nachhilfe in Solingen für Deutsch, Mathe und Englisch – Klasse 2 bis Abitur, einzeln oder in Kleingruppen. Gemeinnütziger Verein, Erstgespräch kostenlos.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "informationen": {
+  "titel": "Informationen – Formulare, Transparenz und Rechtliches",
+  "ueberschrift": "Informationen",
+  "beschreibung": "Informationen von Spektrum Bildungszentrum Solingen: Elternfragebogen, Lehrersuche, Mitgliedschaft, Spenden, Transparenz und Rechtliches.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "jugend": {
+  "titel": "Jugendarbeit in Solingen – die Jugendgruppe VEGA",
+  "ueberschrift": "Jugend",
+  "beschreibung": "Jugendarbeit in Solingen mit der Gruppe VEGA: Freizeitangebote, Ferienlager, Medienkompetenz sowie Sucht- und Gewaltprävention für Jugendliche.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "kontakt": {
+  "titel": "Kontakt – Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Kontakt",
+  "beschreibung": "Kontakt zu Spektrum Bildungszentrum Solingen: Goerdelerstraße 49, Telefon 0212 3820752, E-Mail oder Kontaktformular – wir melden uns zurück.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "lehrersuche": {
+  "titel": "Nachhilfelehrer werden – Bewerbung bei Spektrum Solingen",
+  "ueberschrift": "Lehrersuche",
+  "beschreibung": "Nachhilfelehrer werden in Solingen: Bewerben Sie sich bei Spektrum Bildungszentrum mit Fächern, Klassenstufen und freien Tagen.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "mathematik": {
+  "titel": "Mathe-Nachhilfe in Solingen – Klasse 2 bis Abitur",
+  "ueberschrift": "Mathe-Nachhilfe",
+  "beschreibung": "Mathe-Nachhilfe in Solingen von Klasse 2 bis zum Abitur: Brüche, Gleichungen, Funktionen, Geometrie und Analysis – einzeln oder in Kleingruppen.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "mitglied-werden": {
+  "titel": "Mitglied werden – Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Mitglied werden",
+  "beschreibung": "Werden Sie Mitglied bei Spektrum Bildungszentrum Solingen e.V.: Beitrag ab 10 Euro im Monat. Antrag online stellen, das SEPA-Mandat unterschreiben Sie separat.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "nachhilfe": {
+  "titel": "Nachhilfe in Solingen – Fächer, Ablauf und Anmeldung",
+  "ueberschrift": "Nachhilfe",
+  "beschreibung": "Nachhilfe in Solingen: Deutsch, Mathe, Englisch, Hausaufgabenbetreuung, Abitur- und Prüfungsvorbereitung. Ablauf, Gruppengröße und kostenloses Erstgespräch.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "online-nachhilfe": {
+  "titel": "Online-Nachhilfe aus Solingen – Deutsch, Mathe, Englisch",
+  "ueberschrift": "Online-Nachhilfe",
+  "beschreibung": "Online-Nachhilfe aus Solingen: Einzelunterricht in Deutsch, Mathe und Englisch per Video – mit denselben Lehrkräften wie vor Ort.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "plattform": {
+  "titel": "Plattform – Jugend und Dialog in Solingen",
+  "ueberschrift": "Plattform",
+  "beschreibung": "Die Plattform von Spektrum Bildungszentrum Solingen e.V.: Jugendarbeit mit der Gruppe VEGA und Dialogarbeit für das Zusammenleben in Solingen.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "projekte": {
+  "titel": "Projekte von Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Projekte",
+  "beschreibung": "Übersicht der Projekte von Spektrum Solingen e.V.: FIT-Ferienkurse, Extra-Zeit zum Lernen, Hilfe für die Ukraine, Kinderkunstausstellung, Generationsbrücke und Musikschule.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstra\\u00dfe 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "pruefungsvorbereitung": {
+  "titel": "Prüfungsvorbereitung in Solingen – ZP10 und Abschluss",
+  "ueberschrift": "Prüfungsvorbereitung",
+  "beschreibung": "Prüfungsvorbereitung in Solingen für die ZP10 in NRW: Lernplan, Probeklausuren unter echten Bedingungen und Hilfe gegen Prüfungsangst.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "sprachcafe": {
+  "titel": "Sprachcafé für Frauen – Deutsch üben in Gemeinschaft",
+  "ueberschrift": "Sprachcafé für Frauen",
+  "beschreibung": "Sprachcafé für Frauen in Solingen: Deutsch üben in kleinen Gruppen, Austausch über Kultur und Alltag, ehrenamtlich geleitet, alle Niveaus.",
+  "noindex": true,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "sprachfoerderung": {
+  "titel": "Sprachförderung für Erwachsene in Solingen",
+  "ueberschrift": "Sprachförderung",
+  "beschreibung": "Sprachförderung für Erwachsene in Solingen: das Sprachcafé für Frauen verbindet Sprachpraxis mit Austausch über das Leben in Deutschland.",
+  "noindex": true,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "transparenz": {
+  "titel": "Transparenz – Satzung, Mittelverwendung und Jahresbericht",
+  "ueberschrift": "Transparenz",
+  "beschreibung": "Transparenz bei Spektrum Bildungszentrum Solingen e.V.: Satzung, Gemeinnützigkeit, Mittelherkunft, Mittelverwendung und Jahresbericht.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "ueber-uns": {
+  "titel": "Über uns – Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Über uns",
+  "beschreibung": "Über Spektrum Bildungszentrum Solingen e.V.: seit 2013 gemeinnützig, unabhängig und überkonfessionell..",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "unterstuetzen": {
+  "titel": "Spenden an Spektrum Bildungszentrum Solingen e.V.",
+  "ueberschrift": "Unterstützen Sie uns",
+  "beschreibung": "Spenden an Spektrum Bildungszentrum Solingen e.V.: Bankverbindung, Verwendungszweck, Zuwendungsbestätigung und der vereinfachte Nachweis bis 300 Euro.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "vertragsbedingungen": {
+  "titel": "Vertragsbedingungen und Widerruf – Nachhilfe Solingen",
+  "ueberschrift": "Vertragsbedingungen und Widerruf",
+  "beschreibung": "Vertragsbedingungen für die Nachhilfe in Solingen: Anmeldung, Umfang, Konditionen und Widerrufsrecht bei Spektrum Bildungszentrum Solingen e.V.",
+  "noindex": false,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "404": {
+  "titel": "Seite nicht gefunden – Nachhilfe in Solingen",
+  "ueberschrift": "Diese Seite gibt es nicht",
+  "beschreibung": "Die aufgerufene Seite gibt es nicht mehr. Hier finden Sie den Weg zurück zu den Angeboten von Spektrum Bildungszentrum Solingen e.V.",
+  "noindex": true,
+  "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ }
+}

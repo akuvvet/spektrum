@@ -120,6 +120,8 @@ jobs:
             --exclude '*.zip'
             --exclude 'daten/'
             --exclude 'assets/projekte/'
+            --exclude 'wp-theme/'
+            --exclude 'tools/'
             --exclude '.well-known/'
           )
 
