@@ -16,6 +16,7 @@ ALT, NEU = "spektrum-nachhilfe.de", "spektrum-ev.de"
 THEME = "@THEME@"   # wird zur Laufzeit durch die Theme-URL ersetzt
 
 SEITEN = sorted(p for p in ROOT.glob("*.html") if p.stem != "404")
+FLUENT = {"elternfragebogen": 3, "lehrersuche": 4, "mitglied-werden": 5}   # Fluent-Forms-IDs (tools/fluent_einrichten.php)
 FORMULAR_BEHALTEN = {"kontakt"}   # dieses Formular sendet ueber das Theme (admin-post.php)
 
 
@@ -61,8 +62,6 @@ DATENSCHUTZ = [
      "Angaben, die Sie uns über ein Formular auf dieser Website oder per E-Mail senden, gelangen über den Postausgangsserver der STRATO GmbH"),
     ("Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Es erfolgt keine Speicherung auf dem Webserver und keine Auswertung zu anderen Zwecken.",
      "Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Eine Auswertung zu anderen Zwecken findet nicht statt."),
-    ("Zur Abwehr automatisierter Zusendungen speichern wir beim Absenden eines Formulars einen nicht rückrechenbaren Prüfwert Ihrer IP-Adresse für längstens eine Stunde. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.", ""),
-    ('<tr><th scope="row">Prüfwert der IP-Adresse (Bot-Bremse)</th><td>eine Stunde</td></tr>', ""),
     ('<tr><th scope="row">Server-Logfiles</th><td>7 Tagen</td></tr>',
      '<tr><th scope="row">Server-Logfiles</th><td>bis zur automatischen Rotation und Löschung durch den Hoster</td></tr>'),
     ("Stand September 2026", "Stand Oktober 2026"),
@@ -108,8 +107,13 @@ def main() -> None:
                                     'action="/wp-admin/admin-post.php" method="post">'
                                     '<input type="hidden" name="action" value="spektrum_kontakt">')
             assert "admin-post.php" in inhalt
+            inhalt = inhalt.replace('<div class="wahl wahl--pflicht">', '@RECHNEN@<div class="wahl wahl--pflicht">', 1)
+            assert "@RECHNEN@" in inhalt
         else:
             inhalt = formulare_entfernen(inhalt)
+            if slug in FLUENT:
+                inhalt = inhalt.replace("<!-- Formular: hier mit eigenem Formular-Plugin einfuegen -->", '[fluentform id="%d"]' % FLUENT[slug])
+                assert "[fluentform" in inhalt
         inhalt = inhalt.strip()
         if slug == "datenschutz":
             inhalt = datenschutz_anpassen(inhalt)

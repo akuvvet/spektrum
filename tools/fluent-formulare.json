@@ -1,0 +1,2381 @@
+{
+ "elternfragebogen": {
+  "title": "Elternfragebogen",
+  "form": {
+   "fields": [
+    {
+     "index": 1,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Kontakt</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000001"
+    },
+    {
+     "index": 2,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Wozu: Damit wir Sie für den Termin erreichen können.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000002"
+    },
+    {
+     "index": 3,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "elternname",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 80,
+      "autocomplete": "name"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Name des Elternteils",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Name des Elternteils",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000003"
+    },
+    {
+     "index": 4,
+     "element": "input_text",
+     "attributes": {
+      "type": "tel",
+      "name": "telefon",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 40,
+      "autocomplete": "tel"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Telefonnummer",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Telefonnummer",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000004"
+    },
+    {
+     "index": 5,
+     "element": "input_email",
+     "attributes": {
+      "type": "email",
+      "name": "email",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 120,
+      "autocomplete": "email"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "E-Mail-Adresse",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       },
+       "email": {
+        "value": true,
+        "message": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "E-Mail-Adresse",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000005"
+    },
+    {
+     "index": 6,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "sorgeberechtigt",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Ich bin sorgeberechtigt für dieses Kind und darf diese Angaben machen.",
+      "has_checkbox": true,
+      "admin_field_label": "sorgeberechtigt",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000006"
+    },
+    {
+     "index": 7,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Angaben zum Kind</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000007"
+    },
+    {
+     "index": 8,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Wozu: Die Klassenstufe entscheidet darüber, welche Lehrkraft und welche Gruppe infrage kommen. Mehr brauchen wir an dieser Stelle nicht.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000008"
+    },
+    {
+     "index": 9,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "kindname",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 80
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Name des Kindes",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Name des Kindes",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000009"
+    },
+    {
+     "index": 10,
+     "element": "select",
+     "attributes": {
+      "name": "klassenstufe",
+      "value": "",
+      "id": "",
+      "class": ""
+     },
+     "settings": {
+      "label": "Aktuelle Klassenstufe",
+      "admin_field_label": "",
+      "help_message": "Wir unterrichten ab der 2. Klasse bis zum Abitur.",
+      "container_class": "",
+      "label_placement": "",
+      "placeholder": "Bitte wählen",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Aktuelle Klassenstufe",
+      "template": "select"
+     },
+     "uniqElKey": "el_1700000000010",
+     "options": {
+      "2. Klasse": "2. Klasse",
+      "3. Klasse": "3. Klasse",
+      "4. Klasse": "4. Klasse",
+      "5. Klasse": "5. Klasse",
+      "6. Klasse": "6. Klasse",
+      "7. Klasse": "7. Klasse",
+      "8. Klasse": "8. Klasse",
+      "9. Klasse": "9. Klasse",
+      "10. Klasse": "10. Klasse",
+      "11. Klasse": "11. Klasse",
+      "12. Klasse": "12. Klasse",
+      "13. Klasse": "13. Klasse"
+     }
+    },
+    {
+     "index": 11,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "schulart",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Schulart",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Schulart",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000011",
+     "options": {
+      "Öffentliche Schule": "Öffentliche Schule",
+      "Privatschule": "Privatschule",
+      "Andere": "Andere"
+     }
+    },
+    {
+     "index": 12,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "dazfoerderung",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Wäre Förderung in Deutsch als Zweitsprache sinnvoll?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig. Wir fragen das, weil der Unterricht dann anders aufgebaut wird — mit mehr Sprechanteil und weniger Regelwerk.",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Wäre Förderung in Deutsch als Zweitsprache sinnvoll?",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000012",
+     "options": {
+      "Ja": "Ja",
+      "Nein": "Nein",
+      "Weiß ich nicht": "Weiß ich nicht",
+      "Keine Angabe": "Keine Angabe"
+     }
+    },
+    {
+     "index": 13,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Lernen und Schule</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000013"
+    },
+    {
+     "index": 14,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Wozu: Diese Angaben helfen uns, das Erstgespräch vorzubereiten und den Förderbedarf grob einzuschätzen. Sie können jede Frage überspringen oder „Keine Angabe“ wählen — das Formular lässt sich trotzdem absenden.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000014"
+    },
+    {
+     "index": 15,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "leistung",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Schulische Leistungen insgesamt",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Schulische Leistungen insgesamt",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000015",
+     "options": {
+      "Sehr gut": "Sehr gut",
+      "Gut": "Gut",
+      "Mittel": "Mittel",
+      "Verbesserungsbedürftig": "Verbesserungsbedürftig",
+      "Schwierig": "Schwierig",
+      "Keine Angabe": "Keine Angabe"
+     }
+    },
+    {
+     "index": 16,
+     "element": "input_checkbox",
+     "attributes": {
+      "type": "checkbox",
+      "name": "staerken",
+      "value": []
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Stärken in Fächern",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig · Mehrfachauswahl möglich",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Stärken in Fächern",
+      "template": "inputCheckbox"
+     },
+     "uniqElKey": "el_1700000000016",
+     "options": {
+      "Mathematik": "Mathematik",
+      "Sprache": "Sprache",
+      "Lesen": "Lesen",
+      "Naturwissenschaften": "Naturwissenschaften",
+      "Fremdsprachen": "Fremdsprachen",
+      "Andere": "Andere"
+     }
+    },
+    {
+     "index": 17,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "regelmaessigkeit",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Wie regelmäßig lernt Ihr Kind?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Wie regelmäßig lernt Ihr Kind?",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000017",
+     "options": {
+      "Sehr regelmäßig": "Sehr regelmäßig",
+      "Regelmäßig": "Regelmäßig",
+      "Manchmal": "Manchmal",
+      "Selten": "Selten",
+      "Fast nie": "Fast nie",
+      "Keine Angabe": "Keine Angabe"
+     }
+    },
+    {
+     "index": 18,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "konzentration",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Konzentrationsfähigkeit",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig · Hilft bei der Frage, wie lang eine Einheit sein sollte",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Konzentrationsfähigkeit",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000018",
+     "options": {
+      "Sehr gut": "Sehr gut",
+      "Gut": "Gut",
+      "Mittel": "Mittel",
+      "Schwierig": "Schwierig",
+      "Sehr schwierig": "Sehr schwierig",
+      "Keine Angabe": "Keine Angabe"
+     }
+    },
+    {
+     "index": 19,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Lernverhalten und Erwartungen</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000019"
+    },
+    {
+     "index": 20,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Wozu: Ob ein Kind lieber allein oder in der Gruppe lernt, entscheidet über die Unterrichtsform. Auch hier gilt: Jede Frage darf offen bleiben. Wenn Ihnen eine Frage zu weit geht, lassen Sie sie aus — wir fragen im Gespräch nicht nach.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000020"
+    },
+    {
+     "index": 21,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "sozial",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Lernt Ihr Kind lieber allein oder mit anderen?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig · Entscheidet über Einzelunterricht oder Kleingruppe",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Lernt Ihr Kind lieber allein oder mit anderen?",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000021",
+     "options": {
+      "Sehr gut": "Sehr gut",
+      "Gut": "Gut",
+      "Mittel": "Mittel",
+      "Eher zurückhaltend": "Eher zurückhaltend",
+      "Hat Schwierigkeiten": "Hat Schwierigkeiten",
+      "Keine Angabe": "Keine Angabe"
+     }
+    },
+    {
+     "index": 22,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "gruppenverhalten",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Verhalten in Gruppen",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig · Nur für die Zusammensetzung der Gruppe",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Verhalten in Gruppen",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000022",
+     "options": {
+      "Sehr aktiv": "Sehr aktiv",
+      "Aktiv": "Aktiv",
+      "Mittel": "Mittel",
+      "Zurückhaltend": "Zurückhaltend",
+      "Vermeidet Gruppen": "Vermeidet Gruppen",
+      "Keine Angabe": "Keine Angabe"
+     }
+    },
+    {
+     "index": 23,
+     "element": "input_checkbox",
+     "attributes": {
+      "type": "checkbox",
+      "name": "interessen",
+      "value": []
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Interessen des Kindes",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Freiwillig · Mehrfachauswahl möglich, hilft beim Finden von Beispielen im Unterricht",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Interessen des Kindes",
+      "template": "inputCheckbox"
+     },
+     "uniqElKey": "el_1700000000023",
+     "options": {
+      "Wissenschaft": "Wissenschaft",
+      "Computer": "Computer",
+      "Sport": "Sport",
+      "Kunst": "Kunst",
+      "Musik": "Musik",
+      "Lesen und Bücher": "Lesen und Bücher"
+     }
+    },
+    {
+     "index": 24,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Erstgespräch</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000024"
+    },
+    {
+     "index": 25,
+     "element": "input_checkbox",
+     "attributes": {
+      "type": "checkbox",
+      "name": "verfuegbarkeit",
+      "value": []
+     },
+     "settings": {
+      "container_class": "",
+      "label": "An welchen Tagen sind Sie für ein Erstgespräch erreichbar?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Mehrfachauswahl möglich",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "An welchen Tagen sind Sie für ein Erstgespräch erreichbar?",
+      "template": "inputCheckbox"
+     },
+     "uniqElKey": "el_1700000000025",
+     "options": {
+      "Montag": "Montag",
+      "Dienstag": "Dienstag",
+      "Mittwoch": "Mittwoch",
+      "Donnerstag": "Donnerstag",
+      "Freitag": "Freitag",
+      "Samstag": "Samstag"
+     }
+    },
+    {
+     "index": 26,
+     "element": "textarea",
+     "attributes": {
+      "name": "hinweise",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "rows": 5,
+      "cols": 2
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Gibt es etwas, das wir wissen sollten?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Gibt es etwas, das wir wissen sollten?",
+      "template": "inputTextarea"
+     },
+     "uniqElKey": "el_1700000000026"
+    },
+    {
+     "index": 27,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "@RECHNEN@",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000027"
+    },
+    {
+     "index": 28,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "datenschutz",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Ich habe die <a href=\"/datenschutz/\" target=\"_blank\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.",
+      "has_checkbox": true,
+      "admin_field_label": "datenschutz",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000028"
+    },
+    {
+     "index": 29,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Bitte keine Angaben zu Gesundheit, Diagnosen oder Bankverbindungen in dieses Formular eintragen. Solche Themen besprechen wir persönlich. Was mit Ihren Angaben geschieht und wann wir sie löschen, steht in Abschnitt 8 der <a href=\"/datenschutz/\" target=\"_blank\">Datenschutzerklärung</a>.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000029"
+    }
+   ],
+   "submitButton": {
+    "uniqElKey": "el_1524065200616",
+    "element": "button",
+    "attributes": {
+     "type": "submit",
+     "class": "knopf"
+    },
+    "settings": {
+     "align": "left",
+     "button_style": "",
+     "container_class": "",
+     "help_message": "",
+     "background_color": "",
+     "button_size": "md",
+     "color": "",
+     "button_ui": {
+      "type": "default",
+      "text": "Fragebogen absenden",
+      "img_url": ""
+     }
+    },
+    "editor_options": {
+     "title": "Submit Button"
+    }
+   }
+  },
+  "formSettings": {
+   "confirmation": {
+    "redirectTo": "customUrl",
+    "messageToShow": "Vielen Dank! Wir melden uns bei Ihnen.",
+    "customPage": null,
+    "samePageFormBehavior": "hide_form",
+    "customUrl": "https://spektrum-ev.de/danke/"
+   },
+   "restrictions": {
+    "limitNumberOfEntries": {
+     "enabled": false,
+     "numberOfEntries": null,
+     "period": "total",
+     "limitReachedMsg": ""
+    },
+    "scheduleForm": {
+     "enabled": false,
+     "start": null,
+     "end": null,
+     "pendingMsg": "",
+     "expiredMsg": ""
+    },
+    "requireLogin": {
+     "enabled": false,
+     "requireLoginMsg": ""
+    },
+    "denyEmptySubmission": {
+     "enabled": false,
+     "message": ""
+    }
+   },
+   "layout": {
+    "labelPlacement": "top",
+    "helpMessagePlacement": "with_label",
+    "errorMessagePlacement": "inline",
+    "asteriskPlacement": "asterisk-right"
+   },
+   "delete_after_x_days": "yes",
+   "auto_delete_days": 180
+  },
+  "notifications": {
+   "name": "Mail an die Geschäftsstelle",
+   "sendTo": {
+    "type": "email",
+    "email": "info@spektrum-ev.de",
+    "field": "email",
+    "routing": [
+     {
+      "email": null,
+      "field": null,
+      "operator": "=",
+      "value": null
+     }
+    ]
+   },
+   "fromName": "Website Spektrum",
+   "fromEmail": "info@spektrum-ev.de",
+   "replyTo": "{inputs.email}",
+   "bcc": "",
+   "subject": "Elternfragebogen über die Website",
+   "message": "<p>{all_data}</p><p>Gesendet über das Formular auf spektrum-ev.de</p>",
+   "conditionals": {
+    "status": false,
+    "type": "all",
+    "conditions": [
+     {
+      "field": null,
+      "operator": "=",
+      "value": null
+     }
+    ]
+   },
+   "enabled": true,
+   "email_template": ""
+  }
+ },
+ "lehrersuche": {
+  "title": "Bewerbung als Nachhilfelehrkraft",
+  "form": {
+   "fields": [
+    {
+     "index": 1,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Kontakt</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000001"
+    },
+    {
+     "index": 2,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "name",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 80,
+      "autocomplete": "name"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Name",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Name",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000002"
+    },
+    {
+     "index": 3,
+     "element": "input_email",
+     "attributes": {
+      "type": "email",
+      "name": "email",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 120,
+      "autocomplete": "email"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "E-Mail",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       },
+       "email": {
+        "value": true,
+        "message": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "E-Mail",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000003"
+    },
+    {
+     "index": 4,
+     "element": "input_text",
+     "attributes": {
+      "type": "tel",
+      "name": "telefon",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 40,
+      "autocomplete": "tel"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Telefon",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Telefon",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000004"
+    },
+    {
+     "index": 5,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Qualifikation</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000005"
+    },
+    {
+     "index": 6,
+     "element": "select",
+     "attributes": {
+      "name": "abschluss",
+      "value": "",
+      "id": "",
+      "class": ""
+     },
+     "settings": {
+      "label": "Höchster Abschluss",
+      "admin_field_label": "",
+      "help_message": "",
+      "container_class": "",
+      "label_placement": "",
+      "placeholder": "Bitte wählen",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Höchster Abschluss",
+      "template": "select"
+     },
+     "uniqElKey": "el_1700000000006",
+     "options": {
+      "Schüler": "Schüler",
+      "Abitur": "Abitur",
+      "Studium (laufend)": "Studium (laufend)",
+      "Studium (abgeschlossen)": "Studium (abgeschlossen)"
+     }
+    },
+    {
+     "index": 7,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "studiengang",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 80
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Studiengang oder Fachrichtung",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Studiengang oder Fachrichtung",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000007"
+    },
+    {
+     "index": 8,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "universitaet",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 80
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Universität oder Schule",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Universität oder Schule",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000008"
+    },
+    {
+     "index": 9,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Unterricht</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000009"
+    },
+    {
+     "index": 10,
+     "element": "input_checkbox",
+     "attributes": {
+      "type": "checkbox",
+      "name": "faecher",
+      "value": []
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Fächer",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Mehrfachauswahl möglich",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Fächer",
+      "template": "inputCheckbox"
+     },
+     "uniqElKey": "el_1700000000010",
+     "options": {
+      "Mathematik": "Mathematik",
+      "Deutsch": "Deutsch",
+      "Englisch": "Englisch",
+      "Andere": "Andere"
+     }
+    },
+    {
+     "index": 11,
+     "element": "input_checkbox",
+     "attributes": {
+      "type": "checkbox",
+      "name": "stufen",
+      "value": []
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Klassenstufen",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Mehrfachauswahl möglich",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Klassenstufen",
+      "template": "inputCheckbox"
+     },
+     "uniqElKey": "el_1700000000011",
+     "options": {
+      "Grundschule": "Grundschule",
+      "Sekundarstufe I": "Sekundarstufe I",
+      "Sekundarstufe II": "Sekundarstufe II"
+     }
+    },
+    {
+     "index": 12,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "erfahrung",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Haben Sie Nachhilfeerfahrung?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Haben Sie Nachhilfeerfahrung?",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000012",
+     "options": {
+      "Ja": "Ja",
+      "Nein": "Nein"
+     }
+    },
+    {
+     "index": 13,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "erfahrungdetails",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 200
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Wenn ja: wie lange und in welchen Fächern?",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Wenn ja: wie lange und in welchen Fächern?",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000013"
+    },
+    {
+     "index": 14,
+     "element": "input_checkbox",
+     "attributes": {
+      "type": "checkbox",
+      "name": "tage",
+      "value": []
+     },
+     "settings": {
+      "container_class": "",
+      "label": "An welchen Tagen können Sie unterrichten?",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "Mehrfachauswahl möglich",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "An welchen Tagen können Sie unterrichten?",
+      "template": "inputCheckbox"
+     },
+     "uniqElKey": "el_1700000000014",
+     "options": {
+      "Montag": "Montag",
+      "Dienstag": "Dienstag",
+      "Mittwoch": "Mittwoch",
+      "Donnerstag": "Donnerstag",
+      "Freitag": "Freitag"
+     }
+    },
+    {
+     "index": 15,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "unterrichtsart",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Unterrichtsart",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Unterrichtsart",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000015",
+     "options": {
+      "Online": "Online",
+      "Präsenz": "Präsenz",
+      "Beides": "Beides"
+     }
+    },
+    {
+     "index": 16,
+     "element": "select",
+     "attributes": {
+      "name": "deutschniveau",
+      "value": "",
+      "id": "",
+      "class": ""
+     },
+     "settings": {
+      "label": "Deutschkenntnisse",
+      "admin_field_label": "",
+      "help_message": "Warum wir das fragen: Unterricht, Elterngespräche und schriftliche Rückmeldungen finden auf Deutsch statt. Für die Fächer Deutsch und für die Prüfungsvorbereitung brauchen wir sehr sichere Kenntnisse, für Mathematik in der Mittelstufe genügt weniger. Die Angabe ist freiwillig und dient allein der Zuordnung zu passenden Kursen.",
+      "container_class": "",
+      "label_placement": "",
+      "placeholder": "Bitte wählen",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Deutschkenntnisse",
+      "template": "select"
+     },
+     "uniqElKey": "el_1700000000016",
+     "options": {
+      "A2": "A2",
+      "B1": "B1",
+      "B2": "B2",
+      "C1": "C1",
+      "C2": "C2"
+     }
+    },
+    {
+     "index": 17,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Kinderschutz</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000017"
+    },
+    {
+     "index": 18,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Alle, die bei uns Kinder und Jugendliche unterrichten oder betreuen, legen vor dem ersten Einsatz ein <strong>erweitertes Führungszeugnis</strong> nach § 30a BZRG vor. Grundlage ist § 72a SGB VIII. Wir sehen es ein und geben es zurück — gespeichert wird nur, dass und wann wir es gesehen haben. Für die Bewerbung brauchen Sie es noch nicht.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000018"
+    },
+    {
+     "index": 19,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "fuehrungszeugnis",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Ich bin bereit, vor dem ersten Einsatz ein erweitertes Führungszeugnis vorzulegen.",
+      "has_checkbox": true,
+      "admin_field_label": "fuehrungszeugnis",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000019"
+    },
+    {
+     "index": 20,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "@RECHNEN@",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000020"
+    },
+    {
+     "index": 21,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "datenschutz",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Ich habe die <a href=\"/datenschutz/\" target=\"_blank\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.",
+      "has_checkbox": true,
+      "admin_field_label": "datenschutz",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000021"
+    },
+    {
+     "index": 22,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Zeugnisse und Lebenslauf bitte noch nicht mitschicken – wir fragen sie an, wenn es passt. Bewerbungen ohne Zusammenarbeit löschen wir sechs Monate nach Abschluss des Verfahrens.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000022"
+    }
+   ],
+   "submitButton": {
+    "uniqElKey": "el_1524065200616",
+    "element": "button",
+    "attributes": {
+     "type": "submit",
+     "class": "knopf"
+    },
+    "settings": {
+     "align": "left",
+     "button_style": "",
+     "container_class": "",
+     "help_message": "",
+     "background_color": "",
+     "button_size": "md",
+     "color": "",
+     "button_ui": {
+      "type": "default",
+      "text": "Bewerbung absenden",
+      "img_url": ""
+     }
+    },
+    "editor_options": {
+     "title": "Submit Button"
+    }
+   }
+  },
+  "formSettings": {
+   "confirmation": {
+    "redirectTo": "customUrl",
+    "messageToShow": "Vielen Dank! Wir melden uns bei Ihnen.",
+    "customPage": null,
+    "samePageFormBehavior": "hide_form",
+    "customUrl": "https://spektrum-ev.de/danke/"
+   },
+   "restrictions": {
+    "limitNumberOfEntries": {
+     "enabled": false,
+     "numberOfEntries": null,
+     "period": "total",
+     "limitReachedMsg": ""
+    },
+    "scheduleForm": {
+     "enabled": false,
+     "start": null,
+     "end": null,
+     "pendingMsg": "",
+     "expiredMsg": ""
+    },
+    "requireLogin": {
+     "enabled": false,
+     "requireLoginMsg": ""
+    },
+    "denyEmptySubmission": {
+     "enabled": false,
+     "message": ""
+    }
+   },
+   "layout": {
+    "labelPlacement": "top",
+    "helpMessagePlacement": "with_label",
+    "errorMessagePlacement": "inline",
+    "asteriskPlacement": "asterisk-right"
+   },
+   "delete_after_x_days": "yes",
+   "auto_delete_days": 180
+  },
+  "notifications": {
+   "name": "Mail an die Geschäftsstelle",
+   "sendTo": {
+    "type": "email",
+    "email": "info@spektrum-ev.de",
+    "field": "email",
+    "routing": [
+     {
+      "email": null,
+      "field": null,
+      "operator": "=",
+      "value": null
+     }
+    ]
+   },
+   "fromName": "Website Spektrum",
+   "fromEmail": "info@spektrum-ev.de",
+   "replyTo": "{inputs.email}",
+   "bcc": "",
+   "subject": "Bewerbung als Nachhilfelehrkraft über die Website",
+   "message": "<p>{all_data}</p><p>Gesendet über das Formular auf spektrum-ev.de</p>",
+   "conditionals": {
+    "status": false,
+    "type": "all",
+    "conditions": [
+     {
+      "field": null,
+      "operator": "=",
+      "value": null
+     }
+    ]
+   },
+   "enabled": true,
+   "email_template": ""
+  }
+ },
+ "mitglied-werden": {
+  "title": "Aufnahmeantrag Mitgliedschaft",
+  "form": {
+   "fields": [
+    {
+     "index": 1,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Person</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000001"
+    },
+    {
+     "index": 2,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "vorname",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 60,
+      "autocomplete": "given-name"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Vorname",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Vorname",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000002"
+    },
+    {
+     "index": 3,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "nachname",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 60,
+      "autocomplete": "family-name"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Nachname",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Nachname",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000003"
+    },
+    {
+     "index": 4,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "geburtsjahr",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 4
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Geburtsjahr",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Geburtsjahr",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000004"
+    },
+    {
+     "index": 5,
+     "element": "input_text",
+     "attributes": {
+      "type": "tel",
+      "name": "telefon",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 40,
+      "autocomplete": "tel"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Telefon",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Telefon",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000005"
+    },
+    {
+     "index": 6,
+     "element": "input_email",
+     "attributes": {
+      "type": "email",
+      "name": "email",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 120,
+      "autocomplete": "email"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "E-Mail",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       },
+       "email": {
+        "value": true,
+        "message": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "E-Mail",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000006"
+    },
+    {
+     "index": 7,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Anschrift</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000007"
+    },
+    {
+     "index": 8,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "strasse",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 100,
+      "autocomplete": "street-address"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Straße und Hausnummer",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Straße und Hausnummer",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000008"
+    },
+    {
+     "index": 9,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "plz",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 5,
+      "autocomplete": "postal-code"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "PLZ",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "PLZ",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000009"
+    },
+    {
+     "index": 10,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "ort",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 60,
+      "autocomplete": "address-level2"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Ort",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Ort",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000010"
+    },
+    {
+     "index": 11,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Mitgliedsbeitrag</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000011"
+    },
+    {
+     "index": 12,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "beitragab",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "",
+      "maxlength": 20
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Mitgliedsbeitrag ab (Monat und Jahr, z. B. 10/2026)",
+      "label_placement": "",
+      "help_message": "",
+      "admin_field_label": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Mitgliedsbeitrag ab (Monat und Jahr, z. B. 10/2026)",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_1700000000012"
+    },
+    {
+     "index": 13,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "beitrag",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Beitragshöhe",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Beitragshöhe",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000013",
+     "options": {
+      "10 € monatlich": "10 € monatlich",
+      "15 € monatlich": "15 € monatlich",
+      "20 € monatlich": "20 € monatlich",
+      "25 € monatlich": "25 € monatlich",
+      "50 € monatlich": "50 € monatlich"
+     }
+    },
+    {
+     "index": 14,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "zahlweise",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Zahlungsweg",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zahlungsweg",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000014",
+     "options": {
+      "SEPA-Lastschrift": "SEPA-Lastschrift",
+      "Überweisung": "Überweisung"
+     }
+    },
+    {
+     "index": 15,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Zusätzliche Spende</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000015"
+    },
+    {
+     "index": 16,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "spende",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Spendenbetrag",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Spendenbetrag",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000016",
+     "options": {
+      "keine": "keine",
+      "10 €": "10 €",
+      "25 €": "25 €",
+      "50 €": "50 €",
+      "75 €": "75 €",
+      "100 €": "100 €"
+     }
+    },
+    {
+     "index": 17,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "rhythmus",
+      "value": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "Ausführungsrhythmus der Spende",
+      "admin_field_label": "",
+      "label_placement": "",
+      "display_type": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Ausführungsrhythmus der Spende",
+      "template": "inputRadio"
+     },
+     "uniqElKey": "el_1700000000017",
+     "options": {
+      "keine": "keine",
+      "einmalig": "einmalig",
+      "monatlich": "monatlich",
+      "jährlich": "jährlich"
+     }
+    },
+    {
+     "index": 18,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<h3>Erklärungen</h3>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000018"
+    },
+    {
+     "index": 19,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "infomail",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Ich bin damit einverstanden, dass der Verein mich per E-Mail über seine Arbeit informiert. Ich kann das jederzeit widerrufen.",
+      "has_checkbox": true,
+      "admin_field_label": "infomail",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000019"
+    },
+    {
+     "index": 20,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "satzung",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Der Inhalt der <a href=\"/wp-content/themes/spektrum-ev/assets/Satzung2026.pdf\" target=\"_blank\">Vereinssatzung</a> ist mir bekannt und ich erkenne ihn an.",
+      "has_checkbox": true,
+      "admin_field_label": "satzung",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000020"
+    },
+    {
+     "index": 21,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "@RECHNEN@",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000021"
+    },
+    {
+     "index": 22,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "datenschutz",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "Ich habe die <a href=\"/datenschutz/\" target=\"_blank\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.",
+      "has_checkbox": true,
+      "admin_field_label": "datenschutz",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "Bitte füllen Sie dieses Feld aus.",
+        "global": false
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Zustimmung",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_1700000000022"
+    },
+    {
+     "index": 23,
+     "element": "custom_html",
+     "attributes": [],
+     "settings": {
+      "html_codes": "<p class=\"hinweis\">Die Satzung können Sie hier lesen: <a href=\"/wp-content/themes/spektrum-ev/assets/Satzung2026.pdf\" target=\"_blank\">Satzung herunterladen (PDF, Stand März 2026)</a>.</p>",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_1700000000023"
+    }
+   ],
+   "submitButton": {
+    "uniqElKey": "el_1524065200616",
+    "element": "button",
+    "attributes": {
+     "type": "submit",
+     "class": "knopf"
+    },
+    "settings": {
+     "align": "left",
+     "button_style": "",
+     "container_class": "",
+     "help_message": "",
+     "background_color": "",
+     "button_size": "md",
+     "color": "",
+     "button_ui": {
+      "type": "default",
+      "text": "Antrag absenden",
+      "img_url": ""
+     }
+    },
+    "editor_options": {
+     "title": "Submit Button"
+    }
+   }
+  },
+  "formSettings": {
+   "confirmation": {
+    "redirectTo": "customUrl",
+    "messageToShow": "Vielen Dank! Wir melden uns bei Ihnen.",
+    "customPage": null,
+    "samePageFormBehavior": "hide_form",
+    "customUrl": "https://spektrum-ev.de/danke/"
+   },
+   "restrictions": {
+    "limitNumberOfEntries": {
+     "enabled": false,
+     "numberOfEntries": null,
+     "period": "total",
+     "limitReachedMsg": ""
+    },
+    "scheduleForm": {
+     "enabled": false,
+     "start": null,
+     "end": null,
+     "pendingMsg": "",
+     "expiredMsg": ""
+    },
+    "requireLogin": {
+     "enabled": false,
+     "requireLoginMsg": ""
+    },
+    "denyEmptySubmission": {
+     "enabled": false,
+     "message": ""
+    }
+   },
+   "layout": {
+    "labelPlacement": "top",
+    "helpMessagePlacement": "with_label",
+    "errorMessagePlacement": "inline",
+    "asteriskPlacement": "asterisk-right"
+   },
+   "delete_after_x_days": "yes",
+   "auto_delete_days": 180
+  },
+  "notifications": {
+   "name": "Mail an die Geschäftsstelle",
+   "sendTo": {
+    "type": "email",
+    "email": "info@spektrum-ev.de",
+    "field": "email",
+    "routing": [
+     {
+      "email": null,
+      "field": null,
+      "operator": "=",
+      "value": null
+     }
+    ]
+   },
+   "fromName": "Website Spektrum",
+   "fromEmail": "info@spektrum-ev.de",
+   "replyTo": "{inputs.email}",
+   "bcc": "",
+   "subject": "Aufnahmeantrag Mitgliedschaft über die Website",
+   "message": "<p>{all_data}</p><p>Gesendet über das Formular auf spektrum-ev.de</p>",
+   "conditionals": {
+    "status": false,
+    "type": "all",
+    "conditions": [
+     {
+      "field": null,
+      "operator": "=",
+      "value": null
+     }
+    ]
+   },
+   "enabled": true,
+   "email_template": ""
+  }
+ }
+}

@@ -31,6 +31,44 @@ add_action('init', function () {
 });
 add_filter('the_content', 'spektrum_ersetzen', 99);
 
+/**
+ * Sicherheitsfrage pruefen: Loesung muss zur signierten Aufgabe passen, frisch (3 Sekunden bis 2 Stunden)
+ * und noch nie benutzt sein. $verbrauchen = true macht die Aufgabe danach ungueltig.
+ */
+function spektrum_rechenfrage_ok(string $antwort, string $token, bool $verbrauchen): bool
+{
+    $antwort = trim($antwort);
+    [$zeit, $siegel] = array_pad(explode('.', $token, 2), 2, '');
+    $zeit = (int)$zeit;
+    $marke = 'spk_t_' . substr($siegel, 0, 24);
+    if (!ctype_digit($antwort) || $zeit < time() - 2 * HOUR_IN_SECONDS || $zeit > time() - 3
+        || !hash_equals(hash_hmac('sha256', (int)$antwort . '|' . $zeit, wp_salt('nonce')), $siegel)
+        || get_transient($marke) !== false) {
+        return false;
+    }
+    if ($verbrauchen) {
+        set_transient($marke, 1, 2 * HOUR_IN_SECONDS);
+    }
+    return true;
+}
+
+/** Sicherheitsfrage fuer das Kontaktformular: Aufgabe und signierte Loesung, ohne Dienst von Dritten. */
+function spektrum_rechenfrage(string $html): string
+{
+    if (!str_contains($html, '@RECHNEN@')) {
+        return $html;
+    }
+    $a = random_int(2, 9);
+    $b = random_int(2, 9);
+    $zeit = time();
+    $token = $zeit . '.' . hash_hmac('sha256', ($a + $b) . '|' . $zeit, wp_salt('nonce'));
+    $feld = '<p class="feld"><label for="rechnen">Sicherheitsfrage: Was ergibt ' . $a . ' + ' . $b . '? <span class="pflicht">*</span></label>'
+        . '<input type="text" id="rechnen" name="rechnen" inputmode="numeric" pattern="[0-9]*" maxlength="3" required autocomplete="off">'
+        . '<input type="hidden" name="rtoken" value="' . esc_attr($token) . '"></p>';
+    return str_replace('@RECHNEN@', $feld, $html);
+}
+add_filter('the_content', 'spektrum_rechenfrage', 99);
+
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('editor-styles');
@@ -167,6 +205,10 @@ function spektrum_kontakt_senden(): void
         $weiter('/danke/');
     }
 
+    if (!spektrum_rechenfrage_ok((string)($_POST['rechnen'] ?? ''), (string)($_POST['rtoken'] ?? ''), true)) {
+        $weiter('/kontakt/?fehler=4');
+    }
+
     $name      = $sauber((string)($_POST['name'] ?? ''), 80);
     $email     = $sauber((string)($_POST['email'] ?? ''), 120);
     $betreff   = $sauber((string)($_POST['betreff'] ?? ''), 120);
@@ -175,6 +217,27 @@ function spektrum_kontakt_senden(): void
     if (($_POST['datenschutz'] ?? '') !== 'ja' || $name === '' || $nachricht === ''
         || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $weiter('/kontakt/?fehler=1');
+    }
+
+    // Nachrichten voller Links sind fast immer Werbung.
+    if (preg_match_all('~https?://|www\.~i', $nachricht . ' ' . $betreff) > 2) {
+        $weiter('/kontakt/?fehler=1');
+    }
+
+    // Bremse je Besucher (nicht rueckrechenbarer Pruefwert, eine Stunde) und insgesamt je Stunde.
+    $jetzt = time();
+    $bremse = static function (string $schluessel, int $max) use ($jetzt): bool {
+        $zeiten = array_values(array_filter((array)get_transient($schluessel), static fn($z) => (int)$z > $jetzt - HOUR_IN_SECONDS));
+        if (count($zeiten) >= $max) {
+            return false;
+        }
+        $zeiten[] = $jetzt;
+        set_transient($schluessel, $zeiten, HOUR_IN_SECONDS);
+        return true;
+    };
+    $ip = 'spk_ip_' . substr(hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . wp_salt()), 0, 32);
+    if (!$bremse($ip, 5) || !$bremse('spk_alle', 30)) {
+        $weiter('/kontakt/?fehler=2');
     }
 
     $titel  = 'Kontaktanfrage über die Website';
@@ -186,7 +249,9 @@ function spektrum_kontakt_senden(): void
         . str_pad('Nachricht:', 32) . $nachricht . "\n"
         . "\n" . str_repeat('-', 60) . "\nGesendet über das Formular auf spektrum-ev.de\n";
 
-    define('SPEKTRUM_VERSAND', true);
+    if (!defined('SPEKTRUM_VERSAND')) {
+        define('SPEKTRUM_VERSAND', true);
+    }
     require_once __DIR__ . '/versand.php';
     [$ok, $weg, $meldung] = versenden(SPEKTRUM_EMPFAENGER, SPEKTRUM_ABSENDER, $titel, $koerper, $email);
 
@@ -201,3 +266,43 @@ function spektrum_kontakt_senden(): void
 }
 add_action('admin_post_nopriv_spektrum_kontakt', 'spektrum_kontakt_senden');
 add_action('admin_post_spektrum_kontakt', 'spektrum_kontakt_senden');
+
+/** Fluent Forms: Formulare mit Sicherheitsfrage (Platzhalter @RECHNEN@) pruefen; Aufgabe erst bei fehlerfreiem Absenden verbrauchen. */
+add_filter('fluentform/validation_errors', function ($fehler, $daten, $formular) {
+    if (!str_contains((string)($formular->form_fields ?? ''), '@RECHNEN@')) {
+        return $fehler;
+    }
+    $antwort = (string)($daten['rechnen'] ?? '');
+    $token = (string)($daten['rtoken'] ?? '');
+    if (!spektrum_rechenfrage_ok($antwort, $token, empty($fehler))) {
+        $fehler['rechnen'] = ['rechnen' => 'Die Sicherheitsfrage wurde falsch beantwortet oder ist abgelaufen. Bitte laden Sie die Seite neu.'];
+    }
+    return $fehler;
+}, 999, 3);
+
+/** Mails (Fluent Forms, WordPress) ueber den STRATO-Postausgang, sonst werden sie wegen DMARC abgelehnt. */
+add_action('phpmailer_init', function ($mail) {
+    if (defined('WPMS_PLUGIN_VER')) {   // WP Mail SMTP uebernimmt den Versand
+        return;
+    }
+    if (!defined('SPEKTRUM_VERSAND')) {
+        define('SPEKTRUM_VERSAND', true);
+    }
+    require_once __DIR__ . '/versand.php';
+    $z = zugang_lesen();
+    if ($z === []) {
+        return;
+    }
+    $mail->isSMTP();
+    $mail->Host = (string)$z['host'];
+    $mail->Port = (int)$z['port'];
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = ((string)$z['sicher'] === 'ssl') ? 'ssl' : 'tls';
+    $mail->Username = (string)$z['benutzer'];
+    $mail->Password = (string)$z['passwort'];
+    $mail->CharSet = 'UTF-8';
+    $mail->setFrom((string)$z['absender'], (string)$z['name'], false);
+    $mail->Sender = (string)$z['absender'];
+});
+add_filter('wp_mail_from', fn() => SPEKTRUM_ABSENDER);
+add_filter('wp_mail_from_name', fn() => 'Website Spektrum');

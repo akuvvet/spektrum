@@ -29,7 +29,8 @@
     var meldungen = {
       "1": "Die Angaben waren unvollst\u00e4ndig oder die E-Mail-Adresse war ung\u00fcltig. Bitte pr\u00fcfen Sie die Pflichtfelder und die Zustimmung zur Datenschutzerkl\u00e4rung.",
       "2": "Es wurden zu viele Nachrichten in kurzer Zeit gesendet. Bitte versuchen Sie es in einer Stunde erneut oder rufen Sie uns an: 0212 3820752.",
-      "3": "Die Nachricht konnte technisch nicht versendet werden. Bitte schreiben Sie an info@spektrum-ev.de oder rufen Sie an: 0212 3820752."
+      "3": "Die Nachricht konnte technisch nicht versendet werden. Bitte schreiben Sie an info@spektrum-ev.de oder rufen Sie an: 0212 3820752.",
+      "4": "Die Sicherheitsfrage wurde falsch beantwortet oder ist abgelaufen. Bitte versuchen Sie es noch einmal."
     };
     var code = new URLSearchParams(window.location.search).get("fehler");
     if (code && Object.prototype.hasOwnProperty.call(meldungen, code)) {
