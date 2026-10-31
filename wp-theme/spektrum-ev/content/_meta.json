@@ -229,5 +229,13 @@
   "beschreibung": "Die aufgerufene Seite gibt es nicht mehr. Hier finden Sie den Weg zurück zu den Angeboten von Spektrum Bildungszentrum Solingen e.V.",
   "noindex": true,
   "jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"EducationalOrganization\",\n  \"@id\": \"https://spektrum-ev.de/#verein\",\n  \"name\": \"Spektrum Bildungszentrum Solingen e.V.\",\n  \"alternateName\": \"Spektrum\",\n  \"url\": \"https://spektrum-ev.de/\",\n  \"telephone\": \"+49 212 3820752\",\n  \"email\": \"info@spektrum-ev.de\",\n  \"foundingDate\": \"2013-10-28\",\n  \"nonprofitStatus\": \"NonprofitType\",\n  \"areaServed\": [\n    { \"@type\": \"City\", \"name\": \"Solingen\" },\n    { \"@type\": \"AdministrativeArea\", \"name\": \"Bergisches Land\" }\n  ],\n  \"knowsLanguage\": \"de\",\n  \"sameAs\": [\n    \"https://www.instagram.com/spektrum_ev/\",\n    \"https://www.facebook.com/profile.php?id=61563562695903\"\n  ],\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Goerdelerstraße 49\",\n    \"postalCode\": \"42651\",\n    \"addressLocality\": \"Solingen\",\n    \"addressRegion\": \"Nordrhein-Westfalen\",\n    \"addressCountry\": \"DE\"\n  }\n}"
+ },
+ "alle-in-einem-boot": {
+  "titel": "Alle in einem Boot – Interreligiöse Begegnung am 22. November 2026 | Spektrum Solingen",
+  "ueberschrift": "Alle in einem Boot",
+  "beschreibung": "Begegnungsfest „Die Arche Noahs und die Aschure“ am 22. November 2026 im Zentrum Frieden in Solingen. Programm und Anmeldung bis zum 15. November.",
+  "noindex": false,
+  "jsonld": "{\"@context\": \"https://schema.org\", \"@type\": \"Event\", \"name\": \"Alle in einem Boot – Die Arche Noahs und die Aschure\", \"startDate\": \"2026-11-22T14:30:00+01:00\", \"endDate\": \"2026-11-22T18:00:00+01:00\", \"eventAttendanceMode\": \"https://schema.org/OfflineEventAttendanceMode\", \"location\": {\"@type\": \"Place\", \"name\": \"Zentrum Frieden (Fokolar-Saal)\", \"address\": {\"@type\": \"PostalAddress\", \"streetAddress\": \"Wupperstraße 120\", \"postalCode\": \"42651\", \"addressLocality\": \"Solingen\", \"addressCountry\": \"DE\"}}, \"organizer\": {\"@type\": \"Organization\", \"name\": \"Spektrum Bildungszentrum Solingen e.V.\", \"url\": \"https://spektrum-ev.de/\"}, \"url\": \"https://spektrum-ev.de/projekte/alle-in-einem-boot/\"}",
+  "parent": "projekte"
  }
 }

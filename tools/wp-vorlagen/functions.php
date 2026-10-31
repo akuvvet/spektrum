@@ -164,6 +164,7 @@ add_action('after_switch_theme', function () {
             'post_type'    => 'page',
             'post_status'  => 'publish',
             'post_name'    => $slug,
+            'post_parent'  => !empty($e['parent']) ? (int)(get_page_by_path($e['parent'])->ID ?? 0) : 0,
             'post_title'   => $e['ueberschrift'],
             'post_content' => spektrum_ersetzen((string)file_get_contents(__DIR__ . '/content/' . $slug . '.html')),
         ]);

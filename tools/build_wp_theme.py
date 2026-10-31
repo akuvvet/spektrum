@@ -134,6 +134,14 @@ def main() -> None:
             "noindex": 'content="noindex' in h,
             "jsonld": ld.group(1).strip().replace(ALT, NEU) if ld else "",
         }
+    # Zusatzseiten, die es auf der statischen Seite nicht gibt (tools/seiten/*.html + .json)
+    waben = re.search(r"<svg.*?</svg>", (OUT / "content" / "kontakt.html").read_text(encoding="utf-8"), re.S).group(0)
+    for seite in sorted((ROOT / "tools" / "seiten").glob("*.html")):
+        e = json.loads(seite.with_suffix(".json").read_text(encoding="utf-8"))
+        inhalt = umschreiben(seite.read_text(encoding="utf-8").replace("@WABEN@", waben)).strip()
+        (OUT / "content" / seite.name).write_text(als_bloecke(inhalt), encoding="utf-8")
+        meta[seite.stem] = {"titel": e["titel"], "ueberschrift": e["ueberschrift"], "beschreibung": e["beschreibung"],
+                            "noindex": False, "jsonld": json.dumps(e["jsonld"], ensure_ascii=False), "parent": e.get("parent", "")}
     (OUT / "content" / "_meta.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 

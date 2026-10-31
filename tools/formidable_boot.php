@@ -40,7 +40,8 @@ $mail   = $feld('email', 'E-Mail-Adresse', true, 2, ['classes' => 'frm_half', 'i
 $tel    = $feld('text', 'Telefonnummer (freiwillig)', false, 3, ['classes' => 'frm_first frm_half']);
 $anzahl = $feld('select', 'Anzahl der Personen (mit Ihnen)', true, 4, ['classes' => 'frm_half'], array_merge([''], array_map('strval', range(1, 10))));
 $hinweis = $feld('textarea', 'Anmerkungen (freiwillig)', false, 5, ['max' => 4, 'beschreibung' => 'Zum Beispiel die Namen weiterer Personen. Bitte keine Angaben zu Gesundheit oder Religion.']);
-$dse    = $feld('checkbox', 'Datenschutz', true, 6, ['blank' => 'Bitte stimmen Sie der Datenschutzerklärung zu.'],
+$rechnen = $feld('html', 'Sicherheitsfrage', false, 6, ['beschreibung' => '@RECHNEN@']);
+$dse    = $feld('checkbox', 'Datenschutz', true, 7, ['blank' => 'Bitte stimmen Sie der Datenschutzerklärung zu.'],
     ['Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Anmeldung einverstanden.']);
 
 $aktion = [
