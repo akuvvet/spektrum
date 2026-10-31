@@ -267,20 +267,7 @@ function spektrum_kontakt_senden(): void
 add_action('admin_post_nopriv_spektrum_kontakt', 'spektrum_kontakt_senden');
 add_action('admin_post_spektrum_kontakt', 'spektrum_kontakt_senden');
 
-/** Fluent Forms: Formulare mit Sicherheitsfrage (Platzhalter @RECHNEN@) pruefen; Aufgabe erst bei fehlerfreiem Absenden verbrauchen. */
-add_filter('fluentform/validation_errors', function ($fehler, $daten, $formular) {
-    if (!str_contains((string)($formular->form_fields ?? ''), '@RECHNEN@')) {
-        return $fehler;
-    }
-    $antwort = (string)($daten['rechnen'] ?? '');
-    $token = (string)($daten['rtoken'] ?? '');
-    if (!spektrum_rechenfrage_ok($antwort, $token, empty($fehler))) {
-        $fehler['rechnen'] = ['rechnen' => 'Die Sicherheitsfrage wurde falsch beantwortet oder ist abgelaufen. Bitte laden Sie die Seite neu.'];
-    }
-    return $fehler;
-}, 999, 3);
-
-/** Mails (Fluent Forms, WordPress) ueber den STRATO-Postausgang, sonst werden sie wegen DMARC abgelehnt. */
+/** Mails (Formulare, WordPress) ueber den STRATO-Postausgang, sonst werden sie wegen DMARC abgelehnt. */
 add_action('phpmailer_init', function ($mail) {
     if (defined('WPMS_PLUGIN_VER')) {   // WP Mail SMTP uebernimmt den Versand
         return;
@@ -306,3 +293,52 @@ add_action('phpmailer_init', function ($mail) {
 });
 add_filter('wp_mail_from', fn() => SPEKTRUM_ABSENDER);
 add_filter('wp_mail_from_name', fn() => 'Website Spektrum');
+
+/** Formidable Forms: Formulare mit Sicherheitsfrage (HTML-Feld mit @RECHNEN@) pruefen; verbraucht wird die Aufgabe erst nach dem Speichern. */
+function spektrum_formidable_hat_rechenfrage(int $formId): bool
+{
+    foreach (FrmField::get_all_for_form($formId) as $feld) {
+        if ($feld->type === 'html' && str_contains((string)$feld->description, '@RECHNEN@')) {
+            return true;
+        }
+    }
+    return false;
+}
+add_filter('frm_validate_entry', function ($fehler, $werte) {
+    if (!spektrum_formidable_hat_rechenfrage((int)($werte['form_id'] ?? 0))) {
+        return $fehler;
+    }
+    if (!spektrum_rechenfrage_ok((string)($_POST['rechnen'] ?? ''), (string)($_POST['rtoken'] ?? ''), false)) {
+        $fehler['rechnen'] = 'Die Sicherheitsfrage wurde falsch beantwortet oder ist abgelaufen. Bitte versuchen Sie es noch einmal.';
+    }
+    return $fehler;
+}, 10, 2);
+add_action('frm_after_create_entry', function ($eintrag, $formId) {
+    if (!spektrum_formidable_hat_rechenfrage((int)$formId)) {
+        return;
+    }
+    $siegel = explode('.', (string)($_POST['rtoken'] ?? ''), 2)[1] ?? '';
+    if ($siegel !== '') {
+        set_transient('spk_t_' . substr($siegel, 0, 24), 1, 2 * HOUR_IN_SECONDS);
+    }
+}, 10, 2);
+
+/** Datenschutz: Eintraege der Formulare werden nach 180 Tagen automatisch geloescht (taeglich). */
+add_action('init', function () {
+    if (!wp_next_scheduled('spektrum_eintraege_loeschen')) {
+        wp_schedule_event(time() + HOUR_IN_SECONDS, 'daily', 'spektrum_eintraege_loeschen');
+    }
+});
+add_action('spektrum_eintraege_loeschen', function () {
+    if (!class_exists('FrmEntry')) {
+        return;
+    }
+    global $wpdb;
+    $alt = $wpdb->get_col($wpdb->prepare(
+        "SELECT id FROM {$wpdb->prefix}frm_items WHERE created_at < %s",
+        gmdate('Y-m-d H:i:s', time() - 180 * DAY_IN_SECONDS)
+    ));
+    foreach ($alt as $id) {
+        FrmEntry::destroy((int)$id);
+    }
+});

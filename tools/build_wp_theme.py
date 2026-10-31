@@ -16,7 +16,7 @@ ALT, NEU = "spektrum-nachhilfe.de", "spektrum-ev.de"
 THEME = "@THEME@"   # wird zur Laufzeit durch die Theme-URL ersetzt
 
 SEITEN = sorted(p for p in ROOT.glob("*.html") if p.stem != "404")
-FLUENT = {"elternfragebogen": 3, "lehrersuche": 4, "mitglied-werden": 5}   # Fluent-Forms-IDs (tools/fluent_einrichten.php)
+FORMULAR_IDS = {"elternfragebogen": 9, "lehrersuche": 10, "mitglied-werden": 11}   # Formidable-IDs (tools/formidable_formulare.php)
 FORMULAR_BEHALTEN = {"kontakt"}   # dieses Formular sendet ueber das Theme (admin-post.php)
 
 
@@ -53,15 +53,19 @@ def als_bloecke(html: str) -> str:
 # Anpassungen der Datenschutzerklaerung fuer die WordPress-Seite (alt -> neu).
 DATENSCHUTZ = [
     ("Diese Website ist als rein statische Seite aufgebaut. Es werden keine Cookies gesetzt, keine Analyse- oder Trackingdienste eingesetzt und keine Inhalte von Drittanbietern nachgeladen. Schriften, Bilder und Programmcode liegen ausschließlich auf unserem eigenen Server. Ein Einwilligungsbanner ist deshalb nicht erforderlich.",
-     "Diese Website läuft auf dem Redaktionssystem WordPress. Beim Besuch der Seite werden keine Cookies gesetzt, keine Analyse- oder Trackingdienste eingesetzt und keine Inhalte von Drittanbietern nachgeladen. Schriften, Bilder und Programmcode liegen ausschließlich auf unserem eigenen Server. Kommentare und Registrierungen sind nicht möglich. Cookies verwendet WordPress nur für angemeldete Redakteurinnen und Redakteure im Verwaltungsbereich; Besucherinnen und Besucher sind davon nicht betroffen. Ein Einwilligungsbanner ist deshalb nicht erforderlich."),
+     "Diese Website läuft auf dem Redaktionssystem WordPress. Beim Besuch der Seite werden keine Cookies gesetzt, keine Analyse- oder Trackingdienste eingesetzt und keine Inhalte von Drittanbietern nachgeladen. Schriften, Bilder und Programmcode liegen ausschließlich auf unserem eigenen Server. Kommentare und Registrierungen sind nicht möglich. Für die Formulare und den E-Mail-Versand setzen wir die Plugins Formidable Forms und WP Mail SMTP ein; beide laufen vollständig auf unserem eigenen Server und übertragen keine Daten an ihre Hersteller. Cookies verwendet WordPress nur für angemeldete Redakteurinnen und Redakteure im Verwaltungsbereich; Besucherinnen und Besucher sind davon nicht betroffen. Ein Einwilligungsbanner ist deshalb nicht erforderlich."),
     ("Die Daten werden nach 7 Tagen gelöscht. Eine Zusammenführung",
      "Die Protokolldateien werden automatisch rotiert und ältere Dateien werden gelöscht, sobald die festgelegte Höchstzahl an Archivdateien erreicht ist. Eine Zusammenführung"),
     ("Diese Website wird gehostet bei der STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin.",
      "Diese Website wird gehostet bei der IONOS SE, Elgendorfer Straße 57, 56410 Montabaur."),
     ("Die Formulare auf dieser Website übergeben Ihre Angaben an den Postausgangsserver der STRATO GmbH",
-     "Angaben, die Sie uns über ein Formular auf dieser Website oder per E-Mail senden, gelangen über den Postausgangsserver der STRATO GmbH"),
+     "Angaben, die Sie uns über ein Formular auf dieser Website senden, übergibt das auf unserem Server laufende Plugin WP Mail SMTP an den Postausgangsserver der STRATO GmbH"),
     ("Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Es erfolgt keine Speicherung auf dem Webserver und keine Auswertung zu anderen Zwecken.",
-     "Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Eine Auswertung zu anderen Zwecken findet nicht statt."),
+     "Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Elternfragebogen, Lehrersuche, Mitgliedsantrag und Anmeldungen zu Veranstaltungen laufen mit dem Plugin Formidable Forms auf unserem eigenen Server. Damit keine Anfrage verloren geht, speichert die Website diese Angaben zusätzlich in ihrer Datenbank. Dabei werden weder IP-Adresse noch Browserkennung mitgespeichert, und es werden keine Cookies gesetzt. Die Einträge werden nach 180 Tagen automatisch gelöscht; wir können sie auf Wunsch auch früher löschen. Das Kontaktformular speichert nichts in der Datenbank, seine Angaben stehen nur in der E-Mail. Eine Auswertung zu anderen Zwecken findet nicht statt.</p>" "\n    <p>Melden Sie sich über ein Formular zu einer Veranstaltung an, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse, auf Wunsch Ihre Telefonnummer und die Zahl der Personen, um Plätze zu planen und Sie bei Rückfragen zu erreichen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Angaben nach der Veranstaltung, spätestens nach 180 Tagen.</p>" "\n    <p>Gegen automatisierte Zusendungen schützen die Formulare eine einfache Rechenaufgabe (Sicherheitsfrage) und ein verstecktes Feld, das nur Programme ausfüllen. Beides wird auf unserem Server geprüft; Dienste Dritter kommen dabei nicht zum Einsatz."),
+    ('<tr><th scope="row">Anfragen ohne Vertragsschluss</th>',
+     '<tr><th scope="row">Formulareinträge in der Datenbank</th><td>180 Tage, dann automatische Löschung</td></tr>\n        '
+     '<tr><th scope="row">Anmeldungen zu Veranstaltungen</th><td>nach der Veranstaltung, spätestens nach 180 Tagen</td></tr>\n        '
+     '<tr><th scope="row">Anfragen ohne Vertragsschluss</th>'),
     ('<tr><th scope="row">Server-Logfiles</th><td>7 Tagen</td></tr>',
      '<tr><th scope="row">Server-Logfiles</th><td>bis zur automatischen Rotation und Löschung durch den Hoster</td></tr>'),
     ("Stand September 2026", "Stand Oktober 2026"),
@@ -111,9 +115,9 @@ def main() -> None:
             assert "@RECHNEN@" in inhalt
         else:
             inhalt = formulare_entfernen(inhalt)
-            if slug in FLUENT:
-                inhalt = inhalt.replace("<!-- Formular: hier mit eigenem Formular-Plugin einfuegen -->", '[fluentform id="%d"]' % FLUENT[slug])
-                assert "[fluentform" in inhalt
+            if slug in FORMULAR_IDS:
+                inhalt = inhalt.replace("<!-- Formular: hier mit eigenem Formular-Plugin einfuegen -->", '[formidable id=%d]' % FORMULAR_IDS[slug])
+                assert "[formidable" in inhalt
         inhalt = inhalt.strip()
         if slug == "datenschutz":
             inhalt = datenschutz_anpassen(inhalt)

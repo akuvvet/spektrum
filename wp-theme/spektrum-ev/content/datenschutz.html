@@ -19,7 +19,7 @@
 
   <section class="block an">
     <h2>2. Grundsätzliches</h2>
-    <p>Diese Website läuft auf dem Redaktionssystem WordPress. Beim Besuch der Seite werden keine Cookies gesetzt, keine Analyse- oder Trackingdienste eingesetzt und keine Inhalte von Drittanbietern nachgeladen. Schriften, Bilder und Programmcode liegen ausschließlich auf unserem eigenen Server. Kommentare und Registrierungen sind nicht möglich. Cookies verwendet WordPress nur für angemeldete Redakteurinnen und Redakteure im Verwaltungsbereich; Besucherinnen und Besucher sind davon nicht betroffen. Ein Einwilligungsbanner ist deshalb nicht erforderlich.</p>
+    <p>Diese Website läuft auf dem Redaktionssystem WordPress. Beim Besuch der Seite werden keine Cookies gesetzt, keine Analyse- oder Trackingdienste eingesetzt und keine Inhalte von Drittanbietern nachgeladen. Schriften, Bilder und Programmcode liegen ausschließlich auf unserem eigenen Server. Kommentare und Registrierungen sind nicht möglich. Für die Formulare und den E-Mail-Versand setzen wir die Plugins Formidable Forms und WP Mail SMTP ein; beide laufen vollständig auf unserem eigenen Server und übertragen keine Daten an ihre Hersteller. Cookies verwendet WordPress nur für angemeldete Redakteurinnen und Redakteure im Verwaltungsbereich; Besucherinnen und Besucher sind davon nicht betroffen. Ein Einwilligungsbanner ist deshalb nicht erforderlich.</p>
   </section>
 
   <section class="block an">
@@ -35,7 +35,7 @@
 
   <section class="block an">
     <h2>5. E-Mail-Versand</h2>
-    <p>Angaben, die Sie uns über ein Formular auf dieser Website oder per E-Mail senden, gelangen über den Postausgangsserver der STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin, bei der auch unsere Postfächer liegen. Die Übertragung erfolgt verschlüsselt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO; auch hier besteht ein Vertrag über die Auftragsverarbeitung.</p>
+    <p>Angaben, die Sie uns über ein Formular auf dieser Website senden, übergibt das auf unserem Server laufende Plugin WP Mail SMTP an den Postausgangsserver der STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin, bei der auch unsere Postfächer liegen. Die Übertragung erfolgt verschlüsselt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO; auch hier besteht ein Vertrag über die Auftragsverarbeitung.</p>
     <p>Bitte beachten Sie: Eine E-Mail ist auf ihrem Weg durch das Netz nicht durchgehend verschlüsselt. Senden Sie uns über E-Mail und Formulare daher keine Gesundheitsangaben, keine Bankverbindungen und nichts, was Sie nicht auch auf einer Postkarte schreiben würden.</p>
   </section>
 
@@ -47,7 +47,9 @@
   <section class="block an">
     <h2>7. Kontaktaufnahme und Formulare</h2>
     <p>Wenn Sie uns per E-Mail, Telefon oder über eines der Formulare auf dieser Website erreichen (Kontaktformular, Elternfragebogen, Lehrersuche, Mitgliedsantrag), verarbeiten wir die von Ihnen mitgeteilten Angaben, um die Anfrage zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage der Anbahnung oder Durchführung eines Vertrags oder einer Mitgliedschaft dient, im Übrigen Art. 6 Abs. 1 lit. f DSGVO.</p>
-    <p>Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Eine Auswertung zu anderen Zwecken findet nicht statt.</p>
+    <p>Die Formulare übermitteln Ihre Angaben per E-Mail an unsere Geschäftsstelle. Elternfragebogen, Lehrersuche, Mitgliedsantrag und Anmeldungen zu Veranstaltungen laufen mit dem Plugin Formidable Forms auf unserem eigenen Server. Damit keine Anfrage verloren geht, speichert die Website diese Angaben zusätzlich in ihrer Datenbank. Dabei werden weder IP-Adresse noch Browserkennung mitgespeichert, und es werden keine Cookies gesetzt. Die Einträge werden nach 180 Tagen automatisch gelöscht; wir können sie auf Wunsch auch früher löschen. Das Kontaktformular speichert nichts in der Datenbank, seine Angaben stehen nur in der E-Mail. Eine Auswertung zu anderen Zwecken findet nicht statt.</p>
+    <p>Melden Sie sich über ein Formular zu einer Veranstaltung an, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse, auf Wunsch Ihre Telefonnummer und die Zahl der Personen, um Plätze zu planen und Sie bei Rückfragen zu erreichen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Angaben nach der Veranstaltung, spätestens nach 180 Tagen.</p>
+    <p>Gegen automatisierte Zusendungen schützen die Formulare eine einfache Rechenaufgabe (Sicherheitsfrage) und ein verstecktes Feld, das nur Programme ausfüllen. Beides wird auf unserem Server geprüft; Dienste Dritter kommen dabei nicht zum Einsatz.</p>
     <p>Zur Abwehr automatisierter Zusendungen speichern wir beim Absenden eines Formulars einen nicht rückrechenbaren Prüfwert Ihrer IP-Adresse für längstens eine Stunde. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
     <p>Bankverbindungen fragen wir über die Formulare bewusst nicht ab. Ein SEPA-Lastschriftmandat schließen wir schriftlich außerhalb dieser Website.</p>
   </section>
@@ -94,6 +96,8 @@
       <tbody>
         <tr><th scope="row">Server-Logfiles</th><td>bis zur automatischen Rotation und Löschung durch den Hoster</td></tr>
         <tr><th scope="row">Prüfwert der IP-Adresse (Bot-Bremse)</th><td>eine Stunde</td></tr>
+        <tr><th scope="row">Formulareinträge in der Datenbank</th><td>180 Tage, dann automatische Löschung</td></tr>
+        <tr><th scope="row">Anmeldungen zu Veranstaltungen</th><td>nach der Veranstaltung, spätestens nach 180 Tagen</td></tr>
         <tr><th scope="row">Anfragen ohne Vertragsschluss</th><td>sechs Monate</td></tr>
         <tr><th scope="row">Bewerbungen ohne Zusammenarbeit</th><td>sechs Monate nach Abschluss des Verfahrens</td></tr>
         <tr><th scope="row">Unterlagen zu laufenden Verträgen</th><td>bis Vertragsende, danach nach steuerlichen Fristen</td></tr>
