@@ -1,0 +1,71 @@
+name: Theme auf spektrum-ev.de übertragen
+
+# Bei jedem Push wird das Theme gebaut und per rsync nach spektrum-ev.de übertragen.
+# Der Schlüssel darf auf dem Server nur in den Theme-Ordner schreiben (rrsync).
+# Seiteninhalte, die in WordPress selbst stehen (Texte, Formulare), ändert das nicht.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/**"
+      - "tools/**"
+      - "*.html"
+      - ".github/workflows/deploy-ev.yml"
+  workflow_dispatch:
+    inputs:
+      probelauf:
+        description: "Probelauf — zeigt nur, was übertragen würde, ändert nichts"
+        type: boolean
+        default: true
+
+concurrency:
+  group: deploy-spektrum-ev
+  cancel-in-progress: false
+
+jobs:
+  uebertragen:
+    name: Theme bauen und übertragen
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Stand auschecken
+        uses: actions/checkout@v4
+
+      - name: Theme bauen
+        run: python3 tools/build_wp_theme.py
+
+      - name: SSH vorbereiten
+        env:
+          SSH_KEY: ${{ secrets.EV_SSH_KEY }}
+          SSH_HOST: ${{ secrets.EV_SSH_HOST }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Dateien übertragen
+        env:
+          SSH_HOST: ${{ secrets.EV_SSH_HOST }}
+          SSH_USER: ${{ secrets.EV_SSH_USER }}
+          PROBELAUF: ${{ github.event_name == 'workflow_dispatch' && inputs.probelauf }}
+        run: |
+          set -euo pipefail
+          TROCKEN=()
+          if [ "${PROBELAUF:-false}" = "true" ]; then
+            TROCKEN=( --dry-run )
+            echo "::notice::PROBELAUF — es wird nichts verändert."
+          fi
+          # assets/projekte/ liegt nur auf dem Server (Projektfotos) und bleibt unberührt.
+          rsync -rlz --delete --chmod=D755,F644 --omit-dir-times \
+            --itemize-changes "${TROCKEN[@]}" \
+            --exclude 'assets/projekte/' \
+            -e "ssh -i ~/.ssh/id_deploy -o BatchMode=yes" \
+            wp-theme/spektrum-ev/ "$SSH_USER@$SSH_HOST:./"
+
+      - name: Aufräumen
+        if: always()
+        run: rm -f ~/.ssh/id_deploy
