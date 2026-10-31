@@ -1,8 +1,8 @@
 name: Auf den Server übertragen
 
+# spektrum-nachhilfe.de ist abgeloest und leitet auf spektrum-ev.de um.
+# Kein automatisches Hochladen mehr bei jedem Push, nur noch von Hand.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
     inputs:
       probelauf:
