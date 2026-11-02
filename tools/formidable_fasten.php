@@ -37,7 +37,7 @@ $feld = static function (string $typ, string $name, bool $pflicht, int $reihe, a
 };
 $vor    = $feld('text', 'Vorname', true, 1, ['classes' => 'frm_first frm_half']);
 $nach   = $feld('text', 'Nachname', true, 2, ['classes' => 'frm_half']);
-$tel    = $feld('phone', 'Telefon', true, 3, ['classes' => 'frm_first frm_half', 'invalid' => 'Bitte geben Sie eine gültige Telefonnummer ein.']);
+$tel    = $feld('text', 'Telefon', true, 3, ['classes' => 'frm_first frm_half']);
 $mail   = $feld('email', 'E-Mail', true, 4, ['classes' => 'frm_half', 'invalid' => 'Bitte geben Sie eine gültige E-Mail-Adresse ein.']);
 $einl   = $feld('text', 'Einladende Person (Name)', false, 5);
 $beg1   = $feld('text', 'Name der Begleitperson 1 (falls vorhanden)', false, 6, ['classes' => 'frm_first frm_half']);
