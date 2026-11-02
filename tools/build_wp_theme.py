@@ -141,7 +141,7 @@ def main() -> None:
         inhalt = umschreiben(seite.read_text(encoding="utf-8").replace("@WABEN@", waben)).strip()
         (OUT / "content" / seite.name).write_text(als_bloecke(inhalt), encoding="utf-8")
         meta[seite.stem] = {"titel": e["titel"], "ueberschrift": e["ueberschrift"], "beschreibung": e["beschreibung"],
-                            "noindex": False, "jsonld": json.dumps(e["jsonld"], ensure_ascii=False), "parent": e.get("parent", "")}
+                            "noindex": False, "jsonld": json.dumps(e["jsonld"], ensure_ascii=False) if e.get("jsonld") else "", "parent": e.get("parent", "")}
     (OUT / "content" / "_meta.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 
