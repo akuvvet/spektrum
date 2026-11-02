@@ -12,7 +12,7 @@ foreach ($wpdb->get_col($wpdb->prepare("SELECT id FROM {$wpdb->prefix}frm_forms 
 $optionen = FrmFormsHelper::get_default_opts();
 $optionen['submit_value'] = 'Verbindlich anmelden';
 $optionen['success_action'] = 'message';
-$optionen['success_msg'] = 'Vielen Dank für Ihre Anmeldung zum Fastenbrechen 2027! Wir melden uns nur, falls es Rückfragen gibt.';
+$optionen['success_msg'] = 'Vielen Dank für Ihre Anmeldung zum Fastenbrechen 2027! Wir melden uns nur, falls es Rückfragen gibt. Wir freuen uns auf Sie am 13. Februar 2027 im Zentrum Frieden.';
 $optionen['antispam'] = 1;
 $formId = FrmForm::create([
     'form_key' => 'fastenbrechen-2027',
