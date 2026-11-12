@@ -18,7 +18,7 @@ function spektrum_meta(): array
 
 function spektrum_ersetzen(string $html): string
 {
-    return str_replace('@THEME@', get_template_directory_uri(), $html);
+    return str_replace('@THEME@', set_url_scheme(get_template_directory_uri(), 'https'), $html);
 }
 
 /** Seiten sind fertiges HTML: keine Automatik, die Absaetze, Anfuehrungszeichen oder Zeilen veraendert. */
